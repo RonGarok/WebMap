@@ -1,19 +1,23 @@
 import requests
-from bs4 import BeautifulSoup
 import json
 import time
 import os
-import random
-
-# Jeux à scraper (tu peux en enlever/ajouter)
-GAMES = {
-    "cs2": "https://www.gametracker.com/search/cs2/?searchpge=1#search",
-    "csgo": "https://www.gametracker.com/search/csgo/?searchpge=1#search",
-    "minecraft": "https://www.gametracker.com/search/minecraft/?searchpge=1#search",
-    "rust": "https://www.gametracker.com/search/rust/?searchpge=1#search"
-}
 
 OUTPUT_FILE = "webgame.json"
+MAX_NEW_PER_SESSION = 100
+
+# Tu pourras ajouter autant de jeux que tu veux ici
+GAMES = [
+    "rust",
+    "arkse",
+    "dayz",
+    "scum",
+    "pz",
+    "squad",
+    "7daystodie",
+    "valheim",
+    "palworld"
+]
 
 CENTRAL_NODE = {
     "id": "webmap",
@@ -23,108 +27,7 @@ CENTRAL_NODE = {
     "y": 0
 }
 
-MAX_NEW_PER_SESSION = 100
-
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
-    "Referer": "https://www.gametracker.com/",
-    "Accept-Language": "en-US,en;q=0.9",
-    "Cookie": "gt_cookie_accept=1"
-}
-
-
-def fetch_html(url, retries=3, delay=2):
-    for attempt in range(retries):
-        try:
-            resp = requests.get(url, headers=HEADERS, timeout=10)
-            if resp.status_code == 200 and "table_lst" in resp.text:
-                return resp.text
-            else:
-                print(f"[{attempt+1}/{retries}] HTTP {resp.status_code} or no table, retrying...")
-        except Exception as e:
-            print(f"[{attempt+1}/{retries}] Request error: {e}")
-        time.sleep(delay + random.uniform(0, 1))
-    print("Failed to fetch:", url)
-    return ""
-
-
-def parse_server_row(row, game):
-    cols = row.find_all("td")
-    if len(cols) < 5:
-        return None
-
-    ip_port = cols[0].text.strip()
-    if ":" not in ip_port:
-        return None
-    ip, port = ip_port.split(":")
-
-    name = cols[1].text.strip()
-
-    players_raw = cols[2].text.strip()
-    if "/" in players_raw:
-        try:
-            players, max_players = players_raw.split("/")
-            players = int(players)
-            max_players = int(max_players)
-        except:
-            players = 0
-            max_players = 0
-    else:
-        players = 0
-        max_players = 0
-
-    map_name = cols[3].text.strip()
-    country = cols[4].text.strip()
-
-    ping = 0
-    if len(cols) > 5:
-        try:
-            ping = int(cols[5].text.strip())
-        except:
-            ping = 0
-
-    return {
-        "id": f"{ip}:{port}",
-        "ip": ip,
-        "port": int(port),
-        "game": game,
-        "name": name,
-        "players": players,
-        "max_players": max_players,
-        "map": map_name,
-        "country": country,
-        "ping": ping,
-        "tags": [],
-        "last_seen": int(time.time()),
-        "x": None,
-        "y": None
-    }
-
-
-def scrape_game(game, url):
-    print(f"Scraping {game}...")
-    servers = []
-
-    html = fetch_html(url)
-    if not html:
-        print(f"No HTML for {game}")
-        return servers
-
-    soup = BeautifulSoup(html, "html.parser")
-    table = soup.find("table", {"class": "table_lst"})
-    if not table:
-        print(f"No table found for {game}")
-        return servers
-
-    rows = table.find_all("tr")[1:]
-
-    for row in rows:
-        server = parse_server_row(row, game)
-        if server:
-            servers.append(server)
-
-    print(f"Found {len(servers)} servers for {game}")
-    return servers
+API_BASE = "https://api.battlemetrics.com/servers"
 
 
 def load_existing():
@@ -145,6 +48,47 @@ def save_json(data):
         json.dump(data, f, indent=4)
 
 
+def fetch_servers_for_game(game, max_pages=5):
+    servers = []
+    for page in range(1, max_pages + 1):
+        url = f"{API_BASE}?filter[game]={game}&page[size]=50&page[number]={page}"
+        try:
+            r = requests.get(url, timeout=10)
+            if r.status_code != 200:
+                print(f"Error {r.status_code} for {game} page {page}")
+                break
+
+            data = r.json()
+            if "data" not in data:
+                break
+
+            for srv in data["data"]:
+                attr = srv["attributes"]
+                servers.append({
+                    "id": srv["id"],
+                    "ip": attr.get("ip", None),
+                    "port": attr.get("port", None),
+                    "game": game,
+                    "name": attr.get("name", "Unknown"),
+                    "players": attr.get("players", 0),
+                    "max_players": attr.get("maxPlayers", 0),
+                    "country": attr.get("country", "??"),
+                    "map": attr.get("details", {}).get("map", "Unknown"),
+                    "ping": attr.get("ping", 0),
+                    "tags": attr.get("details", {}).get("tags", []),
+                    "last_seen": int(time.time()),
+                    "x": None,
+                    "y": None
+                })
+
+        except Exception as e:
+            print("Error:", e)
+            break
+
+    print(f"{game}: {len(servers)} servers fetched")
+    return servers
+
+
 def update_database():
     db = load_existing()
 
@@ -154,10 +98,11 @@ def update_database():
     new_servers = {}
     new_count = 0
 
-    for game, url in GAMES.items():
-        scraped = scrape_game(game, url)
+    # 1) Fetch servers from BattleMetrics
+    for game in GAMES:
+        fetched = fetch_servers_for_game(game)
 
-        for s in scraped:
+        for s in fetched:
             sid = s["id"]
 
             if sid not in existing and sid not in new_servers:
@@ -171,9 +116,10 @@ def update_database():
                 new_servers[sid] = s
 
         if new_count >= MAX_NEW_PER_SESSION:
-            print("Limite de 100 nouveaux serveurs atteinte, arrêt de la session.")
+            print("Limite de 100 nouveaux serveurs atteinte.")
             break
 
+    # 2) Merge
     merged = []
     for sid, srv in new_servers.items():
         if sid in existing:
@@ -186,12 +132,13 @@ def update_database():
     db["servers"] = merged
     db["queue"] = queue
 
+    # 3) Edges → central
     db["edges"] = [
         ["webmap", srv["id"]] for srv in merged
     ]
 
     save_json(db)
-    print(f"Session: {new_count} nouveaux serveurs, {len(queue)} en attente, {len(merged)} au total.")
+    print(f"Session: {new_count} nouveaux serveurs, {len(queue)} en attente, {len(merged)} total.")
 
 
 if __name__ == "__main__":
