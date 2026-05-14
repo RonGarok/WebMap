@@ -18,8 +18,8 @@ from bs4 import BeautifulSoup
 # CONFIG
 # ==========================
 
-GRID_SIZE = 100000
-MAX_NODES = 5000
+GRID_SIZE = 1000
+MAX_NODES = 500
 THREADS = 1
 REQUEST_TIMEOUT = 10
 
