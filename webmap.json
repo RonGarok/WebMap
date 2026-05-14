@@ -1399,6 +1399,706 @@
       "status": 1,
       "x": 14391,
       "y": 39890
+    },
+    {
+      "url": "https://help.medium.com/hc/en-us",
+      "favicon": "default",
+      "status": 1,
+      "x": 10447,
+      "y": 50588
+    },
+    {
+      "url": "https://pypi.org/trademarks/",
+      "favicon": "default",
+      "status": 1,
+      "x": 92660,
+      "y": 28912
+    },
+    {
+      "url": "https://homewithinnowhere.com/posts/2026-05-10-one-line.html",
+      "favicon": "default",
+      "status": 1,
+      "x": 98160,
+      "y": 66011
+    },
+    {
+      "url": "https://gnu.org/people/people.html",
+      "favicon": "default",
+      "status": 1,
+      "x": 45645,
+      "y": 43705
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content",
+      "favicon": "default",
+      "status": 1,
+      "x": 91181,
+      "y": 23530
+    },
+    {
+      "url": "https://medium.com/m/signin?operation=login&redirect=https%3A%2F%2Fmedium.com%2F&source=--------------------------lo_home_nav------------------",
+      "favicon": "https://medium.com/m/signin?operation=login&redirect=https%3A%2F%2Fmedium.com%2F&source=--------------------------lo_home_nav------------------/favicon.ico",
+      "status": 1,
+      "x": 12777,
+      "y": 93812
+    },
+    {
+      "url": "https://gnu.org/education/education.html",
+      "favicon": "default",
+      "status": 1,
+      "x": 62975,
+      "y": 20276
+    },
+    {
+      "url": "https://mozilla.org/dsb/",
+      "favicon": "default",
+      "status": 1,
+      "x": 55291,
+      "y": 17410
+    },
+    {
+      "url": "https://www.w3.org/staff/",
+      "favicon": "default",
+      "status": 1,
+      "x": 6505,
+      "y": 93815
+    },
+    {
+      "url": "https://www.w3.org/International/i18n-drafts/nav/about",
+      "favicon": "default",
+      "status": 1,
+      "x": 88610,
+      "y": 1237
+    },
+    {
+      "url": "https://gnu.org/home.en.html?distro=pureos",
+      "favicon": "https://gnu.org/home.en.html?distro=pureos/favicon.ico",
+      "status": 1,
+      "x": 27986,
+      "y": 85365
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps",
+      "favicon": "default",
+      "status": 1,
+      "x": 30683,
+      "y": 70537
+    },
+    {
+      "url": "https://news.ycombinator.com/ask",
+      "favicon": "default",
+      "status": 1,
+      "x": 1406,
+      "y": 80313
+    },
+    {
+      "url": "https://gnu.org/help/music-subtraction.html",
+      "favicon": "default",
+      "status": 1,
+      "x": 88601,
+      "y": 8153
+    },
+    {
+      "url": "https://www.w3.org/about/diversity/",
+      "favicon": "default",
+      "status": 1,
+      "x": 72547,
+      "y": 47594
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Colors/Color_format_converter",
+      "favicon": "default",
+      "status": 1,
+      "x": 69320,
+      "y": 75174
+    },
+    {
+      "url": "https://gnu.org/",
+      "favicon": "https://gnu.org/favicon.ico",
+      "status": 1,
+      "x": 96310,
+      "y": 83388
+    },
+    {
+      "url": "https://mozilla.org/nn-NO/",
+      "favicon": "default",
+      "status": 1,
+      "x": 40169,
+      "y": 94249
+    },
+    {
+      "url": "https://news.ycombinator.com/hide?id=48102901&goto=news",
+      "favicon": "default",
+      "status": 0,
+      "x": 5224,
+      "y": 10915
+    },
+    {
+      "url": "https://www.w3.org/events/",
+      "favicon": "default",
+      "status": 1,
+      "x": 10085,
+      "y": 4419
+    },
+    {
+      "url": "https://gnu.org/home.en.html",
+      "favicon": "default",
+      "status": 1,
+      "x": 11702,
+      "y": 6686
+    },
+    {
+      "url": "https://developer.mozilla.org/discord",
+      "favicon": "default",
+      "status": 1,
+      "x": 11106,
+      "y": 3757
+    },
+    {
+      "url": "https://relay.firefox.com/?utm_source=www.mozilla.org&utm_medium=referral&utm_campaign=nav&utm_content=products",
+      "favicon": "https://relay.firefox.com/?utm_source=www.mozilla.org&utm_medium=referral&utm_campaign=nav&utm_content=products/favicon.ico",
+      "status": 1,
+      "x": 66166,
+      "y": 85419
+    },
+    {
+      "url": "https://gnu.org/philosophy/kind-communication.html",
+      "favicon": "default",
+      "status": 1,
+      "x": 99283,
+      "y": 30274
+    },
+    {
+      "url": "https://donate.pypi.org",
+      "favicon": "https://donate.pypi.org/favicon.ico",
+      "status": 1,
+      "x": 16295,
+      "y": 60326
+    },
+    {
+      "url": "https://www.w3.org/standards/review/",
+      "favicon": "default",
+      "status": 1,
+      "x": 77512,
+      "y": 97685
+    },
+    {
+      "url": "https://gnu.org/software/wdiff/",
+      "favicon": "default",
+      "status": 1,
+      "x": 86967,
+      "y": 51462
+    },
+    {
+      "url": "https://news.ycombinator.com/newcomments",
+      "favicon": "default",
+      "status": 1,
+      "x": 93306,
+      "y": 40381
+    },
+    {
+      "url": "https://www.youtube.com/user/firefoxchannel",
+      "favicon": "https://www.youtube.com/user/firefoxchannel/favicon.ico",
+      "status": 1,
+      "x": 86805,
+      "y": 90294
+    },
+    {
+      "url": "https://github.com/mdn/",
+      "favicon": "default",
+      "status": 1,
+      "x": 58841,
+      "y": 64155
+    },
+    {
+      "url": "https://w3.org/news/2026/first-public-working-draft-recognized-entities-v1-0/",
+      "favicon": "default",
+      "status": 1,
+      "x": 4362,
+      "y": 58049
+    },
+    {
+      "url": "https://packaging.python.org/tutorials/packaging-projects/",
+      "favicon": "default",
+      "status": 1,
+      "x": 84931,
+      "y": 22122
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Anchor_positioning/Using",
+      "favicon": "default",
+      "status": 1,
+      "x": 50369,
+      "y": 66252
+    },
+    {
+      "url": "https://w3.org/news/2026/w3c-advisory-committee-elects-advisory-board/",
+      "favicon": "default",
+      "status": 1,
+      "x": 54918,
+      "y": 41982
+    },
+    {
+      "url": "https://news.ycombinator.com/user?id=tosh",
+      "favicon": "default",
+      "status": 1,
+      "x": 87531,
+      "y": 60152
+    },
+    {
+      "url": "https://packaging.python.org/tutorials/installing-packages/",
+      "favicon": "default",
+      "status": 1,
+      "x": 11939,
+      "y": 75004
+    },
+    {
+      "url": "https://www.w3.org/membership/",
+      "favicon": "default",
+      "status": 1,
+      "x": 99531,
+      "y": 84689
+    },
+    {
+      "url": "https://pypi.org/security/",
+      "favicon": "default",
+      "status": 1,
+      "x": 34725,
+      "y": 32536
+    },
+    {
+      "url": "https://mozilla.org/gl/",
+      "favicon": "default",
+      "status": 1,
+      "x": 83507,
+      "y": 19832
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/about",
+      "favicon": "default",
+      "status": 1,
+      "x": 31151,
+      "y": 56777
+    },
+    {
+      "url": "https://www.w3.org/about/positive-work-environment/",
+      "favicon": "default",
+      "status": 1,
+      "x": 40411,
+      "y": 42749
+    },
+    {
+      "url": "https://news.ycombinator.com/vote?id=48133908&how=up&goto=news",
+      "favicon": "default",
+      "status": 0,
+      "x": 92040,
+      "y": 12878
+    },
+    {
+      "url": "https://www.w3.org/policies/code-of-conduct/",
+      "favicon": "default",
+      "status": 1,
+      "x": 21218,
+      "y": 95541
+    },
+    {
+      "url": "https://dtdg.co/pypi",
+      "favicon": "https://dtdg.co/pypi/favicon.ico",
+      "status": 1,
+      "x": 25513,
+      "y": 41638
+    },
+    {
+      "url": "https://www.w3.org/translations/",
+      "favicon": "default",
+      "status": 1,
+      "x": 32174,
+      "y": 97888
+    },
+    {
+      "url": "https://policies.python.org/pypi.org/Acceptable-Use-Policy/",
+      "favicon": "default",
+      "status": 1,
+      "x": 66398,
+      "y": 64856
+    },
+    {
+      "url": "https://github.com/mdn/content",
+      "favicon": "default",
+      "status": 1,
+      "x": 59659,
+      "y": 56951
+    },
+    {
+      "url": "https://gnu.org/software/quickthreads/",
+      "favicon": "https://gnu.org/software/quickthreads/favicon.ico",
+      "status": 1,
+      "x": 87026,
+      "y": 43649
+    },
+    {
+      "url": "https://mozilla.org/kab/",
+      "favicon": "default",
+      "status": 1,
+      "x": 75466,
+      "y": 60540
+    },
+    {
+      "url": "https://news.ycombinator.com/vote?id=48134084&how=up&goto=news",
+      "favicon": "default",
+      "status": 0,
+      "x": 17388,
+      "y": 18704
+    },
+    {
+      "url": "https://w3.org/about/",
+      "favicon": "default",
+      "status": 1,
+      "x": 87202,
+      "y": 40915
+    },
+    {
+      "url": "https://gnu.org/software/powerguru/",
+      "favicon": "default",
+      "status": 1,
+      "x": 58892,
+      "y": 27253
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/community/spotlight/shrinivass-arunachalam-balasubramanian",
+      "favicon": "default",
+      "status": 1,
+      "x": 83538,
+      "y": 19938
+    },
+    {
+      "url": "https://www.w3.org/about/press-media/",
+      "favicon": "default",
+      "status": 1,
+      "x": 62828,
+      "y": 23424
+    },
+    {
+      "url": "https://www.niemanlab.org/2026/05/the-eu-backs-italys-right-to-make-meta-pay-for-news/",
+      "favicon": "default",
+      "status": 1,
+      "x": 30901,
+      "y": 10714
+    },
+    {
+      "url": "https://gnu.org/home.zh-cn.html",
+      "favicon": "default",
+      "status": 1,
+      "x": 6312,
+      "y": 97336
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines",
+      "favicon": "default",
+      "status": 1,
+      "x": 20663,
+      "y": 4893
+    },
+    {
+      "url": "https://www.w3.org/help/search/",
+      "favicon": "default",
+      "status": 1,
+      "x": 13344,
+      "y": 92091
+    },
+    {
+      "url": "https://www.firefox.com/browsers/enterprise/?utm_source=www.mozilla.org&utm_medium=referral&utm_campaign=footer",
+      "favicon": "https://www.firefox.com/browsers/enterprise/?utm_source=www.mozilla.org&utm_medium=referral&utm_campaign=footer/favicon.ico",
+      "status": 1,
+      "x": 85173,
+      "y": 2209
+    },
+    {
+      "url": "https://gnu.org/distros/distros.html",
+      "favicon": "default",
+      "status": 1,
+      "x": 83534,
+      "y": 9533
+    },
+    {
+      "url": "https://www.w3.org/",
+      "favicon": "https://www.w3.org/favicon.ico",
+      "status": 1,
+      "x": 69769,
+      "y": 64330
+    },
+    {
+      "url": "https://hosted.weblate.org/projects/pypa/warehouse/",
+      "favicon": "https://hosted.weblate.org/projects/pypa/warehouse/favicon.ico",
+      "status": 1,
+      "x": 31584,
+      "y": 71274
+    },
+    {
+      "url": "https://github.com/cactus-compute/needle",
+      "favicon": "default",
+      "status": 1,
+      "x": 1651,
+      "y": 91751
+    },
+    {
+      "url": "https://www.mozilla.org/en-US/privacy/websites/data-preferences/",
+      "favicon": "default",
+      "status": 1,
+      "x": 67169,
+      "y": 48752
+    },
+    {
+      "url": "https://gnu.org/home.pt-br.html",
+      "favicon": "default",
+      "status": 1,
+      "x": 71533,
+      "y": 46850
+    },
+    {
+      "url": "https://www.python.org/dev/peps/pep-0541/",
+      "favicon": "default",
+      "status": 1,
+      "x": 36164,
+      "y": 41551
+    },
+    {
+      "url": "https://www.w3.org/ecosystems/",
+      "favicon": "default",
+      "status": 1,
+      "x": 84647,
+      "y": 76118
+    },
+    {
+      "url": "https://newproducts.mozilla.org/?utm_source=www.mozilla.org&utm_medium=referral&utm_campaign=nav&utm_content=about-us",
+      "favicon": "https://newproducts.mozilla.org/?utm_source=www.mozilla.org&utm_medium=referral&utm_campaign=nav&utm_content=about-us/favicon.ico",
+      "status": 1,
+      "x": 26974,
+      "y": 4099
+    },
+    {
+      "url": "https://gnu.org/software/gnubik/",
+      "favicon": "default",
+      "status": 1,
+      "x": 59123,
+      "y": 16553
+    },
+    {
+      "url": "https://sentry.io/for/python/?utm_source=pypi&utm_medium=paid-community&utm_campaign=python-na-evergreen&utm_content=static-ad-pypi-sponsor-learnmore",
+      "favicon": "https://sentry.io/for/python/?utm_source=pypi&utm_medium=paid-community&utm_campaign=python-na-evergreen&utm_content=static-ad-pypi-sponsor-learnmore/favicon.ico",
+      "status": 1,
+      "x": 63642,
+      "y": 94095
+    },
+    {
+      "url": "https://news.ycombinator.com/from?site=avkcode.github.io",
+      "favicon": "default",
+      "status": 0,
+      "x": 54312,
+      "y": 33992
+    },
+    {
+      "url": "https://www.w3.org/press-releases/",
+      "favicon": "default",
+      "status": 1,
+      "x": 77036,
+      "y": 36484
+    },
+    {
+      "url": "https://gnu.org/software/gnuae/",
+      "favicon": "default",
+      "status": 1,
+      "x": 94834,
+      "y": 64760
+    },
+    {
+      "url": "https://depot.dev",
+      "favicon": "https://depot.dev/favicon.ico",
+      "status": 1,
+      "x": 85712,
+      "y": 31285
+    },
+    {
+      "url": "https://github.com/mdn/content/pull/44107",
+      "favicon": "https://github.com/mdn/content/pull/44107/favicon.ico",
+      "status": 1,
+      "x": 98357,
+      "y": 66639
+    },
+    {
+      "url": "https://pypi.org/sitemap/",
+      "favicon": "default",
+      "status": 1,
+      "x": 61480,
+      "y": 65899
+    },
+    {
+      "url": "https://gnu.org/home.sq.html",
+      "favicon": "default",
+      "status": 1,
+      "x": 88026,
+      "y": 29258
+    },
+    {
+      "url": "https://blog.pypi.org",
+      "favicon": "https://blog.pypi.org/favicon.ico",
+      "status": 1,
+      "x": 25743,
+      "y": 27742
+    },
+    {
+      "url": "https://pypi.org",
+      "favicon": "https://pypi.org/favicon.ico",
+      "status": 1,
+      "x": 6239,
+      "y": 65443
+    },
+    {
+      "url": "https://gnu.org/server/takeaction.html",
+      "favicon": "default",
+      "status": 1,
+      "x": 96950,
+      "y": 31948
+    },
+    {
+      "url": "https://developer.mozilla.org/ru/",
+      "favicon": "default",
+      "status": 1,
+      "x": 64528,
+      "y": 71262
+    },
+    {
+      "url": "https://www.python.org/psf-landing",
+      "favicon": "default",
+      "status": 1,
+      "x": 13843,
+      "y": 69352
+    },
+    {
+      "url": "https://www.w3.org/Member/",
+      "favicon": "https://www.w3.org/Member/favicon.ico",
+      "status": 1,
+      "x": 81252,
+      "y": 75262
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=48073979",
+      "favicon": "default",
+      "status": 1,
+      "x": 17277,
+      "y": 21876
+    },
+    {
+      "url": "https://mozilla.org/rm/",
+      "favicon": "default",
+      "status": 1,
+      "x": 55512,
+      "y": 96758
+    },
+    {
+      "url": "https://gnu.org/software/bison/",
+      "favicon": "default",
+      "status": 1,
+      "x": 21108,
+      "y": 28768
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/plus",
+      "favicon": "default",
+      "status": 1,
+      "x": 66301,
+      "y": 89001
+    },
+    {
+      "url": "https://www.w3.org/news-events/w3c-tpac/",
+      "favicon": "default",
+      "status": 1,
+      "x": 32463,
+      "y": 39275
+    },
+    {
+      "url": "https://gnu.org/home.ru.html",
+      "favicon": "default",
+      "status": 1,
+      "x": 12976,
+      "y": 71870
+    },
+    {
+      "url": "https://linux.org/members/kgiii.102591/",
+      "favicon": "default",
+      "status": 0,
+      "x": 69878,
+      "y": 23210
+    },
+    {
+      "url": "https://planet.gnu.org/rss20.xml",
+      "favicon": "default",
+      "status": 1,
+      "x": 58475,
+      "y": 92238
+    },
+    {
+      "url": "https://www.w3.org/policies/",
+      "favicon": "default",
+      "status": 1,
+      "x": 77519,
+      "y": 44742
+    },
+    {
+      "url": "https://www.laphamsquarterly.org/roundtable/tree-house",
+      "favicon": "https://www.laphamsquarterly.org/roundtable/tree-house/favicon.ico",
+      "status": 0,
+      "x": 27568,
+      "y": 9081
+    },
+    {
+      "url": "https://www.mozilla.org/en-US/careers/listings/",
+      "favicon": "default",
+      "status": 1,
+      "x": 7157,
+      "y": 92516
+    },
+    {
+      "url": "https://linux.org/help/terms/",
+      "favicon": "default",
+      "status": 1,
+      "x": 85,
+      "y": 11274
+    },
+    {
+      "url": "https://w3.org/membership/list/",
+      "favicon": "default",
+      "status": 1,
+      "x": 56250,
+      "y": 29622
+    },
+    {
+      "url": "https://gnu.org/gnu/linux-and-gnu.html",
+      "favicon": "default",
+      "status": 1,
+      "x": 18398,
+      "y": 6024
+    },
+    {
+      "url": "https://mozilla.org/pt-PT/",
+      "favicon": "default",
+      "status": 1,
+      "x": 7872,
+      "y": 75217
+    },
+    {
+      "url": "https://www.w3.org/groups/other/tag/",
+      "favicon": "default",
+      "status": 1,
+      "x": 68010,
+      "y": 57710
+    },
+    {
+      "url": "https://linux.org/threads/a-quick-dell-latitude-question-edited-more-help-needed.65924/page-2",
+      "favicon": "default",
+      "status": 1,
+      "x": 539,
+      "y": 6829
     }
   ],
   "edges": [
@@ -2185,6 +2885,586 @@
     [
       "https://news.ycombinator.com",
       "https://news.ycombinator.com/item?id=48079587"
+    ],
+    [
+      "https://medium.com",
+      "https://medium.com/m/signin?operation=register&redirect=https%3A%2F%2Fmedium.com%2Fnew-story&source=--------------------------new_post_topnav------------------"
+    ],
+    [
+      "https://news.ycombinator.com",
+      "https://news.ycombinator.com/hide?id=48130186&goto=news"
+    ],
+    [
+      "https://news.ycombinator.com",
+      "https://laurent.le-brun.eu/blog/a-history-of-ides-at-google"
+    ],
+    [
+      "https://news.ycombinator.com",
+      "https://news.ycombinator.com/vote?id=48118727&how=up&goto=news"
+    ],
+    [
+      "https://medium.com",
+      "https://help.medium.com/hc/en-us"
+    ],
+    [
+      "https://medium.com",
+      "https://status.medium.com"
+    ],
+    [
+      "https://medium.com",
+      "https://medium.com/sitemap/sitemap.xml"
+    ],
+    [
+      "https://medium.com",
+      "https://policy.medium.com/medium-privacy-policy-f03bf92035c9"
+    ],
+    [
+      "https://medium.com",
+      "https://speechify.com/medium"
+    ],
+    [
+      "https://medium.com",
+      "https://medium.com/membership"
+    ],
+    [
+      "https://medium.com",
+      "https://blog.medium.com"
+    ],
+    [
+      "https://medium.com",
+      "https://policy.medium.com/medium-terms-of-service-9db0094a1e0f"
+    ],
+    [
+      "https://medium.com",
+      "https://medium.com/m/signin?operation=register&redirect=https%3A%2F%2Fmedium.com%2F&source=--------------------------lo_home_nav------------------"
+    ],
+    [
+      "https://medium.com",
+      "https://medium.com/"
+    ],
+    [
+      "https://medium.com",
+      "https://medium.com/jobs-at-medium/work-at-medium-959d1a85284e"
+    ],
+    [
+      "https://medium.com",
+      "https://medium.com/about?autoplay=1"
+    ],
+    [
+      "https://medium.com",
+      "https://policy.medium.com/medium-rules-30e5502c4eb4"
+    ],
+    [
+      "https://pypi.org",
+      "https://pypi.org/trademarks/"
+    ],
+    [
+      "https://pypi.org",
+      "https://www.pingdom.com/"
+    ],
+    [
+      "https://pypi.org",
+      "https://careers.google.com/"
+    ],
+    [
+      "https://pypi.org",
+      "https://pypi.org/stats/"
+    ],
+    [
+      "https://pypi.org",
+      "https://docs.pypi.org/"
+    ],
+    [
+      "https://pypi.org",
+      "https://pypi.org/search/"
+    ],
+    [
+      "https://pypi.org",
+      "https://github.com/pypi/warehouse"
+    ],
+    [
+      "https://pypi.org",
+      "https://pypi.org/account/register/"
+    ],
+    [
+      "https://pypi.org",
+      "https://pypi.org/"
+    ],
+    [
+      "https://news.ycombinator.com",
+      "https://homewithinnowhere.com/posts/2026-05-10-one-line.html"
+    ],
+    [
+      "https://news.ycombinator.com",
+      "https://news.ycombinator.com/hide?id=48132030&goto=news"
+    ],
+    [
+      "https://gnu.org",
+      "https://gnu.org/people/people.html"
+    ],
+    [
+      "https://developer.mozilla.org",
+      "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content"
+    ],
+    [
+      "https://medium.com",
+      "https://medium.com/m/signin?operation=login&redirect=https%3A%2F%2Fmedium.com%2F&source=--------------------------lo_home_nav------------------"
+    ],
+    [
+      "https://gnu.org",
+      "https://gnu.org/education/education.html"
+    ],
+    [
+      "https://mozilla.org",
+      "https://mozilla.org/dsb/"
+    ],
+    [
+      "https://mozilla.org",
+      "https://0din.ai/?utm_source=www.mozilla.org&utm_medium=referral&utm_campaign=nav&utm_content=products"
+    ],
+    [
+      "https://w3.org",
+      "https://www.w3.org/staff/"
+    ],
+    [
+      "https://w3.org",
+      "https://www.w3.org/International/i18n-drafts/nav/about"
+    ],
+    [
+      "https://gnu.org",
+      "https://gnu.org/home.en.html?distro=pureos"
+    ],
+    [
+      "https://developer.mozilla.org",
+      "https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps"
+    ],
+    [
+      "https://news.ycombinator.com",
+      "https://news.ycombinator.com/ask"
+    ],
+    [
+      "https://gnu.org",
+      "https://gnu.org/help/music-subtraction.html"
+    ],
+    [
+      "https://w3.org",
+      "https://www.w3.org/about/diversity/"
+    ],
+    [
+      "https://developer.mozilla.org",
+      "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Colors/Color_format_converter"
+    ],
+    [
+      "https://gnu.org",
+      "https://gnu.org/"
+    ],
+    [
+      "https://mozilla.org",
+      "https://mozilla.org/nn-NO/"
+    ],
+    [
+      "https://news.ycombinator.com",
+      "https://news.ycombinator.com/hide?id=48102901&goto=news"
+    ],
+    [
+      "https://w3.org",
+      "https://www.w3.org/events/"
+    ],
+    [
+      "https://gnu.org",
+      "https://gnu.org/home.en.html"
+    ],
+    [
+      "https://developer.mozilla.org",
+      "https://developer.mozilla.org/discord"
+    ],
+    [
+      "https://mozilla.org",
+      "https://relay.firefox.com/?utm_source=www.mozilla.org&utm_medium=referral&utm_campaign=nav&utm_content=products"
+    ],
+    [
+      "https://gnu.org",
+      "https://gnu.org/philosophy/kind-communication.html"
+    ],
+    [
+      "https://pypi.org",
+      "https://donate.pypi.org"
+    ],
+    [
+      "https://pypi.org",
+      "https://pypi.org/account/login/?next=https%3A%2F%2Fpypi.org%2F"
+    ],
+    [
+      "https://w3.org",
+      "https://www.w3.org/standards/review/"
+    ],
+    [
+      "https://gnu.org",
+      "https://gnu.org/software/wdiff/"
+    ],
+    [
+      "https://news.ycombinator.com",
+      "https://news.ycombinator.com/newcomments"
+    ],
+    [
+      "https://mozilla.org",
+      "https://www.youtube.com/user/firefoxchannel"
+    ],
+    [
+      "https://developer.mozilla.org",
+      "https://github.com/mdn/"
+    ],
+    [
+      "https://w3.org",
+      "https://w3.org/news/2026/first-public-working-draft-recognized-entities-v1-0/"
+    ],
+    [
+      "https://pypi.org",
+      "https://packaging.python.org/tutorials/packaging-projects/"
+    ],
+    [
+      "https://pypi.org",
+      "https://policies.python.org/pypi.org/Privacy-Notice/"
+    ],
+    [
+      "https://developer.mozilla.org",
+      "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Anchor_positioning/Using"
+    ],
+    [
+      "https://w3.org",
+      "https://w3.org/news/2026/w3c-advisory-committee-elects-advisory-board/"
+    ],
+    [
+      "https://news.ycombinator.com",
+      "https://news.ycombinator.com/user?id=tosh"
+    ],
+    [
+      "https://pypi.org",
+      "https://packaging.python.org/tutorials/installing-packages/"
+    ],
+    [
+      "https://w3.org",
+      "https://www.w3.org/membership/"
+    ],
+    [
+      "https://pypi.org",
+      "https://pypi.org/security/"
+    ],
+    [
+      "https://pypi.org",
+      "https://status.python.org/"
+    ],
+    [
+      "https://mozilla.org",
+      "https://mozilla.org/gl/"
+    ],
+    [
+      "https://developer.mozilla.org",
+      "https://developer.mozilla.org/en-US/about"
+    ],
+    [
+      "https://w3.org",
+      "https://www.w3.org/about/positive-work-environment/"
+    ],
+    [
+      "https://news.ycombinator.com",
+      "https://news.ycombinator.com/vote?id=48133908&how=up&goto=news"
+    ],
+    [
+      "https://news.ycombinator.com",
+      "https://news.ycombinator.com/vote?id=48125617&how=up&goto=news"
+    ],
+    [
+      "https://w3.org",
+      "https://www.w3.org/policies/code-of-conduct/"
+    ],
+    [
+      "https://pypi.org",
+      "https://dtdg.co/pypi"
+    ],
+    [
+      "https://pypi.org",
+      "https://www.datadoghq.com/"
+    ],
+    [
+      "https://pypi.org",
+      "https://pypi.org/sponsors/"
+    ],
+    [
+      "https://w3.org",
+      "https://www.w3.org/translations/"
+    ],
+    [
+      "https://pypi.org",
+      "https://policies.python.org/pypi.org/Acceptable-Use-Policy/"
+    ],
+    [
+      "https://pypi.org",
+      "https://policies.python.org/pypi.org/Terms-of-Service/"
+    ],
+    [
+      "https://pypi.org",
+      "https://policies.python.org/python.org/code-of-conduct/"
+    ],
+    [
+      "https://pypi.org",
+      "https://www.python.org/psf-landing/"
+    ],
+    [
+      "https://developer.mozilla.org",
+      "https://github.com/mdn/content"
+    ],
+    [
+      "https://gnu.org",
+      "https://gnu.org/software/quickthreads/"
+    ],
+    [
+      "https://mozilla.org",
+      "https://mozilla.org/kab/"
+    ],
+    [
+      "https://news.ycombinator.com",
+      "https://news.ycombinator.com/vote?id=48134084&how=up&goto=news"
+    ],
+    [
+      "https://w3.org",
+      "https://w3.org/about/"
+    ],
+    [
+      "https://gnu.org",
+      "https://gnu.org/software/powerguru/"
+    ],
+    [
+      "https://developer.mozilla.org",
+      "https://developer.mozilla.org/en-US/community/spotlight/shrinivass-arunachalam-balasubramanian"
+    ],
+    [
+      "https://w3.org",
+      "https://www.w3.org/about/press-media/"
+    ],
+    [
+      "https://news.ycombinator.com",
+      "https://www.niemanlab.org/2026/05/the-eu-backs-italys-right-to-make-meta-pay-for-news/"
+    ],
+    [
+      "https://gnu.org",
+      "https://gnu.org/home.zh-cn.html"
+    ],
+    [
+      "https://developer.mozilla.org",
+      "https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines"
+    ],
+    [
+      "https://developer.mozilla.org",
+      "https://developer.mozilla.org/en-US/docs/Web/XML"
+    ],
+    [
+      "https://w3.org",
+      "https://www.w3.org/help/search/"
+    ],
+    [
+      "https://mozilla.org",
+      "https://www.firefox.com/browsers/enterprise/?utm_source=www.mozilla.org&utm_medium=referral&utm_campaign=footer"
+    ],
+    [
+      "https://gnu.org",
+      "https://gnu.org/distros/distros.html"
+    ],
+    [
+      "https://w3.org",
+      "https://www.w3.org/"
+    ],
+    [
+      "https://pypi.org",
+      "https://hosted.weblate.org/projects/pypa/warehouse/"
+    ],
+    [
+      "https://news.ycombinator.com",
+      "https://github.com/cactus-compute/needle"
+    ],
+    [
+      "https://news.ycombinator.com",
+      "https://news.ycombinator.com/user?id=rcarmo"
+    ],
+    [
+      "https://developer.mozilla.org",
+      "https://www.mozilla.org/en-US/privacy/websites/data-preferences/"
+    ],
+    [
+      "https://gnu.org",
+      "https://gnu.org/home.pt-br.html"
+    ],
+    [
+      "https://pypi.org",
+      "https://www.python.org/dev/peps/pep-0541/"
+    ],
+    [
+      "https://w3.org",
+      "https://www.w3.org/ecosystems/"
+    ],
+    [
+      "https://mozilla.org",
+      "https://newproducts.mozilla.org/?utm_source=www.mozilla.org&utm_medium=referral&utm_campaign=nav&utm_content=about-us"
+    ],
+    [
+      "https://gnu.org",
+      "https://gnu.org/software/gnubik/"
+    ],
+    [
+      "https://pypi.org",
+      "https://sentry.io/for/python/?utm_source=pypi&utm_medium=paid-community&utm_campaign=python-na-evergreen&utm_content=static-ad-pypi-sponsor-learnmore"
+    ],
+    [
+      "https://news.ycombinator.com",
+      "https://news.ycombinator.com/from?site=avkcode.github.io"
+    ],
+    [
+      "https://w3.org",
+      "https://www.w3.org/press-releases/"
+    ],
+    [
+      "https://gnu.org",
+      "https://gnu.org/software/gnuae/"
+    ],
+    [
+      "https://pypi.org",
+      "https://depot.dev"
+    ],
+    [
+      "https://pypi.org",
+      "https://pypi.org/help/"
+    ],
+    [
+      "https://developer.mozilla.org",
+      "https://github.com/mdn/content/pull/44107"
+    ],
+    [
+      "https://pypi.org",
+      "https://pypi.org/sitemap/"
+    ],
+    [
+      "https://pypi.org",
+      "https://statuspage.io"
+    ],
+    [
+      "https://pypi.org",
+      "https://aws.amazon.com/"
+    ],
+    [
+      "https://pypi.org",
+      "https://github.com/pypi/warehouse/graphs/contributors"
+    ],
+    [
+      "https://gnu.org",
+      "https://gnu.org/home.sq.html"
+    ],
+    [
+      "https://pypi.org",
+      "https://blog.pypi.org"
+    ],
+    [
+      "https://pypi.org",
+      "https://www.fastly.com/"
+    ],
+    [
+      "https://pypi.org",
+      "https://pypi.org"
+    ],
+    [
+      "https://pypi.org",
+      "https://packaging.python.org/"
+    ],
+    [
+      "https://gnu.org",
+      "https://gnu.org/server/takeaction.html"
+    ],
+    [
+      "https://developer.mozilla.org",
+      "https://developer.mozilla.org/ru/"
+    ],
+    [
+      "https://pypi.org",
+      "https://www.python.org/psf-landing"
+    ],
+    [
+      "https://pypi.org",
+      "https://github.com/pypi/warehouse/commit/e06f4aac992d423f027fca7ae348ddcc3c9ccf39"
+    ],
+    [
+      "https://w3.org",
+      "https://www.w3.org/Member/"
+    ],
+    [
+      "https://news.ycombinator.com",
+      "https://news.ycombinator.com/item?id=48073979"
+    ],
+    [
+      "https://mozilla.org",
+      "https://mozilla.org/rm/"
+    ],
+    [
+      "https://gnu.org",
+      "https://gnu.org/software/bison/"
+    ],
+    [
+      "https://developer.mozilla.org",
+      "https://developer.mozilla.org/en-US/plus"
+    ],
+    [
+      "https://w3.org",
+      "https://www.w3.org/news-events/w3c-tpac/"
+    ],
+    [
+      "https://gnu.org",
+      "https://gnu.org/home.ru.html"
+    ],
+    [
+      "https://linux.org",
+      "https://linux.org/members/kgiii.102591/"
+    ],
+    [
+      "https://gnu.org",
+      "https://planet.gnu.org/rss20.xml"
+    ],
+    [
+      "https://w3.org",
+      "https://www.w3.org/policies/"
+    ],
+    [
+      "https://news.ycombinator.com",
+      "https://www.laphamsquarterly.org/roundtable/tree-house"
+    ],
+    [
+      "https://developer.mozilla.org",
+      "https://www.mozilla.org/en-US/careers/listings/"
+    ],
+    [
+      "https://linux.org",
+      "https://linux.org/help/terms/"
+    ],
+    [
+      "https://w3.org",
+      "https://w3.org/membership/list/"
+    ],
+    [
+      "https://gnu.org",
+      "https://gnu.org/gnu/linux-and-gnu.html"
+    ],
+    [
+      "https://mozilla.org",
+      "https://mozilla.org/pt-PT/"
+    ],
+    [
+      "https://mozilla.org",
+      "https://mozilla.org/zh-CN/"
+    ],
+    [
+      "https://w3.org",
+      "https://www.w3.org/groups/other/tag/"
+    ],
+    [
+      "https://linux.org",
+      "https://linux.org/threads/a-quick-dell-latitude-question-edited-more-help-needed.65924/page-2"
     ]
   ]
 }
