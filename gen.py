@@ -1,8 +1,9 @@
 """
-WebMap Crawler — FINAL PRO VERSION
+WebMap Crawler — FINAL PRO VERSION + NODE CENTRAL
 100 nouveaux nœuds par session
 JSON illimité
-Frontier persistante intelligente
+Frontier persistante
+Node central : https://webmap.ct.ws
 """
 
 import threading, queue, time, random, logging, requests, json, os
@@ -10,75 +11,25 @@ from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 
 GRID_SIZE = 100000
-NEW_NODES_PER_RUN = 500
+NEW_NODES_PER_RUN = 100
 THREADS = 6
 REQUEST_TIMEOUT = 8
 
 OUTPUT_JSON = "webmap.json"
 FRONTIER_JSON = "frontier.json"
 
+# Node central
+CENTRAL_URL = "https://webmap.ct.ws"
+CENTRAL_FAVICON = "https://webmap.ct.ws/assets/favicon.png"
+CENTRAL_X = GRID_SIZE // 2
+CENTRAL_Y = GRID_SIZE // 2
+
 SEED_SITES = [
     "https://wikipedia.org",
     "https://reddit.com",
     "https://github.com",
     "https://stackoverflow.com",
-    "https://medium.com",
-    "https://news.ycombinator.com",
-    "https://archive.org",
-    "https://imdb.com",
-    "https://mozilla.org",
-    "https://gnu.org",
     "https://python.org",
-    "https://nodejs.org",
-    "https://npmjs.com",
-    "https://pypi.org",
-    "https://developer.mozilla.org",
-    "https://w3.org",
-    "https://sourceforge.net",
-    "https://linux.org",
-    "https://kernel.org",
-    "https://ubuntu.com",
-    "https://debian.org",
-    "https://fedora.org",
-    "https://archlinux.org",
-    "https://gentoo.org",
-    "https://kde.org",
-    "https://gnome.org",
-    "https://wordpress.org",
-    "https://drupal.org",
-    "https://joomla.org",
-    "https://cloudflare.com",
-    "https://vercel.com",
-    "https://netlify.com",
-    "https://digitalocean.com",
-    "https://aws.amazon.com",
-    "https://azure.microsoft.com",
-    "https://google.com",
-    "https://bing.com",
-    "https://duckduckgo.com",
-    "https://ecosia.org",
-    "https://yahoo.com",
-    "https://opera.com",
-    "https://brave.com",
-    "https://vivaldi.com",
-    "https://chromium.org",
-    "https://android.com",
-    "https://apple.com",
-    "https://tesla.com",
-    "https://nvidia.com",
-    "https://amd.com",
-    "https://intel.com",
-    "https://openai.com",
-    "https://huggingface.co",
-    "https://kaggle.com",
-    "https://coursera.org",
-    "https://edx.org",
-    "https://mit.edu",
-    "https://harvard.edu",
-    "https://stanford.edu",
-    "https://berkeley.edu",
-    "https://cam.ac.uk",
-    "https://ox.ac.uk"
 ]
 
 HEADERS = {
@@ -110,9 +61,9 @@ task_queue = queue.Queue()
 new_nodes_count = 0
 stop_flag = False
 
-# ==========================
+# ============================================================
 # LOAD JSON + FRONTIER
-# ==========================
+# ============================================================
 
 def load_existing():
     global nodes, edges, visited, frontier
@@ -132,9 +83,9 @@ def load_existing():
             frontier = json.load(f)
         log.info(f"Frontier chargée : {len(frontier)} URLs")
 
-# ==========================
+# ============================================================
 # SAVE JSON + FRONTIER
-# ==========================
+# ============================================================
 
 def save_all():
     with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
@@ -145,9 +96,9 @@ def save_all():
 
     log.info(f"[SAVE] JSON + Frontier sauvegardés ({len(nodes)} nodes)")
 
-# ==========================
+# ============================================================
 # STOP
-# ==========================
+# ============================================================
 
 def stop_all():
     global stop_flag
@@ -161,9 +112,9 @@ def stop_all():
         except:
             break
 
-# ==========================
+# ============================================================
 # HELPERS
-# ==========================
+# ============================================================
 
 def safe_get(url):
     try:
@@ -199,9 +150,9 @@ def get_free_coordinates():
         if all(n["x"] != x or n["y"] != y for n in nodes.values()):
             return x, y
 
-# ==========================
+# ============================================================
 # ADD NODE
-# ==========================
+# ============================================================
 
 def add_node(url):
     global new_nodes_count, stop_flag
@@ -234,9 +185,31 @@ def add_node(url):
 
     return True
 
-# ==========================
+# ============================================================
+# CENTRAL NODE HANDLING
+# ============================================================
+
+def ensure_central_node():
+    """Ajoute https://webmap.ct.ws au centre si absent."""
+    if CENTRAL_URL not in nodes:
+        log.info("Ajout du node central WebMap.ct.ws")
+
+        nodes[CENTRAL_URL] = {
+            "url": CENTRAL_URL,
+            "favicon": CENTRAL_FAVICON,
+            "status": 1,
+            "x": CENTRAL_X,
+            "y": CENTRAL_Y
+        }
+
+    # Connecter TOUS les nodes au central
+    for url in nodes:
+        if url != CENTRAL_URL:
+            edges.append((CENTRAL_URL, url))
+
+# ============================================================
 # CRAWL
-# ==========================
+# ============================================================
 
 def crawl_site(url):
     if stop_flag:
@@ -261,6 +234,7 @@ def crawl_site(url):
 
         with edges_lock:
             edges.append((url, link))
+            edges.append((CENTRAL_URL, link))  # connexion au node central
 
         if created:
             task_queue.put(link)
@@ -269,9 +243,9 @@ def crawl_site(url):
                 if link not in frontier:
                     frontier.append(link)
 
-# ==========================
+# ============================================================
 # WORKER
-# ==========================
+# ============================================================
 
 def worker():
     while True:
@@ -284,31 +258,32 @@ def worker():
         crawl_site(url)
         task_queue.task_done()
 
-# ==========================
+# ============================================================
 # MAIN
-# ==========================
+# ============================================================
 
 def main():
     global stop_flag
 
-    log.info("=== WebMap Crawler — FINAL PRO MODE ===")
+    log.info("=== WebMap Crawler — FINAL PRO MODE + NODE CENTRAL ===")
 
     load_existing()
+    ensure_central_node()
 
-    # Toujours injecter les seeds
+    # Seeds
     for s in SEED_SITES:
         task_queue.put(s)
 
-    # Injecter 200 URLs de frontier
+    # Frontier
     with frontier_lock:
         for url in frontier[:200]:
             task_queue.put(url)
 
-    # Injecter 50 anciens nodes
+    # Ancien nodes
     for url in list(nodes.keys())[:50]:
         task_queue.put(url)
 
-    # Lancer les threads
+    # Threads
     for _ in range(THREADS):
         threading.Thread(target=worker, daemon=True).start()
 
@@ -329,6 +304,7 @@ def main():
         time.sleep(0.1)
 
     stop_all()
+    ensure_central_node()
     save_all()
     log.info(f"Session terminée — {new_nodes_count} nouveaux nœuds ajoutés")
 
