@@ -72,7 +72,6 @@ GAMES = {
     "wolfensteinenemyterritory": "https://www.gametracker.com/search/wet/?searchpge=1#search",
     "zandronum": "https://www.gametracker.com/search/zandronum/?searchpge=1#search"
 }
-
 OUTPUT_FILE = "webgame.json"
 
 CENTRAL_NODE = {
@@ -82,6 +81,9 @@ CENTRAL_NODE = {
     "x": 0,
     "y": 0
 }
+
+MAX_NEW_PER_SESSION = 100
+
 
 def parse_server_row(row, game):
     cols = row.find_all("td")
@@ -159,7 +161,8 @@ def load_existing():
         return {
             "central": CENTRAL_NODE,
             "servers": [],
-            "edges": []
+            "edges": [],
+            "queue": []
         }
 
     with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
@@ -175,13 +178,33 @@ def update_database():
     db = load_existing()
 
     existing = {s["id"]: s for s in db["servers"]}
-    new_servers = {}
+    queue = db.get("queue", [])
 
+    new_servers = {}
+    new_count = 0
+
+    # 1) Scrape + limiter à 100 nouveaux serveurs
     for game, url in GAMES.items():
         scraped = scrape_game(game, url)
-        for s in scraped:
-            new_servers[s["id"]] = s
 
+        for s in scraped:
+            sid = s["id"]
+
+            if sid not in existing and sid not in new_servers:
+                if new_count < MAX_NEW_PER_SESSION:
+                    new_servers[sid] = s
+                    new_count += 1
+                else:
+                    queue.append(s)
+                    continue
+            else:
+                new_servers[sid] = s
+
+        if new_count >= MAX_NEW_PER_SESSION:
+            print("Limite de 100 nouveaux serveurs atteinte.")
+            break
+
+    # 2) Fusion propre
     merged = []
     for sid, srv in new_servers.items():
         if sid in existing:
@@ -192,14 +215,15 @@ def update_database():
             merged.append(srv)
 
     db["servers"] = merged
+    db["queue"] = queue
 
-    # Génération des edges : chaque serveur → central
+    # 3) Edges → chaque serveur vers le node central
     db["edges"] = [
         ["webmap", srv["id"]] for srv in merged
     ]
 
     save_json(db)
-    print(f"Updated {len(merged)} servers with {len(db['edges'])} edges.")
+    print(f"Session: {new_count} nouveaux serveurs, {len(queue)} en attente.")
 
 
 if __name__ == "__main__":
