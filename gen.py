@@ -1,27 +1,15 @@
 """
-WebMap Crawler — Mode continu + arrêt strict à 100 nouveaux nœuds
+WebMap Crawler — RUN 100 NODES MAX
 """
 
-import threading
-import queue
-import time
-import random
-import logging
-import requests
-import json
-from urllib.parse import urlparse, urljoin
+import threading, queue, time, random, logging, requests, json, os
+from urllib.parse import urljoin
 from bs4 import BeautifulSoup
-import os
-
-# ==========================
-# CONFIG
-# ==========================
 
 GRID_SIZE = 100000
 NEW_NODES_PER_RUN = 100
 THREADS = 4
 REQUEST_TIMEOUT = 8
-
 OUTPUT_JSON = "webmap.json"
 
 SEED_SITES = [
@@ -38,10 +26,6 @@ HEADERS = {
     "Connection": "close"
 }
 
-# ==========================
-# LOGGING
-# ==========================
-
 logging.basicConfig(
     level=logging.INFO,
     format="[%(asctime)s] [%(levelname)s] %(message)s",
@@ -49,61 +33,43 @@ logging.basicConfig(
 )
 log = logging.getLogger("WebMapCrawler")
 
-# ==========================
-# DATA STRUCTURES
-# ==========================
-
-nodes = {}          
-edges = []          
-visited = set()     
+nodes = {}
+edges = []
+visited = set()
 
 nodes_lock = threading.Lock()
 edges_lock = threading.Lock()
 visited_lock = threading.Lock()
+counter_lock = threading.Lock()
 
 task_queue = queue.Queue()
 
 new_nodes_count = 0
 stop_flag = False
 
-# ==========================
-# LOAD EXISTING JSON
-# ==========================
 
 def load_existing():
     global nodes, edges, visited
-
     if not os.path.exists(OUTPUT_JSON):
-        log.info("Aucun JSON existant → utilisation des seeds.")
+        log.info("Aucun JSON existant → seeds.")
         return
-
     try:
         with open(OUTPUT_JSON, "r", encoding="utf-8") as f:
             data = json.load(f)
-
         for n in data.get("nodes", []):
             nodes[n["url"]] = n
-
         for e in data.get("edges", []):
             edges.append((e[0], e[1]))
-
         visited = set(nodes.keys())
-
-        log.info(f"JSON existant chargé : {len(nodes)} nodes, {len(edges)} edges")
-
+        log.info(f"JSON chargé : {len(nodes)} nodes, {len(edges)} edges")
     except Exception as e:
-        log.error(f"Erreur chargement JSON : {e}")
+        log.error(f"Erreur JSON : {e}")
 
-# ==========================
-# STOP SYSTEM
-# ==========================
 
 def stop_all():
     global stop_flag
     stop_flag = True
-    log.info(">>> LIMITE ATTEINTE — arrêt immédiat du crawler")
-
-    # vider la queue instantanément
+    log.info(">>> STOP FLAG ACTIVÉ — arrêt du crawler")
     while not task_queue.empty():
         try:
             task_queue.get_nowait()
@@ -111,9 +77,6 @@ def stop_all():
         except:
             break
 
-# ==========================
-# HELPERS
-# ==========================
 
 def safe_get(url):
     try:
@@ -125,13 +88,10 @@ def safe_get(url):
 def extract_links(url, html):
     soup = BeautifulSoup(html, "html.parser")
     links = set()
-
     for a in soup.find_all("a", href=True):
-        full = urljoin(url, a["href"])
-        full = full.split("#")[0]
+        full = urljoin(url, a["href"]).split("#")[0]
         if full.startswith("http"):
             links.add(full)
-
     return list(links)
 
 
@@ -156,55 +116,40 @@ def get_free_coordinates():
         if all(n["x"] != x or n["y"] != y for n in nodes.values()):
             return x, y
 
-# ==========================
-# ADD NODE
-# ==========================
 
 def add_node(url):
     global new_nodes_count
-
-    if stop_flag:
+    if stop_flag or url in nodes:
         return False
 
-    if url in nodes:
-        return False
-
-    if new_nodes_count >= NEW_NODES_PER_RUN:
-        stop_all()
-        return False
+    with counter_lock:
+        if new_nodes_count >= NEW_NODES_PER_RUN:
+            stop_all()
+            return False
 
     status = check_status(url)
     favicon = check_favicon(url)
     x, y = get_free_coordinates()
 
-    node = {
-        "url": url,
-        "favicon": favicon,
-        "status": status,
-        "x": x,
-        "y": y
-    }
-
+    node = {"url": url, "favicon": favicon, "status": status, "x": x, "y": y}
     with nodes_lock:
         nodes[url] = node
 
-    new_nodes_count += 1
+    with counter_lock:
+        new_nodes_count += 1
+        current = new_nodes_count
 
-    log.info(f"[NODE] {url} | status={status} | ({x},{y})")
+    log.info(f"[NODE] {url} | status={status} | ({x},{y}) | new_nodes={current}")
 
-    if new_nodes_count >= NEW_NODES_PER_RUN:
+    if current >= NEW_NODES_PER_RUN:
         stop_all()
 
     return True
 
-# ==========================
-# CRAWL
-# ==========================
 
 def crawl_site(url):
     if stop_flag:
         return
-
     with visited_lock:
         if url in visited:
             return
@@ -215,84 +160,76 @@ def crawl_site(url):
         return
 
     links = extract_links(url, r.text)
-
     for link in links:
         if stop_flag:
             break
-
         created = add_node(link)
-
         with edges_lock:
             edges.append((url, link))
-
-        if created:
+        if created and not stop_flag:
             task_queue.put(link)
 
-# ==========================
-# WORKER
-# ==========================
 
 def worker():
     while True:
         if stop_flag:
             return
-
         try:
-            url = task_queue.get(timeout=0.2)
+            url = task_queue.get(timeout=0.5)
         except queue.Empty:
             return
-
         if stop_flag:
+            task_queue.task_done()
             return
-
         crawl_site(url)
         task_queue.task_done()
-
         if stop_flag:
             return
 
-# ==========================
-# SAVE JSON
-# ==========================
 
 def save_json():
-    data = {
-        "nodes": list(nodes.values()),
-        "edges": list(edges)
-    }
-
+    data = {"nodes": list(nodes.values()), "edges": list(edges)}
     with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
-
     log.info(f"[JSON] Sauvegardé — total {len(nodes)} nodes")
 
-# ==========================
-# MAIN
-# ==========================
 
 def main():
+    global stop_flag
+    log.info("=== WebMap Crawler — RUN 100 NODES MAX ===")
+
     load_existing()
 
-    # Seeds si JSON vide
     if len(nodes) == 0:
+        log.info("Aucun node → seeds")
         for s in SEED_SITES:
             add_node(s)
             task_queue.put(s)
     else:
-        # Repartir des nodes existants
+        log.info("Reprise depuis JSON existant")
         for url in list(nodes.keys())[:20]:
             task_queue.put(url)
 
-    # Threads
     for _ in range(THREADS):
         threading.Thread(target=worker, daemon=True).start()
 
-    # Attendre l'arrêt
-    while not stop_flag:
+    idle_ticks = 0
+    while True:
+        if stop_flag:
+            break
+        if task_queue.empty():
+            idle_ticks += 1
+        else:
+            idle_ticks = 0
+        if idle_ticks > 20:  # ~2 secondes sans travail
+            log.info("Plus de travail → arrêt")
+            break
         time.sleep(0.1)
 
+    stop_all()
     save_json()
-    log.info("Run terminé.")
+    log.info(f"Run terminé. Nouveaux nœuds ajoutés : {new_nodes_count}")
+
 
 if __name__ == "__main__":
     main()
