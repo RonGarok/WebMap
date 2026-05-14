@@ -1,7 +1,8 @@
+import socket
+import struct
 import json
 import time
 import os
-from steam_query import MasterServer, A2SInfo
 
 OUTPUT_FILE = "webgame.json"
 MAX_NEW_PER_SESSION = 100
@@ -46,29 +47,85 @@ def save_json(data):
         json.dump(data, f, indent=4)
 
 
+# ---------------------------
+# MASTER SERVER QUERY (UDP)
+# ---------------------------
+
 def fetch_server_list(app_id):
     print(f"Fetching server list for app {app_id}...")
-    ms = MasterServer()
-    servers = ms.query(appid=app_id)
+
+    ms = ("208.64.200.39", 27011)  # master.steampowered.com
+    q = b"\x31" + b"\xff" * 4 + f"\\appid\\{app_id}\\noplayers\\1".encode() + b"\x00"
+
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.settimeout(3)
+    sock.sendto(q, ms)
+
+    servers = []
+
+    while True:
+        try:
+            data, _ = sock.recvfrom(1400)
+        except socket.timeout:
+            break
+
+        if not data.startswith(b"\xff\xff\xff\xff"):
+            break
+
+        payload = data[6:]
+        if payload == b"EOT\x00":
+            break
+
+        for i in range(0, len(payload), 6):
+            ip = ".".join(str(b) for b in payload[i:i+4])
+            port = struct.unpack(">H", payload[i+4:i+6])[0]
+            servers.append((ip, port))
+
     print(f"Found {len(servers)} servers")
     return servers
 
 
+# ---------------------------
+# A2S_INFO (UDP)
+# ---------------------------
+
 def query_server(ip, port, game):
     try:
-        info = A2SInfo(ip, port).get_dict()
+        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        sock.settimeout(1.5)
 
+        packet = b"\xFF\xFF\xFF\xFFTSource Engine Query\x00"
+        sock.sendto(packet, (ip, port))
+
+        data, _ = sock.recvfrom(4096)
+
+        if not data.startswith(b"\xFF\xFF\xFF\xFFI"):
+            return None
+
+        # Skip header
+        data = data[6:]
+
+        def read_string(data):
+            end = data.find(b"\x00")
+            return data[:end].decode(errors="ignore"), data[end+1:]
+
+        name, data = read_string(data)
+        map_name, data = read_string(data)
+        folder, data = read_string(data)
+        game_name, data = read_string(data)
+
+        # Skip rest
         return {
             "id": f"{ip}:{port}",
             "ip": ip,
             "port": port,
             "game": game,
-            "name": info.get("name", "Unknown"),
-            "players": info.get("players", 0),
-            "max_players": info.get("max_players", 0),
-            "map": info.get("map", "Unknown"),
+            "name": name,
+            "players": 0,
+            "max_players": 0,
+            "map": map_name,
             "country": "??",
-            "ping": info.get("ping", 0),
+            "ping": 0,
             "tags": [],
             "last_seen": int(time.time()),
             "x": None,
@@ -78,6 +135,10 @@ def query_server(ip, port, game):
     except Exception:
         return None
 
+
+# ---------------------------
+# MAIN UPDATE LOGIC
+# ---------------------------
 
 def update_database():
     db = load_existing()
