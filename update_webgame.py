@@ -1,8 +1,7 @@
 import json
 import time
 import os
-from valve.source.master_server import MasterServer
-from valve.source.a2s import ServerQuerier, NoResponseError
+from steam_query import MasterServer, A2SInfo
 
 OUTPUT_FILE = "webgame.json"
 MAX_NEW_PER_SESSION = 100
@@ -48,34 +47,24 @@ def save_json(data):
 
 
 def fetch_server_list(app_id):
-    """Interroge le Master Server Steam pour récupérer les IP:port."""
     print(f"Fetching server list for app {app_id}...")
     ms = MasterServer()
-    servers = []
-
-    try:
-        for address in ms.find(region="all", gamedir=None, appid=app_id):
-            servers.append(address)
-    except Exception as e:
-        print("Master server error:", e)
-
+    servers = ms.query(appid=app_id)
     print(f"Found {len(servers)} servers")
     return servers
 
 
 def query_server(ip, port, game):
-    """Interroge un serveur via A2S_INFO."""
     try:
-        q = ServerQuerier((ip, port), timeout=1.5)
-        info = q.info()
+        info = A2SInfo(ip, port).get_dict()
 
         return {
             "id": f"{ip}:{port}",
             "ip": ip,
             "port": port,
             "game": game,
-            "name": info.get("server_name", "Unknown"),
-            "players": info.get("player_count", 0),
+            "name": info.get("name", "Unknown"),
+            "players": info.get("players", 0),
             "max_players": info.get("max_players", 0),
             "map": info.get("map", "Unknown"),
             "country": "??",
@@ -86,8 +75,6 @@ def query_server(ip, port, game):
             "y": None
         }
 
-    except NoResponseError:
-        return None
     except Exception:
         return None
 
@@ -103,7 +90,7 @@ def update_database():
     for game, app_id in GAMES.items():
         server_list = fetch_server_list(app_id)
 
-        for (ip, port) in server_list:
+        for ip, port in server_list:
             sid = f"{ip}:{port}"
 
             if sid not in existing and sid not in new_servers:
