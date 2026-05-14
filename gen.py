@@ -10,7 +10,7 @@ import threading, queue, time, random, logging, requests, json, os
 from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 
-GRID_SIZE = 100000
+GRID_SIZE = 10000000
 NEW_NODES_PER_RUN = 2500
 THREADS = 6
 REQUEST_TIMEOUT = 8
