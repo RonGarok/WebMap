@@ -1,0 +1,33 @@
+name: Update WebGame
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: pip install requests beautifulsoup4
+
+      - name: Run scraper
+        run: python update_webgame.py
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "WebGame Bot"
+          git config --global user.email "bot@example.com"
+          git add webgame.json
+          git commit -m "Update WebGame database" || echo "No changes"
+          git push
