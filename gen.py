@@ -1,8 +1,5 @@
 """
-WebMap Crawler — Mode continu
-- Charge webmap.json si présent
-- Ajoute jusqu'à +100 nouveaux nodes
-- Sauvegarde et s'arrête
+WebMap Crawler — Mode continu + arrêt strict à 100 nouveaux nœuds
 """
 
 import threading
@@ -67,6 +64,7 @@ visited_lock = threading.Lock()
 task_queue = queue.Queue()
 
 new_nodes_count = 0
+stop_flag = False
 
 # ==========================
 # LOAD EXISTING JSON
@@ -99,14 +97,6 @@ def load_existing():
 # ==========================
 # HELPERS
 # ==========================
-
-def get_base_domain(url):
-    host = urlparse(url).netloc.lower()
-    parts = host.split(".")
-    if len(parts) <= 2:
-        return host
-    return ".".join(parts[-2:])
-
 
 def safe_get(url):
     try:
@@ -154,12 +144,16 @@ def get_free_coordinates():
 # ==========================
 
 def add_node(url):
-    global new_nodes_count
+    global new_nodes_count, stop_flag
+
+    if stop_flag:
+        return False
 
     if url in nodes:
         return False
 
     if new_nodes_count >= NEW_NODES_PER_RUN:
+        stop_flag = True
         return False
 
     status = check_status(url)
@@ -181,6 +175,9 @@ def add_node(url):
 
     log.info(f"[NODE] {url} | status={status} | ({x},{y})")
 
+    if new_nodes_count >= NEW_NODES_PER_RUN:
+        stop_flag = True
+
     return True
 
 # ==========================
@@ -188,9 +185,9 @@ def add_node(url):
 # ==========================
 
 def crawl_site(url):
-    global new_nodes_count
+    global stop_flag
 
-    if new_nodes_count >= NEW_NODES_PER_RUN:
+    if stop_flag:
         return
 
     with visited_lock:
@@ -205,7 +202,7 @@ def crawl_site(url):
     links = extract_links(url, r.text)
 
     for link in links:
-        if new_nodes_count >= NEW_NODES_PER_RUN:
+        if stop_flag:
             break
 
         created = add_node(link)
@@ -218,17 +215,22 @@ def crawl_site(url):
 
 
 def worker():
+    global stop_flag
+
     while True:
-        if new_nodes_count >= NEW_NODES_PER_RUN:
+        if stop_flag:
             return
 
         try:
-            url = task_queue.get(timeout=1)
+            url = task_queue.get(timeout=0.5)
         except queue.Empty:
             return
 
         crawl_site(url)
         task_queue.task_done()
+
+        if stop_flag:
+            return
 
 # ==========================
 # SAVE JSON
@@ -252,7 +254,7 @@ def save_json():
 def main():
     load_existing()
 
-    # Si aucun node → utiliser les seeds
+    # Seeds si JSON vide
     if len(nodes) == 0:
         for s in SEED_SITES:
             add_node(s)
@@ -266,8 +268,8 @@ def main():
     for _ in range(THREADS):
         threading.Thread(target=worker, daemon=True).start()
 
-    # Attendre fin
-    while new_nodes_count < NEW_NODES_PER_RUN and not task_queue.empty():
+    # Attendre que les threads s'arrêtent
+    while not stop_flag and not task_queue.empty():
         time.sleep(0.1)
 
     save_json()
