@@ -1,0 +1,11 @@
+{
+    "central": {
+        "id": "webmap",
+        "name": "WebMap Central",
+        "favicon": "https://webmap/assets/favicon.png",
+        "x": 0,
+        "y": 0
+    },
+    "servers": [],
+    "edges": []
+}
