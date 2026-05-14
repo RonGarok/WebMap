@@ -1,8 +1,8 @@
 """
-WebMap Crawler — Version GitHub Actions + autosave
-- Crawl des sites à partir de SEED_SITES
-- Stocke nodes/edges en mémoire
-- Sauvegarde webmap.json toutes les 5 secondes
+WebMap Crawler — Mode continu
+- Charge webmap.json si présent
+- Ajoute jusqu'à +100 nouveaux nodes
+- Sauvegarde et s'arrête
 """
 
 import threading
@@ -14,14 +14,15 @@ import requests
 import json
 from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup
+import os
 
 # ==========================
 # CONFIG
 # ==========================
 
 GRID_SIZE = 100000
-MAX_NODES = 500          # limite de nœuds pour un run
-THREADS = 4              # nombre de threads crawler
+NEW_NODES_PER_RUN = 100
+THREADS = 4
 REQUEST_TIMEOUT = 8
 
 OUTPUT_JSON = "webmap.json"
@@ -32,16 +33,6 @@ SEED_SITES = [
     "https://github.com",
     "https://stackoverflow.com",
     "https://python.org",
-    "https://mozilla.org",
-    "https://gnu.org",
-    "https://linux.org",
-    "https://ubuntu.com",
-    "https://debian.org",
-    "https://archlinux.org",
-    "https://apple.com",
-    "https://google.com",
-    "https://bing.com",
-    "https://duckduckgo.com",
 ]
 
 HEADERS = {
@@ -65,15 +56,45 @@ log = logging.getLogger("WebMapCrawler")
 # DATA STRUCTURES
 # ==========================
 
+nodes = {}          # url -> node
+edges = []          # (from, to)
+visited = set()     # urls déjà crawlées
+
 nodes_lock = threading.Lock()
 edges_lock = threading.Lock()
 visited_lock = threading.Lock()
 
-nodes = {}          # url -> {url, favicon, status, x, y}
-edges = []          # (from_url, to_url)
-visited = set()     # urls déjà crawlées
-
 task_queue = queue.Queue()
+
+new_nodes_count = 0
+
+# ==========================
+# LOAD EXISTING JSON
+# ==========================
+
+def load_existing():
+    global nodes, edges, visited
+
+    if not os.path.exists(OUTPUT_JSON):
+        log.info("Aucun JSON existant → utilisation des seeds.")
+        return
+
+    try:
+        with open(OUTPUT_JSON, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        for n in data.get("nodes", []):
+            nodes[n["url"]] = n
+
+        for e in data.get("edges", []):
+            edges.append((e[0], e[1]))
+
+        visited = set(nodes.keys())
+
+        log.info(f"JSON existant chargé : {len(nodes)} nodes, {len(edges)} edges")
+
+    except Exception as e:
+        log.error(f"Erreur chargement JSON : {e}")
 
 # ==========================
 # HELPERS
@@ -87,32 +108,6 @@ def get_base_domain(url):
     return ".".join(parts[-2:])
 
 
-def get_node_count():
-    with nodes_lock:
-        return len(nodes)
-
-
-def node_exists(url):
-    with nodes_lock:
-        return url in nodes
-
-
-def coordinates_taken(x, y):
-    with nodes_lock:
-        for n in nodes.values():
-            if n["x"] == x and n["y"] == y:
-                return True
-    return False
-
-
-def get_free_coordinates():
-    while True:
-        x = random.randint(0, GRID_SIZE)
-        y = random.randint(0, GRID_SIZE)
-        if not coordinates_taken(x, y):
-            return x, y
-
-
 def safe_get(url):
     try:
         return requests.get(url, timeout=REQUEST_TIMEOUT, headers=HEADERS)
@@ -124,22 +119,11 @@ def extract_links(url, html):
     soup = BeautifulSoup(html, "html.parser")
     links = set()
 
-    base_domain = get_base_domain(url)
-
     for a in soup.find_all("a", href=True):
         full = urljoin(url, a["href"])
         full = full.split("#")[0]
-
-        if not full.startswith("http"):
-            continue
-
-        target_domain = get_base_domain(full)
-
-        # on ne garde que les liens vers d'autres domaines
-        if target_domain == base_domain:
-            continue
-
-        links.add(full)
+        if full.startswith("http"):
+            links.add(full)
 
     return list(links)
 
@@ -148,9 +132,7 @@ def check_favicon(url):
     try:
         ico = url.rstrip("/") + "/favicon.ico"
         r = requests.get(ico, timeout=REQUEST_TIMEOUT, headers=HEADERS)
-        if r.status_code == 200:
-            return ico
-        return "default"
+        return ico if r.status_code == 200 else "default"
     except:
         return "default"
 
@@ -159,38 +141,25 @@ def check_status(url):
     r = safe_get(url)
     return 1 if r and r.status_code == 200 else 0
 
-# ==========================
-# EXPORT JSON
-# ==========================
 
-def export_json():
-    data = {
-        "nodes": list(nodes.values()),
-        "edges": [[a, b] for a, b in edges]
-    }
-
-    with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-
-    log.info(f"[JSON] Sauvegardé dans {OUTPUT_JSON} — {len(nodes)} nœuds, {len(edges)} liens")
-
-
-def autosave_loop():
+def get_free_coordinates():
     while True:
-        time.sleep(5)
-        if get_node_count() == 0:
-            continue
-        export_json()
+        x = random.randint(0, GRID_SIZE)
+        y = random.randint(0, GRID_SIZE)
+        if all(n["x"] != x or n["y"] != y for n in nodes.values()):
+            return x, y
 
 # ==========================
-# CRAWLER CORE
+# ADD NODE
 # ==========================
 
 def add_node(url):
-    if get_node_count() >= MAX_NODES:
+    global new_nodes_count
+
+    if url in nodes:
         return False
 
-    if node_exists(url):
+    if new_nodes_count >= NEW_NODES_PER_RUN:
         return False
 
     status = check_status(url)
@@ -208,13 +177,20 @@ def add_node(url):
     with nodes_lock:
         nodes[url] = node
 
-    log.info(f"[NODE] {url} | status={status} | favicon={favicon} | ({x},{y})")
+    new_nodes_count += 1
+
+    log.info(f"[NODE] {url} | status={status} | ({x},{y})")
 
     return True
 
+# ==========================
+# CRAWL
+# ==========================
 
 def crawl_site(url):
-    if get_node_count() >= MAX_NODES:
+    global new_nodes_count
+
+    if new_nodes_count >= NEW_NODES_PER_RUN:
         return
 
     with visited_lock:
@@ -229,7 +205,7 @@ def crawl_site(url):
     links = extract_links(url, r.text)
 
     for link in links:
-        if get_node_count() >= MAX_NODES:
+        if new_nodes_count >= NEW_NODES_PER_RUN:
             break
 
         created = add_node(link)
@@ -243,11 +219,11 @@ def crawl_site(url):
 
 def worker():
     while True:
-        if get_node_count() >= MAX_NODES:
+        if new_nodes_count >= NEW_NODES_PER_RUN:
             return
 
         try:
-            url = task_queue.get(timeout=3)
+            url = task_queue.get(timeout=1)
         except queue.Empty:
             return
 
@@ -255,30 +231,47 @@ def worker():
         task_queue.task_done()
 
 # ==========================
+# SAVE JSON
+# ==========================
+
+def save_json():
+    data = {
+        "nodes": list(nodes.values()),
+        "edges": list(edges)
+    }
+
+    with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+    log.info(f"[JSON] Sauvegardé — total {len(nodes)} nodes")
+
+# ==========================
 # MAIN
 # ==========================
 
 def main():
-    log.info("Démarrage du crawler WebMap (GitHub Actions)...")
-    log.info(f"Limite de nœuds : {MAX_NODES}")
+    load_existing()
 
-    # thread autosave JSON
-    threading.Thread(target=autosave_loop, daemon=True).start()
-
-    # seeds
-    for url in SEED_SITES:
-        if add_node(url):
+    # Si aucun node → utiliser les seeds
+    if len(nodes) == 0:
+        for s in SEED_SITES:
+            add_node(s)
+            task_queue.put(s)
+    else:
+        # Repartir des nodes existants
+        for url in list(nodes.keys())[:20]:
             task_queue.put(url)
 
-    # threads crawler
+    # Threads
     for _ in range(THREADS):
         threading.Thread(target=worker, daemon=True).start()
 
-    task_queue.join()
+    # Attendre fin
+    while new_nodes_count < NEW_NODES_PER_RUN and not task_queue.empty():
+        time.sleep(0.1)
 
-    log.info(f"Terminé. Nœuds finaux: {get_node_count()}/{MAX_NODES}")
-    export_json()
-
+    save_json()
+    log.info("Run terminé.")
 
 if __name__ == "__main__":
     main()
