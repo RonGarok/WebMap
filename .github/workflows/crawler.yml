@@ -3,18 +3,20 @@ name: WebMap Crawler
 on:
   schedule:
     - cron: "*/10 * * * *"   # toutes les 10 minutes
-  workflow_dispatch:         # bouton "Run workflow"
+  workflow_dispatch:         # bouton "Run workflow" manuel
 
 jobs:
   crawl:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
@@ -30,5 +32,5 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
           git add webmap.json
-          git commit -m "update" || echo "No changes"
+          git commit -m "update webmap" || echo "No changes"
           git push
