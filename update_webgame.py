@@ -1,24 +1,24 @@
-import requests
-from bs4 import BeautifulSoup
 import json
 import time
 import os
-import random
+from valve.source.master_server import MasterServer
+from valve.source.a2s import ServerQuerier, NoResponseError
 
 OUTPUT_FILE = "webgame.json"
 MAX_NEW_PER_SESSION = 100
 
-# Tu pourras ajouter d'autres jeux ici en copiant le pattern
+# Jeux Steam (app IDs)
 GAMES = {
-    "rust": "https://www.battlemetrics.com/servers/rust",
-    "arkse": "https://www.battlemetrics.com/servers/arkse",
-    "dayz": "https://www.battlemetrics.com/servers/dayz",
-    "scum": "https://www.battlemetrics.com/servers/scum",
-    "pz": "https://www.battlemetrics.com/servers/pz",
-    "squad": "https://www.battlemetrics.com/servers/squad",
-    "7daystodie": "https://www.battlemetrics.com/servers/7daystodie",
-    "valheim": "https://www.battlemetrics.com/servers/valheim",
-    "palworld": "https://www.battlemetrics.com/servers/palworld"
+    "rust": 252490,
+    "arkse": 346110,
+    "cs2": 730,
+    "csgo": 730,
+    "tf2": 440,
+    "unturned": 304930,
+    "squad": 393380,
+    "dayz": 221100,
+    "valheim": 892970,
+    "palworld": 1623730
 }
 
 CENTRAL_NODE = {
@@ -27,11 +27,6 @@ CENTRAL_NODE = {
     "favicon": "https://webmap/assets/favicon.png",
     "x": 0,
     "y": 0
-}
-
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
-    "Accept-Language": "en-US,en;q=0.9"
 }
 
 
@@ -43,7 +38,6 @@ def load_existing():
             "edges": [],
             "queue": []
         }
-
     with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
         return json.load(f)
 
@@ -53,132 +47,78 @@ def save_json(data):
         json.dump(data, f, indent=4)
 
 
-def fetch_html(url, retries=3, delay=2):
-    for attempt in range(retries):
-        try:
-            r = requests.get(url, headers=HEADERS, timeout=10)
-            if r.status_code == 200:
-                return r.text
-            else:
-                print(f"[{attempt+1}/{retries}] HTTP {r.status_code} for {url}")
-        except Exception as e:
-            print(f"[{attempt+1}/{retries}] Error {e} for {url}")
-        time.sleep(delay + random.uniform(0, 1))
-    print("Failed to fetch:", url)
-    return ""
-
-
-def parse_server_row(row, game):
-    cols = row.find_all("td")
-    if len(cols) < 5:
-        return None
-
-    # Col 0: Name
-    name = cols[0].get_text(strip=True)
-
-    # Col 1: Address (IP:Port)
-    addr = cols[1].get_text(strip=True)
-    if ":" not in addr:
-        return None
-    ip, port = addr.split(":", 1)
-
-    # Col 2: Players
-    players_raw = cols[2].get_text(strip=True)
-    players = 0
-    max_players = 0
-    if "/" in players_raw:
-        try:
-            p, m = players_raw.split("/", 1)
-            players = int(p.strip())
-            max_players = int(m.strip())
-        except:
-            pass
-
-    # Col 3: Ping
-    ping = 0
-    try:
-        ping = int(cols[3].get_text(strip=True))
-    except:
-        ping = 0
-
-    # Col 4: Country (flag alt or text)
-    country = cols[4].get_text(strip=True)
-    if not country:
-        img = cols[4].find("img")
-        if img and img.get("alt"):
-            country = img["alt"].strip()
-
-    return {
-        "id": f"{ip}:{port}",
-        "ip": ip,
-        "port": int(port),
-        "game": game,
-        "name": name,
-        "players": players,
-        "max_players": max_players,
-        "country": country or "??",
-        "map": "Unknown",
-        "ping": ping,
-        "tags": [],
-        "last_seen": int(time.time()),
-        "x": None,
-        "y": None
-    }
-
-
-def scrape_game(game, url, max_pages=3):
-    print(f"Scraping {game}...")
+def fetch_server_list(app_id):
+    """Interroge le Master Server Steam pour récupérer les IP:port."""
+    print(f"Fetching server list for app {app_id}...")
+    ms = MasterServer()
     servers = []
 
-    for page in range(1, max_pages + 1):
-        page_url = f"{url}?page={page}"
-        html = fetch_html(page_url)
-        if not html:
-            break
+    try:
+        for address in ms.find(region="all", gamedir=None, appid=app_id):
+            servers.append(address)
+    except Exception as e:
+        print("Master server error:", e)
 
-        soup = BeautifulSoup(html, "html.parser")
-        table = soup.find("table", {"class": "table table-striped table-hover table-sm servers-table"})
-        if not table:
-            print(f"No table for {game} page {page}")
-            break
-
-        rows = table.find("tbody").find_all("tr")
-        if not rows:
-            break
-
-        for row in rows:
-            srv = parse_server_row(row, game)
-            if srv:
-                servers.append(srv)
-
-    print(f"{game}: {len(servers)} servers fetched")
+    print(f"Found {len(servers)} servers")
     return servers
+
+
+def query_server(ip, port, game):
+    """Interroge un serveur via A2S_INFO."""
+    try:
+        q = ServerQuerier((ip, port), timeout=1.5)
+        info = q.info()
+
+        return {
+            "id": f"{ip}:{port}",
+            "ip": ip,
+            "port": port,
+            "game": game,
+            "name": info.get("server_name", "Unknown"),
+            "players": info.get("player_count", 0),
+            "max_players": info.get("max_players", 0),
+            "map": info.get("map", "Unknown"),
+            "country": "??",
+            "ping": info.get("ping", 0),
+            "tags": [],
+            "last_seen": int(time.time()),
+            "x": None,
+            "y": None
+        }
+
+    except NoResponseError:
+        return None
+    except Exception:
+        return None
 
 
 def update_database():
     db = load_existing()
-
     existing = {s["id"]: s for s in db["servers"]}
     queue = db.get("queue", [])
 
     new_servers = {}
     new_count = 0
 
-    for game, url in GAMES.items():
-        fetched = scrape_game(game, url)
+    for game, app_id in GAMES.items():
+        server_list = fetch_server_list(app_id)
 
-        for s in fetched:
-            sid = s["id"]
+        for (ip, port) in server_list:
+            sid = f"{ip}:{port}"
 
             if sid not in existing and sid not in new_servers:
-                if new_count < MAX_NEW_PER_SESSION:
-                    new_servers[sid] = s
-                    new_count += 1
-                else:
-                    queue.append(s)
+                if new_count >= MAX_NEW_PER_SESSION:
+                    queue.append({"ip": ip, "port": port, "game": game})
                     continue
+
+                srv = query_server(ip, port, game)
+                if srv:
+                    new_servers[sid] = srv
+                    new_count += 1
             else:
-                new_servers[sid] = s
+                srv = query_server(ip, port, game)
+                if srv:
+                    new_servers[sid] = srv
 
         if new_count >= MAX_NEW_PER_SESSION:
             print("Limite de 100 nouveaux serveurs atteinte.")
