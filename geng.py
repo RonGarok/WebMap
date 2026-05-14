@@ -4,6 +4,7 @@ import json
 import time
 import os
 
+# Jeux à scraper
 GAMES = {
     "7daystodie": "https://www.gametracker.com/search/7daystodie/?searchpge=1#search",
     "ark": "https://www.gametracker.com/search/ark/?searchpge=1#search",
@@ -74,21 +75,26 @@ GAMES = {
 
 OUTPUT_FILE = "webgame.json"
 
+CENTRAL_NODE = {
+    "id": "webmap",
+    "name": "WebMap Central",
+    "favicon": "https://webmap/assets/favicon.png",
+    "x": 0,
+    "y": 0
+}
+
 def parse_server_row(row, game):
     cols = row.find_all("td")
     if len(cols) < 5:
         return None
 
-    # IP:Port
     ip_port = cols[0].text.strip()
     if ":" not in ip_port:
         return None
     ip, port = ip_port.split(":")
 
-    # Name
     name = cols[1].text.strip()
 
-    # Players
     players_raw = cols[2].text.strip()
     if "/" in players_raw:
         players, max_players = players_raw.split("/")
@@ -98,13 +104,9 @@ def parse_server_row(row, game):
         players = 0
         max_players = 0
 
-    # Map
     map_name = cols[3].text.strip()
-
-    # Country
     country = cols[4].text.strip()
 
-    # Ping (optional)
     ping = 0
     if len(cols) > 5:
         try:
@@ -113,6 +115,7 @@ def parse_server_row(row, game):
             ping = 0
 
     return {
+        "id": f"{ip}:{port}",
         "ip": ip,
         "port": int(port),
         "game": game,
@@ -123,7 +126,9 @@ def parse_server_row(row, game):
         "country": country,
         "ping": ping,
         "tags": [],
-        "last_seen": int(time.time())
+        "last_seen": int(time.time()),
+        "x": None,
+        "y": None
     }
 
 
@@ -139,7 +144,7 @@ def scrape_game(game, url):
         print(f"No table found for {game}")
         return servers
 
-    rows = table.find_all("tr")[1:]  # skip header
+    rows = table.find_all("tr")[1:]
 
     for row in rows:
         server = parse_server_row(row, game)
@@ -151,7 +156,11 @@ def scrape_game(game, url):
 
 def load_existing():
     if not os.path.exists(OUTPUT_FILE):
-        return {"servers": []}
+        return {
+            "central": CENTRAL_NODE,
+            "servers": [],
+            "edges": []
+        }
 
     with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
         return json.load(f)
@@ -164,29 +173,33 @@ def save_json(data):
 
 def update_database():
     db = load_existing()
-    existing = {(s["ip"], s["port"]): s for s in db["servers"]}
 
+    existing = {s["id"]: s for s in db["servers"]}
     new_servers = {}
 
     for game, url in GAMES.items():
         scraped = scrape_game(game, url)
         for s in scraped:
-            key = (s["ip"], s["port"])
-            new_servers[key] = s
+            new_servers[s["id"]] = s
 
-    # Merge
     merged = []
-    for key, srv in new_servers.items():
-        if key in existing:
-            old = existing[key]
+    for sid, srv in new_servers.items():
+        if sid in existing:
+            old = existing[sid]
             old.update(srv)
             merged.append(old)
         else:
             merged.append(srv)
 
     db["servers"] = merged
+
+    # Génération des edges : chaque serveur → central
+    db["edges"] = [
+        ["webmap", srv["id"]] for srv in merged
+    ]
+
     save_json(db)
-    print(f"Updated {len(merged)} servers.")
+    print(f"Updated {len(merged)} servers with {len(db['edges'])} edges.")
 
 
 if __name__ == "__main__":
