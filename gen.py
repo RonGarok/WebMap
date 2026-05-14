@@ -53,9 +53,9 @@ log = logging.getLogger("WebMapCrawler")
 # DATA STRUCTURES
 # ==========================
 
-nodes = {}          # url -> node
-edges = []          # (from, to)
-visited = set()     # urls déjà crawlées
+nodes = {}          
+edges = []          
+visited = set()     
 
 nodes_lock = threading.Lock()
 edges_lock = threading.Lock()
@@ -93,6 +93,23 @@ def load_existing():
 
     except Exception as e:
         log.error(f"Erreur chargement JSON : {e}")
+
+# ==========================
+# STOP SYSTEM
+# ==========================
+
+def stop_all():
+    global stop_flag
+    stop_flag = True
+    log.info(">>> LIMITE ATTEINTE — arrêt immédiat du crawler")
+
+    # vider la queue instantanément
+    while not task_queue.empty():
+        try:
+            task_queue.get_nowait()
+            task_queue.task_done()
+        except:
+            break
 
 # ==========================
 # HELPERS
@@ -144,7 +161,7 @@ def get_free_coordinates():
 # ==========================
 
 def add_node(url):
-    global new_nodes_count, stop_flag
+    global new_nodes_count
 
     if stop_flag:
         return False
@@ -153,7 +170,7 @@ def add_node(url):
         return False
 
     if new_nodes_count >= NEW_NODES_PER_RUN:
-        stop_flag = True
+        stop_all()
         return False
 
     status = check_status(url)
@@ -176,7 +193,7 @@ def add_node(url):
     log.info(f"[NODE] {url} | status={status} | ({x},{y})")
 
     if new_nodes_count >= NEW_NODES_PER_RUN:
-        stop_flag = True
+        stop_all()
 
     return True
 
@@ -185,8 +202,6 @@ def add_node(url):
 # ==========================
 
 def crawl_site(url):
-    global stop_flag
-
     if stop_flag:
         return
 
@@ -213,17 +228,21 @@ def crawl_site(url):
         if created:
             task_queue.put(link)
 
+# ==========================
+# WORKER
+# ==========================
 
 def worker():
-    global stop_flag
-
     while True:
         if stop_flag:
             return
 
         try:
-            url = task_queue.get(timeout=0.5)
+            url = task_queue.get(timeout=0.2)
         except queue.Empty:
+            return
+
+        if stop_flag:
             return
 
         crawl_site(url)
@@ -268,8 +287,8 @@ def main():
     for _ in range(THREADS):
         threading.Thread(target=worker, daemon=True).start()
 
-    # Attendre que les threads s'arrêtent
-    while not stop_flag and not task_queue.empty():
+    # Attendre l'arrêt
+    while not stop_flag:
         time.sleep(0.1)
 
     save_json()
