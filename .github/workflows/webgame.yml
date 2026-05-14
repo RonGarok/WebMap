@@ -19,7 +19,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install deps
-        run: pip install requests beautifulsoup4 valve python-valve steam-query
+        run: pip install requests beautifulsoup4
 
       - name: Run scraper
         run: python update_webgame.py
