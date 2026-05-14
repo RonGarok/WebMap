@@ -1,4 +1,1090 @@
 {
-  "nodes": [],
-  "edges": []
+  "nodes": [
+    {
+      "url": "https://wikipedia.org",
+      "favicon": "https://wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 1175,
+      "y": 88750
+    },
+    {
+      "url": "https://reddit.com",
+      "favicon": "https://reddit.com/favicon.ico",
+      "status": 0,
+      "x": 8647,
+      "y": 14032
+    },
+    {
+      "url": "https://github.com",
+      "favicon": "https://github.com/favicon.ico",
+      "status": 1,
+      "x": 32045,
+      "y": 69388
+    },
+    {
+      "url": "https://stackoverflow.com",
+      "favicon": "https://stackoverflow.com/favicon.ico",
+      "status": 1,
+      "x": 93796,
+      "y": 30569
+    },
+    {
+      "url": "https://python.org",
+      "favicon": "https://python.org/favicon.ico",
+      "status": 1,
+      "x": 36228,
+      "y": 46531
+    },
+    {
+      "url": "https://mwl.wikipedia.org/",
+      "favicon": "https://mwl.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 49691,
+      "y": 79972
+    },
+    {
+      "url": "https://github.com/resources/articles/devops-tools-comparison",
+      "favicon": "default",
+      "status": 1,
+      "x": 44626,
+      "y": 54841
+    },
+    {
+      "url": "https://lad.wikipedia.org/",
+      "favicon": "https://lad.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 62018,
+      "y": 7143
+    },
+    {
+      "url": "https://fosstodon.org/@ThePSF",
+      "favicon": "default",
+      "status": 1,
+      "x": 53567,
+      "y": 94880
+    },
+    {
+      "url": "https://stackoverflow.blog/contributed?utm_medium=referral&utm_source=stackoverflow-community&utm_campaign=so-blog&utm_content=experiment-articles",
+      "favicon": "https://stackoverflow.blog/contributed?utm_medium=referral&utm_source=stackoverflow-community&utm_campaign=so-blog&utm_content=experiment-articles/favicon.ico",
+      "status": 1,
+      "x": 73981,
+      "y": 9665
+    },
+    {
+      "url": "https://resources.github.com",
+      "favicon": "default",
+      "status": 1,
+      "x": 62598,
+      "y": 78819
+    },
+    {
+      "url": "https://cbk-zam.wikipedia.org/",
+      "favicon": "https://cbk-zam.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 35913,
+      "y": 83660
+    },
+    {
+      "url": "https://bpy.wikipedia.org/",
+      "favicon": "https://bpy.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 49848,
+      "y": 83020
+    },
+    {
+      "url": "https://dearpygui.readthedocs.io/en/latest/",
+      "favicon": "default",
+      "status": 1,
+      "x": 10449,
+      "y": 42297
+    },
+    {
+      "url": "https://stackoverflow.com/questions/79941078/unable-to-call-stdstoi-on-split-string",
+      "favicon": "https://stackoverflow.com/questions/79941078/unable-to-call-stdstoi-on-split-string/favicon.ico",
+      "status": 1,
+      "x": 20380,
+      "y": 50993
+    },
+    {
+      "url": "https://ks.wikipedia.org/",
+      "favicon": "https://ks.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 13106,
+      "y": 95220
+    },
+    {
+      "url": "https://python.org/events/calendars/",
+      "favicon": "default",
+      "status": 1,
+      "x": 34674,
+      "y": 85330
+    },
+    {
+      "url": "https://github.com/solutions/use-case",
+      "favicon": "default",
+      "status": 1,
+      "x": 81347,
+      "y": 61845
+    },
+    {
+      "url": "https://rue.wikipedia.org/",
+      "favicon": "https://rue.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 4456,
+      "y": 29935
+    },
+    {
+      "url": "https://stackoverflow.com/questions/79940924/best-practices-for-image-annotation-consistency-in-object-detection-projects",
+      "favicon": "https://stackoverflow.com/questions/79940924/best-practices-for-image-annotation-consistency-in-object-detection-projects/favicon.ico",
+      "status": 1,
+      "x": 94958,
+      "y": 92527
+    },
+    {
+      "url": "https://bjn.wikipedia.org/",
+      "favicon": "https://bjn.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 92121,
+      "y": 94960
+    },
+    {
+      "url": "https://python.org/downloads/",
+      "favicon": "default",
+      "status": 1,
+      "x": 26532,
+      "y": 71059
+    },
+    {
+      "url": "https://github.com/readme",
+      "favicon": "default",
+      "status": 1,
+      "x": 20016,
+      "y": 63805
+    },
+    {
+      "url": "https://stackoverflow.com/users/28005044/johannes-krottmayer",
+      "favicon": "default",
+      "status": 1,
+      "x": 24369,
+      "y": 43911
+    },
+    {
+      "url": "https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Terms_of_Use",
+      "favicon": "default",
+      "status": 1,
+      "x": 61900,
+      "y": 69748
+    },
+    {
+      "url": "https://github.com/customer-stories/duolingo",
+      "favicon": "default",
+      "status": 1,
+      "x": 5498,
+      "y": 70347
+    },
+    {
+      "url": "http://pyfound.blogspot.com/",
+      "favicon": "http://pyfound.blogspot.com/favicon.ico",
+      "status": 1,
+      "x": 9146,
+      "y": 43178
+    },
+    {
+      "url": "https://tly.wikipedia.org/",
+      "favicon": "https://tly.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 72576,
+      "y": 88843
+    },
+    {
+      "url": "https://stackoverflow.com/questions/tagged/react-native-testing-library",
+      "favicon": "default",
+      "status": 1,
+      "x": 14144,
+      "y": 57173
+    },
+    {
+      "url": "https://cli.github.com",
+      "favicon": "default",
+      "status": 1,
+      "x": 24001,
+      "y": 40527
+    },
+    {
+      "url": "https://ms.wikipedia.org/",
+      "favicon": "https://ms.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 25543,
+      "y": 85676
+    },
+    {
+      "url": "https://github.blog",
+      "favicon": "https://github.blog/favicon.ico",
+      "status": 1,
+      "x": 86778,
+      "y": 75284
+    },
+    {
+      "url": "https://python.org/events/python-user-group/",
+      "favicon": "default",
+      "status": 1,
+      "x": 36810,
+      "y": 35971
+    },
+    {
+      "url": "https://sq.wikipedia.org/",
+      "favicon": "https://sq.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 62733,
+      "y": 44383
+    },
+    {
+      "url": "https://stackoverflow.com/questions/tagged/opencv",
+      "favicon": "default",
+      "status": 1,
+      "x": 78154,
+      "y": 44098
+    },
+    {
+      "url": "https://python.org/events/python-events/2147/",
+      "favicon": "default",
+      "status": 1,
+      "x": 16752,
+      "y": 48924
+    },
+    {
+      "url": "https://ru.wikipedia.org/",
+      "favicon": "https://ru.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 83747,
+      "y": 72926
+    },
+    {
+      "url": "https://github.com/collections",
+      "favicon": "default",
+      "status": 1,
+      "x": 32630,
+      "y": 32625
+    },
+    {
+      "url": "https://jbo.wikipedia.org/",
+      "favicon": "https://jbo.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 16477,
+      "y": 91382
+    },
+    {
+      "url": "https://python.org/events/",
+      "favicon": "default",
+      "status": 1,
+      "x": 9263,
+      "y": 61118
+    },
+    {
+      "url": "https://stackoverflow.com/questions/79941097/how-to-use-tern-plugins-and-type-definitions-on-some-files-only",
+      "favicon": "https://stackoverflow.com/questions/79941097/how-to-use-tern-plugins-and-type-definitions-on-some-files-only/favicon.ico",
+      "status": 1,
+      "x": 97511,
+      "y": 72763
+    },
+    {
+      "url": "https://github.com/github-copilot/pro",
+      "favicon": "default",
+      "status": 1,
+      "x": 41175,
+      "y": 88479
+    },
+    {
+      "url": "https://python.org/download/alternatives",
+      "favicon": "default",
+      "status": 1,
+      "x": 3572,
+      "y": 23271
+    },
+    {
+      "url": "https://stackoverflow.com/questions/tagged/routes",
+      "favicon": "default",
+      "status": 1,
+      "x": 80156,
+      "y": 39226
+    },
+    {
+      "url": "https://python.org/psf/membership/",
+      "favicon": "default",
+      "status": 1,
+      "x": 67046,
+      "y": 712
+    },
+    {
+      "url": "https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home",
+      "favicon": "https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home/favicon.ico",
+      "status": 1,
+      "x": 94798,
+      "y": 5501
+    },
+    {
+      "url": "https://stackoverflow.com/questions/tagged/algorithm",
+      "favicon": "default",
+      "status": 1,
+      "x": 17946,
+      "y": 34590
+    },
+    {
+      "url": "https://stackoverflow.com/users/32493829/cristian-josue-flores-pleitez",
+      "favicon": "default",
+      "status": 1,
+      "x": 52568,
+      "y": 72706
+    },
+    {
+      "url": "https://services.github.com",
+      "favicon": "default",
+      "status": 1,
+      "x": 82718,
+      "y": 41018
+    },
+    {
+      "url": "https://riverbankcomputing.com/software/pyqt/intro",
+      "favicon": "default",
+      "status": 1,
+      "x": 21812,
+      "y": 74040
+    },
+    {
+      "url": "https://twitter.com/stackoverflow",
+      "favicon": "https://twitter.com/stackoverflow/favicon.ico",
+      "status": 1,
+      "x": 68686,
+      "y": 81624
+    },
+    {
+      "url": "https://python.org/doc/essays/",
+      "favicon": "default",
+      "status": 1,
+      "x": 90744,
+      "y": 4231
+    },
+    {
+      "url": "https://itunes.apple.com/app/apple-store/id324715238?pt=208305&ct=portal&mt=8",
+      "favicon": "https://itunes.apple.com/app/apple-store/id324715238?pt=208305&ct=portal&mt=8/favicon.ico",
+      "status": 1,
+      "x": 93571,
+      "y": 39767
+    },
+    {
+      "url": "https://stackoverflow.com/questions/tagged/copy",
+      "favicon": "default",
+      "status": 1,
+      "x": 29230,
+      "y": 35594
+    },
+    {
+      "url": "https://nap.wikipedia.org/",
+      "favicon": "https://nap.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 95917,
+      "y": 74194
+    },
+    {
+      "url": "https://os.wikipedia.org/",
+      "favicon": "https://os.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 7236,
+      "y": 96518
+    },
+    {
+      "url": "https://buildbot.net/",
+      "favicon": "default",
+      "status": 1,
+      "x": 82807,
+      "y": 17175
+    },
+    {
+      "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "favicon": "default",
+      "status": 1,
+      "x": 30886,
+      "y": 51166
+    },
+    {
+      "url": "https://stackoverflow.com/questions/79940970/how-does-enable-dollar-quote-interact-with-delimiter-in-the-mysql-client",
+      "favicon": "https://stackoverflow.com/questions/79940970/how-does-enable-dollar-quote-interact-with-delimiter-in-the-mysql-client/favicon.ico",
+      "status": 1,
+      "x": 97318,
+      "y": 34227
+    },
+    {
+      "url": "https://ckb.wikipedia.org/",
+      "favicon": "https://ckb.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 67388,
+      "y": 85821
+    },
+    {
+      "url": "https://python.org/psf-landing/",
+      "favicon": "default",
+      "status": 1,
+      "x": 80104,
+      "y": 24236
+    },
+    {
+      "url": "https://stackoverflow.com/users/32728167/christophe-mauceri",
+      "favicon": "default",
+      "status": 1,
+      "x": 31107,
+      "y": 82236
+    },
+    {
+      "url": "https://mzn.wikipedia.org/",
+      "favicon": "https://mzn.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 91033,
+      "y": 13814
+    },
+    {
+      "url": "https://pyfound.blogspot.com/2026/05/announcing-psf-community-service-award.html",
+      "favicon": "default",
+      "status": 1,
+      "x": 31681,
+      "y": 51116
+    },
+    {
+      "url": "https://ny.wikipedia.org/",
+      "favicon": "https://ny.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 78056,
+      "y": 25347
+    },
+    {
+      "url": "https://stackoverflow.com/questions/tagged/linked-list",
+      "favicon": "default",
+      "status": 1,
+      "x": 41618,
+      "y": 30504
+    },
+    {
+      "url": "https://python.org/success-stories/category/government/",
+      "favicon": "default",
+      "status": 1,
+      "x": 23681,
+      "y": 85062
+    },
+    {
+      "url": "https://github.community",
+      "favicon": "https://github.community/favicon.ico",
+      "status": 1,
+      "x": 5141,
+      "y": 56205
+    },
+    {
+      "url": "https://docs.python.org/3/faq/",
+      "favicon": "default",
+      "status": 1,
+      "x": 56867,
+      "y": 17121
+    },
+    {
+      "url": "https://stackoverflow.com/questions/tagged/reactjs",
+      "favicon": "default",
+      "status": 1,
+      "x": 81219,
+      "y": 30229
+    },
+    {
+      "url": "https://stars.github.com",
+      "favicon": "default",
+      "status": 1,
+      "x": 25051,
+      "y": 31436
+    },
+    {
+      "url": "https://python.org/psf/get-involved/",
+      "favicon": "default",
+      "status": 1,
+      "x": 52276,
+      "y": 26454
+    },
+    {
+      "url": "https://blog.python.org",
+      "favicon": "https://blog.python.org/favicon.ico",
+      "status": 1,
+      "x": 5984,
+      "y": 27410
+    },
+    {
+      "url": "https://ve.wikipedia.org/",
+      "favicon": "https://ve.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 32660,
+      "y": 49951
+    },
+    {
+      "url": "https://ay.wikipedia.org/",
+      "favicon": "https://ay.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 67509,
+      "y": 57487
+    },
+    {
+      "url": "https://python.org/events/python-events/",
+      "favicon": "default",
+      "status": 1,
+      "x": 25066,
+      "y": 33084
+    },
+    {
+      "url": "https://stackoverflow.com/collectives/php",
+      "favicon": "default",
+      "status": 1,
+      "x": 76561,
+      "y": 49455
+    },
+    {
+      "url": "https://wa.wikipedia.org/",
+      "favicon": "https://wa.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 51297,
+      "y": 29564
+    },
+    {
+      "url": "https://python.org/dev/",
+      "favicon": "default",
+      "status": 1,
+      "x": 16629,
+      "y": 60766
+    },
+    {
+      "url": "https://www.instagram.com/github",
+      "favicon": "https://www.instagram.com/github/favicon.ico",
+      "status": 1,
+      "x": 77025,
+      "y": 77385
+    },
+    {
+      "url": "https://lbe.wikipedia.org/",
+      "favicon": "https://lbe.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 71312,
+      "y": 98983
+    },
+    {
+      "url": "https://stackoverflow.com/users/32121724/vimalram-k-c",
+      "favicon": "default",
+      "status": 1,
+      "x": 6979,
+      "y": 58494
+    },
+    {
+      "url": "https://docs.python.org/3/tutorial/introduction.html",
+      "favicon": "default",
+      "status": 1,
+      "x": 50819,
+      "y": 82361
+    },
+    {
+      "url": "https://dsb.wikipedia.org/",
+      "favicon": "https://dsb.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 75669,
+      "y": 76482
+    },
+    {
+      "url": "https://wiki.python.org/moin/",
+      "favicon": "default",
+      "status": 1,
+      "x": 36407,
+      "y": 41092
+    },
+    {
+      "url": "https://atj.wikipedia.org/",
+      "favicon": "https://atj.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 82463,
+      "y": 83961
+    },
+    {
+      "url": "https://python.org/psf/community-stories/",
+      "favicon": "default",
+      "status": 1,
+      "x": 47245,
+      "y": 10524
+    },
+    {
+      "url": "https://tt.wikipedia.org/",
+      "favicon": "https://tt.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 34833,
+      "y": 7724
+    },
+    {
+      "url": "https://stackoverflow.com/collectives/ci-cd",
+      "favicon": "default",
+      "status": 1,
+      "x": 25661,
+      "y": 907
+    },
+    {
+      "url": "https://python.org/shell/",
+      "favicon": "default",
+      "status": 1,
+      "x": 21423,
+      "y": 78990
+    },
+    {
+      "url": "https://guw.wikipedia.org/",
+      "favicon": "https://guw.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 93984,
+      "y": 51697
+    },
+    {
+      "url": "https://python.org/jobs/",
+      "favicon": "default",
+      "status": 1,
+      "x": 53607,
+      "y": 34794
+    },
+    {
+      "url": "https://krc.wikipedia.org/",
+      "favicon": "https://krc.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 86748,
+      "y": 3639
+    },
+    {
+      "url": "https://stackoverflow.com/questions/tagged/ollama",
+      "favicon": "default",
+      "status": 1,
+      "x": 18676,
+      "y": 12037
+    },
+    {
+      "url": "https://arz.wikipedia.org/",
+      "favicon": "https://arz.wikipedia.org/favicon.ico",
+      "status": 1,
+      "x": 41337,
+      "y": 37047
+    },
+    {
+      "url": "https://python.org/success-stories/category/software-development/",
+      "favicon": "default",
+      "status": 1,
+      "x": 46724,
+      "y": 85455
+    },
+    {
+      "url": "https://github.com/github",
+      "favicon": "default",
+      "status": 1,
+      "x": 87282,
+      "y": 91405
+    },
+    {
+      "url": "https://stackoverflow.com/questions/tagged/multithreading",
+      "favicon": "default",
+      "status": 1,
+      "x": 45187,
+      "y": 88539
+    },
+    {
+      "url": "https://pandas.pydata.org/",
+      "favicon": "default",
+      "status": 1,
+      "x": 1521,
+      "y": 2899
+    },
+    {
+      "url": "https://meta.wikimedia.org/",
+      "favicon": "https://meta.wikimedia.org/favicon.ico",
+      "status": 1,
+      "x": 93796,
+      "y": 74469
+    }
+  ],
+  "edges": [
+    [
+      "https://wikipedia.org",
+      "https://mwl.wikipedia.org/"
+    ],
+    [
+      "https://github.com",
+      "https://github.com/resources/articles/devops-tools-comparison"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://lad.wikipedia.org/"
+    ],
+    [
+      "https://python.org",
+      "https://fosstodon.org/@ThePSF"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://stackoverflow.blog/contributed?utm_medium=referral&utm_source=stackoverflow-community&utm_campaign=so-blog&utm_content=experiment-articles"
+    ],
+    [
+      "https://github.com",
+      "https://resources.github.com"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://cbk-zam.wikipedia.org/"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://bpy.wikipedia.org/"
+    ],
+    [
+      "https://python.org",
+      "https://dearpygui.readthedocs.io/en/latest/"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://stackoverflow.com/questions/79941078/unable-to-call-stdstoi-on-split-string"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://ks.wikipedia.org/"
+    ],
+    [
+      "https://python.org",
+      "https://python.org/events/calendars/"
+    ],
+    [
+      "https://github.com",
+      "https://github.com/solutions/use-case"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://rue.wikipedia.org/"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://stackoverflow.com/questions/79940924/best-practices-for-image-annotation-consistency-in-object-detection-projects"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://bjn.wikipedia.org/"
+    ],
+    [
+      "https://python.org",
+      "https://python.org/downloads/"
+    ],
+    [
+      "https://github.com",
+      "https://github.com/readme"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://stackoverflow.com/users/28005044/johannes-krottmayer"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Terms_of_Use"
+    ],
+    [
+      "https://github.com",
+      "https://github.com/customer-stories/duolingo"
+    ],
+    [
+      "https://python.org",
+      "http://pyfound.blogspot.com/"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://tly.wikipedia.org/"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://stackoverflow.com/questions/tagged/react-native-testing-library"
+    ],
+    [
+      "https://github.com",
+      "https://cli.github.com"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://ms.wikipedia.org/"
+    ],
+    [
+      "https://github.com",
+      "https://github.blog"
+    ],
+    [
+      "https://python.org",
+      "https://python.org/events/python-user-group/"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://sq.wikipedia.org/"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://stackoverflow.com/questions/tagged/opencv"
+    ],
+    [
+      "https://python.org",
+      "https://python.org/events/python-events/2147/"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://ru.wikipedia.org/"
+    ],
+    [
+      "https://github.com",
+      "https://github.com/collections"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://jbo.wikipedia.org/"
+    ],
+    [
+      "https://python.org",
+      "https://python.org/events/"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://stackoverflow.com/questions/79941097/how-to-use-tern-plugins-and-type-definitions-on-some-files-only"
+    ],
+    [
+      "https://github.com",
+      "https://github.com/github-copilot/pro"
+    ],
+    [
+      "https://python.org",
+      "https://python.org/download/alternatives"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://stackoverflow.com/questions/tagged/routes"
+    ],
+    [
+      "https://python.org",
+      "https://python.org/psf/membership/"
+    ],
+    [
+      "https://github.com",
+      "https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://stackoverflow.com/questions/tagged/algorithm"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://stackoverflow.com/users/32493829/cristian-josue-flores-pleitez"
+    ],
+    [
+      "https://github.com",
+      "https://services.github.com"
+    ],
+    [
+      "https://python.org",
+      "https://riverbankcomputing.com/software/pyqt/intro"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://twitter.com/stackoverflow"
+    ],
+    [
+      "https://python.org",
+      "https://python.org/doc/essays/"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://itunes.apple.com/app/apple-store/id324715238?pt=208305&ct=portal&mt=8"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://stackoverflow.com/questions/tagged/copy"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://nap.wikipedia.org/"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://os.wikipedia.org/"
+    ],
+    [
+      "https://python.org",
+      "https://buildbot.net/"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://stackoverflow.com/questions/79940970/how-does-enable-dollar-quote-interact-with-delimiter-in-the-mysql-client"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://ckb.wikipedia.org/"
+    ],
+    [
+      "https://python.org",
+      "https://python.org/psf-landing/"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://stackoverflow.com/users/32728167/christophe-mauceri"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://mzn.wikipedia.org/"
+    ],
+    [
+      "https://python.org",
+      "https://pyfound.blogspot.com/2026/05/announcing-psf-community-service-award.html"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://ny.wikipedia.org/"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://stackoverflow.com/questions/tagged/linked-list"
+    ],
+    [
+      "https://python.org",
+      "https://python.org/success-stories/category/government/"
+    ],
+    [
+      "https://github.com",
+      "https://github.community"
+    ],
+    [
+      "https://python.org",
+      "https://docs.python.org/3/faq/"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://stackoverflow.com/questions/tagged/reactjs"
+    ],
+    [
+      "https://github.com",
+      "https://stars.github.com"
+    ],
+    [
+      "https://python.org",
+      "https://python.org/psf/get-involved/"
+    ],
+    [
+      "https://python.org",
+      "https://blog.python.org"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://ve.wikipedia.org/"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://ay.wikipedia.org/"
+    ],
+    [
+      "https://python.org",
+      "https://python.org/events/python-events/"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://stackoverflow.com/collectives/php"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://stackoverflow.com"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://wa.wikipedia.org/"
+    ],
+    [
+      "https://python.org",
+      "https://python.org/dev/"
+    ],
+    [
+      "https://github.com",
+      "https://www.instagram.com/github"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://lbe.wikipedia.org/"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://stackoverflow.com/users/32121724/vimalram-k-c"
+    ],
+    [
+      "https://python.org",
+      "https://docs.python.org/3/tutorial/introduction.html"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://dsb.wikipedia.org/"
+    ],
+    [
+      "https://python.org",
+      "https://wiki.python.org/moin/"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://atj.wikipedia.org/"
+    ],
+    [
+      "https://python.org",
+      "https://python.org/psf/community-stories/"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://tt.wikipedia.org/"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://stackoverflow.com/collectives/ci-cd"
+    ],
+    [
+      "https://python.org",
+      "https://python.org/shell/"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://guw.wikipedia.org/"
+    ],
+    [
+      "https://python.org",
+      "https://python.org/jobs/"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://krc.wikipedia.org/"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://stackoverflow.com/questions/tagged/ollama"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://arz.wikipedia.org/"
+    ],
+    [
+      "https://python.org",
+      "https://python.org/success-stories/category/software-development/"
+    ],
+    [
+      "https://github.com",
+      "https://github.com/github"
+    ],
+    [
+      "https://stackoverflow.com",
+      "https://stackoverflow.com/questions/tagged/multithreading"
+    ],
+    [
+      "https://python.org",
+      "https://pandas.pydata.org/"
+    ],
+    [
+      "https://wikipedia.org",
+      "https://meta.wikimedia.org/"
+    ]
+  ]
 }
