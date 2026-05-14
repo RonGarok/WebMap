@@ -1,7 +1,8 @@
 """
-WebMap Crawler — Version GitHub Actions
-Génère webmap.json localement, GitHub Actions fera commit + push.
-Aucune requête vers InfinityFree.
+WebMap Crawler — Version GitHub Actions + autosave
+- Crawl des sites à partir de SEED_SITES
+- Stocke nodes/edges en mémoire
+- Sauvegarde webmap.json toutes les 5 secondes
 """
 
 import threading
@@ -18,10 +19,10 @@ from bs4 import BeautifulSoup
 # CONFIG
 # ==========================
 
-GRID_SIZE = 1000
-MAX_NODES = 500
-THREADS = 1
-REQUEST_TIMEOUT = 10
+GRID_SIZE = 100000
+MAX_NODES = 500          # limite de nœuds pour un run
+THREADS = 4              # nombre de threads crawler
+REQUEST_TIMEOUT = 8
 
 OUTPUT_JSON = "webmap.json"
 
@@ -44,7 +45,7 @@ SEED_SITES = [
 ]
 
 HEADERS = {
-    "User-Agent": "Mozilla/5.0",
+    "User-Agent": "Mozilla/5.0 (WebMapCrawler)",
     "Accept": "*/*",
     "Connection": "close"
 }
@@ -58,7 +59,6 @@ logging.basicConfig(
     format="[%(asctime)s] [%(levelname)s] %(message)s",
     datefmt="%H:%M:%S"
 )
-
 log = logging.getLogger("WebMapCrawler")
 
 # ==========================
@@ -69,9 +69,9 @@ nodes_lock = threading.Lock()
 edges_lock = threading.Lock()
 visited_lock = threading.Lock()
 
-nodes = {}
-edges = []
-visited = set()
+nodes = {}          # url -> {url, favicon, status, x, y}
+edges = []          # (from_url, to_url)
+visited = set()     # urls déjà crawlées
 
 task_queue = queue.Queue()
 
@@ -135,6 +135,7 @@ def extract_links(url, html):
 
         target_domain = get_base_domain(full)
 
+        # on ne garde que les liens vers d'autres domaines
         if target_domain == base_domain:
             continue
 
@@ -158,6 +159,28 @@ def check_status(url):
     r = safe_get(url)
     return 1 if r and r.status_code == 200 else 0
 
+# ==========================
+# EXPORT JSON
+# ==========================
+
+def export_json():
+    data = {
+        "nodes": list(nodes.values()),
+        "edges": [[a, b] for a, b in edges]
+    }
+
+    with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+    log.info(f"[JSON] Sauvegardé dans {OUTPUT_JSON} — {len(nodes)} nœuds, {len(edges)} liens")
+
+
+def autosave_loop():
+    while True:
+        time.sleep(5)
+        if get_node_count() == 0:
+            continue
+        export_json()
 
 # ==========================
 # CRAWLER CORE
@@ -191,13 +214,13 @@ def add_node(url):
 
 
 def crawl_site(url):
+    if get_node_count() >= MAX_NODES:
+        return
+
     with visited_lock:
         if url in visited:
             return
         visited.add(url)
-
-    if get_node_count() >= MAX_NODES:
-        return
 
     r = safe_get(url)
     if not r or not r.text:
@@ -220,6 +243,9 @@ def crawl_site(url):
 
 def worker():
     while True:
+        if get_node_count() >= MAX_NODES:
+            return
+
         try:
             url = task_queue.get(timeout=3)
         except queue.Empty:
@@ -228,43 +254,29 @@ def worker():
         crawl_site(url)
         task_queue.task_done()
 
-
-# ==========================
-# EXPORT JSON
-# ==========================
-
-def export_json():
-    data = {
-        "nodes": list(nodes.values()),
-        "edges": [[a, b] for a, b in edges]
-    }
-
-    with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-
-    log.info(f"[JSON] Exporté dans {OUTPUT_JSON}")
-
-
 # ==========================
 # MAIN
 # ==========================
 
 def main():
     log.info("Démarrage du crawler WebMap (GitHub Actions)...")
+    log.info(f"Limite de nœuds : {MAX_NODES}")
 
-    # Ajout des seeds
+    # thread autosave JSON
+    threading.Thread(target=autosave_loop, daemon=True).start()
+
+    # seeds
     for url in SEED_SITES:
         if add_node(url):
             task_queue.put(url)
 
-    # Threads
+    # threads crawler
     for _ in range(THREADS):
         threading.Thread(target=worker, daemon=True).start()
 
     task_queue.join()
 
     log.info(f"Terminé. Nœuds finaux: {get_node_count()}/{MAX_NODES}")
-
     export_json()
 
 
