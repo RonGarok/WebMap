@@ -1,17 +1,13 @@
 """
-WebMap Crawler — PRO VERSION
+WebMap Crawler — FINAL PRO VERSION
 100 nouveaux nœuds par session
 JSON illimité
-Frontier persistante
+Frontier persistante intelligente
 """
 
 import threading, queue, time, random, logging, requests, json, os
 from urllib.parse import urljoin
 from bs4 import BeautifulSoup
-
-# ==========================
-# CONFIG
-# ==========================
 
 GRID_SIZE = 100000
 NEW_NODES_PER_RUN = 100
@@ -26,7 +22,63 @@ SEED_SITES = [
     "https://reddit.com",
     "https://github.com",
     "https://stackoverflow.com",
+    "https://medium.com",
+    "https://news.ycombinator.com",
+    "https://archive.org",
+    "https://imdb.com",
+    "https://mozilla.org",
+    "https://gnu.org",
     "https://python.org",
+    "https://nodejs.org",
+    "https://npmjs.com",
+    "https://pypi.org",
+    "https://developer.mozilla.org",
+    "https://w3.org",
+    "https://sourceforge.net",
+    "https://linux.org",
+    "https://kernel.org",
+    "https://ubuntu.com",
+    "https://debian.org",
+    "https://fedora.org",
+    "https://archlinux.org",
+    "https://gentoo.org",
+    "https://kde.org",
+    "https://gnome.org",
+    "https://wordpress.org",
+    "https://drupal.org",
+    "https://joomla.org",
+    "https://cloudflare.com",
+    "https://vercel.com",
+    "https://netlify.com",
+    "https://digitalocean.com",
+    "https://aws.amazon.com",
+    "https://azure.microsoft.com",
+    "https://google.com",
+    "https://bing.com",
+    "https://duckduckgo.com",
+    "https://ecosia.org",
+    "https://yahoo.com",
+    "https://opera.com",
+    "https://brave.com",
+    "https://vivaldi.com",
+    "https://chromium.org",
+    "https://android.com",
+    "https://apple.com",
+    "https://tesla.com",
+    "https://nvidia.com",
+    "https://amd.com",
+    "https://intel.com",
+    "https://openai.com",
+    "https://huggingface.co",
+    "https://kaggle.com",
+    "https://coursera.org",
+    "https://edx.org",
+    "https://mit.edu",
+    "https://harvard.edu",
+    "https://stanford.edu",
+    "https://berkeley.edu",
+    "https://cam.ac.uk",
+    "https://ox.ac.uk"
 ]
 
 HEADERS = {
@@ -42,14 +94,10 @@ logging.basicConfig(
 )
 log = logging.getLogger("WebMapCrawler")
 
-# ==========================
-# DATA STRUCTURES
-# ==========================
-
-nodes = {}          # url -> node
-edges = []          # (from, to)
-visited = set()     # déjà crawlé
-frontier = []       # URLs à explorer entre les runs
+nodes = {}
+edges = []
+visited = set()
+frontier = []
 
 nodes_lock = threading.Lock()
 edges_lock = threading.Lock()
@@ -69,28 +117,20 @@ stop_flag = False
 def load_existing():
     global nodes, edges, visited, frontier
 
-    # JSON principal
     if os.path.exists(OUTPUT_JSON):
-        try:
-            with open(OUTPUT_JSON, "r", encoding="utf-8") as f:
-                data = json.load(f)
-            for n in data.get("nodes", []):
-                nodes[n["url"]] = n
-            for e in data.get("edges", []):
-                edges.append((e[0], e[1]))
-            visited = set(nodes.keys())
-            log.info(f"JSON chargé : {len(nodes)} nodes, {len(edges)} edges")
-        except:
-            log.error("Erreur JSON principal")
+        with open(OUTPUT_JSON, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        for n in data.get("nodes", []):
+            nodes[n["url"]] = n
+        for e in data.get("edges", []):
+            edges.append((e[0], e[1]))
+        visited = set(nodes.keys())
+        log.info(f"JSON chargé : {len(nodes)} nodes")
 
-    # Frontier persistante
     if os.path.exists(FRONTIER_JSON):
-        try:
-            with open(FRONTIER_JSON, "r", encoding="utf-8") as f:
-                frontier = json.load(f)
-            log.info(f"Frontier chargée : {len(frontier)} URLs")
-        except:
-            log.error("Erreur frontier.json")
+        with open(FRONTIER_JSON, "r", encoding="utf-8") as f:
+            frontier = json.load(f)
+        log.info(f"Frontier chargée : {len(frontier)} URLs")
 
 # ==========================
 # SAVE JSON + FRONTIER
@@ -106,7 +146,7 @@ def save_all():
     log.info(f"[SAVE] JSON + Frontier sauvegardés ({len(nodes)} nodes)")
 
 # ==========================
-# STOP SYSTEM
+# STOP
 # ==========================
 
 def stop_all():
@@ -225,7 +265,6 @@ def crawl_site(url):
         if created:
             task_queue.put(link)
         else:
-            # Ajout à la frontier si déjà connu
             with frontier_lock:
                 if link not in frontier:
                     frontier.append(link)
@@ -252,7 +291,7 @@ def worker():
 def main():
     global stop_flag
 
-    log.info("=== WebMap Crawler — PRO MODE (100 nodes/session) ===")
+    log.info("=== WebMap Crawler — FINAL PRO MODE ===")
 
     load_existing()
 
@@ -260,13 +299,13 @@ def main():
     for s in SEED_SITES:
         task_queue.put(s)
 
-    # Ajouter 50 URLs de la frontier
+    # Injecter 200 URLs de frontier
     with frontier_lock:
-        for url in frontier[:50]:
+        for url in frontier[:200]:
             task_queue.put(url)
 
-    # Ajouter 20 anciens nodes
-    for url in list(nodes.keys())[:20]:
+    # Injecter 50 anciens nodes
+    for url in list(nodes.keys())[:50]:
         task_queue.put(url)
 
     # Lancer les threads
@@ -283,7 +322,7 @@ def main():
         else:
             idle = 0
 
-        if idle > 30:
+        if idle > 40:
             log.info("Plus de travail → arrêt session")
             break
 
