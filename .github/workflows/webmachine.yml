@@ -1,0 +1,39 @@
+name: Update WebMachine
+
+on:
+  schedule:
+    - cron: "0 * * * *"   # Toutes les heures
+  workflow_dispatch:       # Permet de lancer manuellement
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: Run WebMachine crawler
+        run: |
+          python update_webmachine.py
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "webmachine-bot"
+          git config --global user.email "bot@example.com"
+          git add webmachine.json
+          git commit -m "Update WebMachine data" || echo "No changes to commit"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.8.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
