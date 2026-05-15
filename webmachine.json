@@ -7,6 +7,31 @@
         "y": 0
     },
     "machines": [],
-    "edges": [],
+    "edges": [
+        [
+            "webmap",
+            "AS13335"
+        ],
+        [
+            "webmap",
+            "AS16276"
+        ],
+        [
+            "webmap",
+            "AS15169"
+        ],
+        [
+            "webmap",
+            "AS8075"
+        ],
+        [
+            "webmap",
+            "AS16509"
+        ],
+        [
+            "webmap",
+            "AS24940"
+        ]
+    ],
     "queue": []
 }
