@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requests
+          pip install requests bs4
 
       - name: Run WebMachine crawler
         run: |
