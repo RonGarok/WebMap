@@ -24,422 +24,327 @@ CENTRAL_FAVICON = "https://webmap.ct.ws/assets/favicon.png"
 CENTRAL_X = GRID_SIZE // 2
 CENTRAL_Y = GRID_SIZE // 2
 
-SEED_SITES = [
-    # Forums / communautés
-    "https://4chan.org",
-    "https://8kun.top",
-    "https://quora.com",
-    "https://stackexchange.com",
-    "https://askubuntu.com",
-    "https://unix.stackexchange.com",
-    "https://superuser.com",
-    "https://serverfault.com",
-    "https://mathoverflow.net",
-    "https://forum.xda-developers.com",
-    "https://linuxquestions.org",
-    "https://ubuntuforums.org",
-    "https://archlinuxbbs.org",
-    "https://forums.debian.net",
-    "https://forums.freebsd.org",
-    "https://forums.gentoo.org",
+SEED_SITES += [
 
-    # Dev / code
-    "https://gitlab.com",
-    "https://bitbucket.org",
-    "https://sourceforge.net",
-    "https://codeberg.org",
-    "https://gitea.io",
-    "https://gist.github.com",
-    "https://git-scm.com",
-    "https://cmake.org",
-    "https://mesonbuild.com",
-    "https://bazel.build",
-    "https://gradle.org",
-    "https://maven.org",
-    "https://ant.apache.org",
-    "https://jenkins.io",
-    "https://circleci.com",
-    "https://travis-ci.com",
-    "https://appveyor.com",
-    "https://sonarqube.org",
+    # Social / communautés supplémentaires
+    "https://reddit.com",
+    "https://discord.com",
+    "https://telegram.org",
+    "https://signal.org",
+    "https://irccloud.com",
+    "https://libera.chat",
+    "https://slashdot.org",
+    "https://tildes.net",
+    "https://discourse.org",
+    "https://nodebb.org",
+    "https://invisioncommunity.com",
 
-    # Langages
-    "https://rust-lang.org",
-    "https://ziglang.org",
-    "https://nim-lang.org",
-    "https://crystal-lang.org",
-    "https://elixir-lang.org",
-    "https://erlang.org",
-    "https://haskell.org",
-    "https://ocaml.org",
-    "https://racket-lang.org",
-    "https://julialang.org",
-    "https://dart.dev",
-    "https://kotlinlang.org",
-    "https://scala-lang.org",
-    "https://clojure.org",
-    "https://fortran-lang.org",
+    # Search / moteurs
+    "https://duckduckgo.com",
+    "https://bing.com",
+    "https://google.com",
+    "https://yandex.com",
+    "https://yacy.net",
+    "https://mojeek.com",
+    "https://brave search.com",
+    "https://searchcode.com",
 
-    # Docs / références
-    "https://developer.mozilla.org",
-    "https://learn.microsoft.com",
-    "https://developers.google.com",
-    "https://developer.android.com",
-    "https://developer.apple.com",
-    "https://docs.python.org",
-    "https://docs.rs",
-    "https://readthedocs.io",
-    "https://devdocs.io",
-    "https://cplusplus.com",
-    "https://cppreference.com",
-    "https://man7.org",
-    "https://tldp.org",
+    # OSINT avancé
+    "https://hunter.io",
+    "https://phonebook.cz",
+    "https://crt.sh",
+    "https://wigle.net",
+    "https://urlscan.io",
+    "https://dnsdumpster.com",
+    "https://securitytrails.com",
+    "https://onyphe.io",
+    "https://greynoise.io",
+    "https://zoomeye.org",
+    "https://fullhunt.io",
+    "https://netlas.io",
+    "https://fofa.info",
 
-    # Linux / systèmes
-    "https://gentoo.org",
-    "https://alpinelinux.org",
-    "https://linuxfromscratch.org",
-    "https://openwrt.org",
-    "https://proxmox.com",
-    "https://freedesktop.org",
-    "https://systemd.io",
-    "https://busybox.net",
-    "https://yoctoproject.org",
-    "https://slackware.com",
-    "https://voidlinux.org",
-    "https://kali.org",
-    "https://parrotsec.org",
-    "https://tails.net",
+    # Malware / sandbox
+    "https://hybrid-analysis.com",
+    "https://any.run",
+    "https://tria.ge",
+    "https://vx-underground.org",
+    "https://malshare.com",
+    "https://urlhaus.abuse.ch",
+    "https://bazaar.abuse.ch",
+    "https://malpedia.caad.fkie.fraunhofer.de",
 
-    # Cyber
-    "https://cve.mitre.org",
-    "https://nvd.nist.gov",
-    "https://exploit-db.com",
-    "https://packetstormsecurity.com",
-    "https://owasp.org",
-    "https://hackthebox.com",
-    "https://tryhackme.com",
-    "https://bleepingcomputer.com",
-    "https://krebsonsecurity.com",
-    "https://cisa.gov",
-    "https://virustotal.com",
-    "https://abuse.ch",
-    "https://malwarebytes.com",
-    "https://metasploit.com",
-    "https://snort.org",
-    "https://suricata.io",
-    "https://offsec.com",
-    "https://shodan.io",
-    "https://censys.io",
+    # Reverse / low-level
+    "https://godbolt.org",
+    "https://osdev.org",
+    "https://lowlevel.eu",
+    "https://fabiensanglard.net",
+    "https://ref.x86asm.net",
+    "https://felixcloutier.com/x86",
+    "https://kernel.org",
+    "https://uops.info",
 
-    # Reverse engineering
-    "https://ghidra-sre.org",
-    "https://hex-rays.com",
-    "https://ida-pro.net",
-    "https://x64dbg.com",
-    "https://radare.org",
-    "https://binary.ninja",
+    # FPGA / embedded
+    "https://zephyrproject.org",
+    "https://platformio.org",
+    "https://riot-os.org",
+    "https://contiki-ng.org",
+    "https://beagleboard.org",
+    "https://pine64.org",
+    "https://siemens.com",
+    "https://nxp.com",
+    "https://microchip.com",
 
-    # IA
-    "https://mistral.ai",
-    "https://perplexity.ai",
-    "https://ollama.com",
-    "https://replicate.com",
-    "https://cohere.com",
-    "https://stability.ai",
-    "https://eleuther.ai",
-    "https://openrouter.ai",
-    "https://langchain.com",
-    "https://weightsandbiases.com",
-    "https://mlflow.org",
+    # Clouds
+    "https://aws.amazon.com",
+    "https://cloud.google.com",
+    "https://azure.microsoft.com",
+    "https://cloudflare.com",
+    "https://digitalocean.com",
+    "https://render.com",
+    "https://fly.io",
+    "https://railway.app",
+    "https://vercel.com",
+    "https://netlify.com",
 
-    # Science / recherche
-    "https://nature.com",
-    "https://science.org",
-    "https://sciencedirect.com",
-    "https://springer.com",
-    "https://ieee.org",
-    "https://acm.org",
-    "https://semanticscholar.org",
-    "https://scholar.google.com",
-    "https://arxiv.org",
-    "https://researchgate.net",
-    "https://jstor.org",
-    "https://zenodo.org",
+    # Containers / virtualization
+    "https://lxc.org",
+    "https://linuxcontainers.org",
+    "https://podman.io",
+    "https://containerd.io",
+    "https://cri-o.io",
+    "https://k3s.io",
+    "https://k0sproject.io",
+    "https://openstack.org",
+    "https://xenproject.org",
+    "https://qemu.org",
 
-    # Données
-    "https://data.gov",
-    "https://data.europa.eu",
-    "https://commoncrawl.org",
-    "https://kaggle.com/datasets",
-    "https://huggingface.co/datasets",
+    # Monitoring
+    "https://zabbix.com",
+    "https://nagios.org",
+    "https://netdata.cloud",
+    "https://checkmk.com",
+    "https://uptimerobot.com",
 
-    # Cloud / infra
-    "https://oracle.com",
-    "https://linode.com",
-    "https://hetzner.com",
-    "https://ovhcloud.com",
-    "https://contabo.com",
-    "https://vultr.com",
-    "https://akamai.com",
-    "https://fastly.com",
+    # Databases supplémentaires
+    "https://postgresql.org",
+    "https://mongodb.com",
+    "https://redis.io",
+    "https://sqlite.org",
+    "https://supabase.com",
+    "https://planetscale.com",
+    "https://cockroachlabs.com",
+    "https://surrealdb.com",
+    "https://duckdb.org",
 
-    # DevOps
-    "https://dockerhub.com",
-    "https://hub.docker.com",
-    "https://kubernetes.io",
-    "https://helm.sh",
-    "https://istio.io",
-    "https://grafana.com",
-    "https://prometheus.io",
-    "https://elastic.co",
-    "https://ansible.com",
-    "https://terraform.io",
-    "https://packer.io",
-    "https://vaultproject.io",
-    "https://consul.io",
+    # APIs / backend
+    "https://fastapi.tiangolo.com",
+    "https://nestjs.com",
+    "https://expressjs.com",
+    "https://flask.palletsprojects.com",
+    "https://laravel.com",
+    "https://symfony.com",
+    "https://spring.io",
+    "https://ktor.io",
+    "https://actix.rs",
 
-    # Réseaux
-    "https://openvpn.net",
-    "https://wireguard.com",
-    "https://tailscale.com",
-    "https://zerotier.com",
-    "https://mikrotik.com",
-    "https://cisco.com",
-    "https://juniper.net",
+    # Frontend
+    "https://astro.build",
+    "https://solidjs.com",
+    "https://qwik.builder.io",
+    "https://preactjs.com",
+    "https://threejs.org",
+    "https://babylonjs.com",
+    "https://pixijs.com",
+    "https://vitejs.dev",
 
-    # Hardware
-    "https://raspberrypi.com",
-    "https://arduino.cc",
-    "https://espressif.com",
-    "https://stmicroelectronics.com",
-    "https://xilinx.com",
-    "https://amd.com",
-    "https://intel.com",
-    "https://nvidia.com",
-    "https://arm.com",
+    # Mobile
+    "https://flutter.dev",
+    "https://reactnative.dev",
+    "https://ionicframework.com",
+    "https://expo.dev",
+    "https://capacitorjs.com",
 
-    # Game dev
-    "https://opengl.org",
-    "https://vulkan.org",
-    "https://learnopengl.com",
-    "https://gamedev.net",
-    "https://gdevelop.io",
-    "https://monogame.net",
-    "https://love2d.org",
-    "https://raylib.com",
+    # AI / ML
+    "https://huggingface.co",
+    "https://openai.com",
+    "https://anthropic.com",
+    "https://deepmind.google",
+    "https://together.ai",
+    "https://vllm.ai",
+    "https://llamaindex.ai",
+    "https://modal.com",
+    "https://runpod.io",
+    "https://banana.dev",
+    "https://pytorch.org",
+    "https://tensorflow.org",
+    "https://jax.readthedocs.io",
+    "https://onnx.ai",
+    "https://keras.io",
 
-    # Jeux
-    "https://steamdb.info",
-    "https://moddb.com",
-    "https://curseforge.com",
-    "https://planetminecraft.com",
-    "https://spigotmc.org",
-    "https://papermc.io",
-    "https://modrinth.com",
+    # Data science
+    "https://pandas.pydata.org",
+    "https://numpy.org",
+    "https://scipy.org",
+    "https://matplotlib.org",
+    "https://plotly.com",
+    "https://polars.rs",
 
-    # Streaming / vidéo
-    "https://vimeo.com",
-    "https://dailymotion.com",
-    "https://odysee.com",
-    "https://rumble.com",
-    "https://peer.tube",
+    # Crypto / blockchain
+    "https://ethereum.org",
+    "https://solana.com",
+    "https://bitcoin.org",
+    "https://monero.org",
+    "https://chain.link",
+    "https://opensea.io",
+    "https://etherscan.io",
 
-    # Fediverse
-    "https://mastodon.social",
-    "https://lemmy.world",
-    "https://kbin.social",
-    "https://joinpeertube.org",
-    "https://diasporafoundation.org",
+    # Pentest / sécurité
+    "https://burpsuite.com",
+    "https://wireshark.org",
+    "https://nmap.org",
+    "https://aircrack-ng.org",
+    "https://hashcat.net",
+    "https://johntheripper.com",
+    "https://gobuster.com",
+    "https://ffuf.me",
+    "https://sqlmap.org",
+    "https://impacket.org",
 
-    # Blogs tech
-    "https://news.ycombinator.com",
-    "https://lobste.rs",
-    "https://dev.to",
-    "https://hashnode.com",
-    "https://medium.com",
-    "https://substack.com",
-    "https://techcrunch.com",
-    "https://arstechnica.com",
-    "https://theverge.com",
-    "https://wired.com",
+    # Téléchargements / packages
+    "https://npmjs.com",
+    "https://pypi.org",
+    "https://rubygems.org",
+    "https://crates.io",
+    "https://packagist.org",
+    "https://search.maven.org",
+    "https://anaconda.org",
 
-    # Privacy
-    "https://eff.org",
-    "https://privacyguides.org",
-    "https://privacytools.io",
-    "https://torproject.org",
-    "https://riseup.net",
+    # Web scraping
+    "https://scrapy.org",
+    "https://playwright.dev",
+    "https://selenium.dev",
+    "https://beautiful-soup-4.readthedocs.io",
+    "https://puppeteer.dev",
 
-    # Cartographie
-    "https://openstreetmap.org",
-    "https://wikimapia.org",
-    "https://geonames.org",
+    # Cartographie / SIG
+    "https://qgis.org",
+    "https://cesium.com",
+    "https://leafletjs.com",
+    "https://mapbox.com",
 
-    # Archives
-    "https://archive.org",
-    "https://archive.ph",
-    "https://openlibrary.org",
-    "https://projectgutenberg.org",
+    # Robotique
+    "https://ros.org",
+    "https://gazebosim.org",
+    "https://openrobotics.org",
 
-    # APIs
-    "https://rapidapi.com",
-    "https://postman.com",
-    "https://swagger.io",
-    "https://graphql.org",
-    "https://grpc.io",
+    # Satellites / météo
+    "https://weather.com",
+    "https://windy.com",
+    "https://sat24.com",
+    "https://earth.nullschool.net",
 
-    # Finance / crypto
-    "https://kraken.com",
-    "https://bybit.com",
-    "https://okx.com",
-    "https://coingecko.com",
-    "https://tradingview.com",
+    # Streaming tech
+    "https://obsproject.com",
+    "https://ffmpeg.org",
+    "https://vlc.org",
 
-    # Shopping
-    "https://newegg.com",
-    "https://bestbuy.com",
-    "https://walmart.com",
-    "https://target.com",
-    "https://ikea.com",
+    # Compression / formats
+    "https://7-zip.org",
+    "https://rarlab.com",
+    "https://zstd.net",
 
-    # Education
-    "https://coursera.org",
-    "https://edx.org",
-    "https://udemy.com",
-    "https://codecademy.com",
-    "https://khanacademy.org",
-    "https://freecodecamp.org",
+    # Documentation / specs
+    "https://ietf.org",
+    "https://rfc-editor.org",
+    "https://ecma-international.org",
+    "https://unicode.org",
+    "https://iso.org",
 
-    # Messagerie
-    "https://matrix.org",
-    "https://element.io",
-    "https://revolt.chat",
-    "https://guilded.gg",
+    # Sysadmin
+    "https://fail2ban.org",
+    "https://cockpit-project.org",
+    "https://webmin.com",
+    "https://phpmyadmin.net",
 
-    # Self-hosting
-    "https://yunohost.org",
-    "https://umbrel.com",
-    "https://freenas.org",
-    "https://truenas.com",
-    "https://nextcloud.com",
+    # CMS / web
+    "https://wordpress.org",
+    "https://drupal.org",
+    "https://joomla.org",
+    "https://ghost.org",
 
-    # Search engines
-    "https://startpage.com",
-    "https://searx.space",
-    "https://qwant.com",
-    "https://ecosia.org",
+    # Automation
+    "https://n8n.io",
+    "https://zapier.com",
+    "https://ifttt.com",
 
-    # Torrent / partage
-    "https://fosstorrents.com",
-    "https://academictorrents.com",
+    # Homelab
+    "https://homelabos.com",
+    "https://selfh.st",
+    "https://awesome-selfhosted.net",
 
-    # Robots / web
-    "https://commoncrawl.org",
-    "https://schema.org",
-    "https://w3c.org",
-    "https://whatwg.org",
+    # Vidéo / GPU / rendering
+    "https://opencv.org",
+    "https://open3d.org",
+    "https://opencl.org",
+    "https://cuda.zone",
 
-    # CDN / performance
-    "https://jsdelivr.com",
-    "https://unpkg.com",
-    "https://cdnjs.com",
+    # Physique / maths
+    "https://wolfram.com",
+    "https://desmos.com",
+    "https://overleaf.com",
 
-    # Fonts
-    "https://fonts.google.com",
-    "https://fontawesome.com",
+    # Journaux / actu internationale
+    "https://reuters.com",
+    "https://apnews.com",
+    "https://bbc.com",
+    "https://aljazeera.com",
 
-    # Images
-    "https://unsplash.com",
-    "https://pexels.com",
-    "https://pixabay.com",
+    # DNS / réseau
+    "https://cloudns.net",
+    "https://freedns.afraid.org",
+    "https://noip.com",
+    "https://dynu.com",
 
-    # Audio
-    "https://freesound.org",
-    "https://jamendo.com",
+    # Email / SMTP
+    "https://mailcow.email",
+    "https://roundcube.net",
+    "https://rspamd.com",
 
-    # 3D
-    "https://sketchfab.com",
-    "https://thingiverse.com",
-    "https://blender.org",
+    # Forums gaming / modding
+    "https://nexusmods.com",
+    "https://gamebanana.com",
+    "https://fearlessrevolution.com",
 
-    # OSINT
-    "https://intelx.io",
-    "https://osintframework.com",
-    "https://haveibeenpwned.com",
+    # Benchmarks / hardware
+    "https://cpubenchmark.net",
+    "https://gpucheck.com",
+    "https://techpowerup.com",
 
-    # Satellites / espace
-    "https://spacex.com",
-    "https://starlink.com",
-    "https://esa.int",
-    "https://jpl.nasa.gov",
+    # Android / mobile hacking
+    "https://apkmirror.com",
+    "https://f-droid.org",
+    "https://lineageos.org",
+    "https://grapheneos.org",
+    "https://calyxos.org",
 
-    # Santé
-    "https://nih.gov",
-    "https://cdc.gov",
-    "https://ema.europa.eu",
+    # Darknet / privacy
+    "https://onionshare.org",
+    "https://i2p.net",
+    "https://geti2p.net",
 
-    # Gouvernement
-    "https://europa.eu",
-    "https://gov.uk",
-    "https://service-public.fr",
-    "https://whitehouse.gov",
+    # Knowledge / archive
+    "https://archive.today",
+    "https://memory-alpha.fandom.com",
+    "https://internetlivestats.com",
 
-    # Web archi
-    "https://nginx.org",
-    "https://apache.org",
-    "https://lighttpd.net",
-    "https://caddyserver.com",
-
-    # Bases de données
-    "https://mariadb.org",
-    "https://influxdata.com",
-    "https://cassandra.apache.org",
-    "https://neo4j.com",
-    "https://clickhouse.com",
-
-    # Navigateurs
-    "https://opera.com",
-    "https://brave.com",
-    "https://vivaldi.com",
-    "https://floorp.app",
-
-    # Email
-    "https://proton.me",
-    "https://tutanota.com",
-    "https://mailbox.org",
-    "https://fastmail.com",
-
-    # Password managers
-    "https://bitwarden.com",
-    "https://1password.com",
-    "https://keepass.info",
-
-    # Frameworks
-    "https://react.dev",
-    "https://vuejs.org",
-    "https://svelte.dev",
-    "https://angular.dev",
-    "https://nextjs.org",
-    "https://nuxt.com",
-    "https://remix.run",
-
-    # CSS / frontend
-    "https://tailwindcss.com",
-    "https://getbootstrap.com",
-    "https://bulma.io",
-    "https://sass-lang.com",
-
-    # Electronique
-    "https://adafruit.com",
-    "https://sparkfun.com",
-    "https://hackaday.com",
-
-    # Wiki / knowledge
-    "https://wikidata.org",
-    "https://wikivoyage.org",
-    "https://wiktionary.org",
-    "https://fandom.com",
+    # Misc dev
+    "https://regex101.com",
+    "https://jsonformatter.org",
+    "https://httpbin.org",
+    "https://reqbin.com",
+    "https://ipinfo.io",
+    "https://icanhazip.com",
 ]
 
 
