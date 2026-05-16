@@ -11,8 +11,8 @@ from datetime import datetime, timezone
 from urllib.parse import urljoin, urlparse
 from bs4 import BeautifulSoup
 
-GRID_SIZE = 10000000
-NEW_NODES_PER_RUN = 5000
+GRID_SIZE = 1000
+NEW_NODES_PER_RUN = 500
 THREADS = 8
 REQUEST_TIMEOUT = 8
 
@@ -529,7 +529,8 @@ def canonical_url(url):
     if "://" not in url:
         url = "https://" + url
     parsed = urlparse(url)
-    scheme = (parsed.scheme or "https").lower()
+    # Always canonicalize storage to HTTPS to avoid protocol duplicates
+    scheme = "https"
     host = root_host(parsed.hostname or parsed.path)
     if not host:
         return url
@@ -551,10 +552,24 @@ def add_edge(src, dst):
 
 
 def safe_get(url):
+    # Try HTTPS first (canonical storage), then fall back to HTTP if HTTPS fails
     url = canonical_url(url)
     try:
-        return requests.get(url, timeout=REQUEST_TIMEOUT, headers=HEADERS)
-    except:
+        r = requests.get(url, timeout=REQUEST_TIMEOUT, headers=HEADERS)
+        if r is not None and r.status_code < 500:
+            return r
+    except Exception:
+        pass
+
+    # fallback to http
+    try:
+        if url.startswith("https://"):
+            alt = "http://" + url[len("https://"):]
+        else:
+            alt = url.replace("https://", "http://")
+        r2 = requests.get(alt, timeout=REQUEST_TIMEOUT, headers=HEADERS)
+        return r2
+    except Exception:
         return None
 
 
