@@ -24,7 +24,7 @@ CENTRAL_FAVICON = "https://webmap.ct.ws/assets/favicon.png"
 CENTRAL_X = GRID_SIZE // 2
 CENTRAL_Y = GRID_SIZE // 2
 
-SEED_SITES += [
+SEED_SITES = [
 
     # Social / communautés supplémentaires
     "https://reddit.com",
