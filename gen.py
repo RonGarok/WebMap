@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 
 GRID_SIZE = 10000000
 NEW_NODES_PER_RUN = 5000
-THREADS = 32
+THREADS = 8
 REQUEST_TIMEOUT = 8
 
 OUTPUT_JSON = "webmap.json"
