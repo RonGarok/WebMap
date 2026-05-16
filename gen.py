@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from urllib.parse import urljoin, urlparse
 from bs4 import BeautifulSoup
 
-GRID_SIZE = 1000
+GRID_SIZE = 10000
 NEW_NODES_PER_RUN = 500
 THREADS = 8
 REQUEST_TIMEOUT = 8
