@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from urllib.parse import urljoin, urlparse
 from bs4 import BeautifulSoup
 
-GRID_SIZE = 10000
+GRID_SIZE = 1000
 NEW_NODES_PER_RUN = 500
 THREADS = 8
 REQUEST_TIMEOUT = 8
@@ -432,7 +432,8 @@ def load_existing():
             if src and dst and (src, dst) not in edges_set:
                 edges.append((src, dst))
                 edges_set.add((src, dst))
-        visited = set(nodes.keys())
+        # Do not mark existing saved nodes as already visited in this session.
+        # Otherwise, old nodes never get crawled again after load.
         log.info(f"JSON chargé : {len(nodes)} nodes")
 
     if os.path.exists(FRONTIER_JSON):
