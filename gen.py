@@ -7,12 +7,13 @@ Node central : https://webmap.ct.ws
 """
 
 import threading, queue, time, random, logging, requests, json, os
-from urllib.parse import urljoin
+from datetime import datetime, timezone
+from urllib.parse import urljoin, urlparse
 from bs4 import BeautifulSoup
 
 GRID_SIZE = 10000000
 NEW_NODES_PER_RUN = 5000
-THREADS = 6
+THREADS = 32
 REQUEST_TIMEOUT = 8
 
 OUTPUT_JSON = "webmap.json"
@@ -28,6 +29,16 @@ SEED_SITES = [
 
     # Social / communautés supplémentaires
     "https://reddit.com",
+    "https://webmap.ct.ws",
+    "https://wikipedia.org",
+    "https://archive.org",
+    "https://web.archive.org",
+    "https://openstreetmap.org",
+    "https://matrix.org",
+    "https://mastodon.social",
+    "https://proton.me",
+    "https://startpage.com",
+    "https://github.com",
     "https://discord.com",
     "https://telegram.org",
     "https://signal.org",
@@ -363,6 +374,7 @@ log = logging.getLogger("WebMapCrawler")
 
 nodes = {}
 edges = []
+edges_set = set()
 visited = set()
 frontier = []
 
@@ -385,18 +397,59 @@ def load_existing():
     global nodes, edges, visited, frontier
 
     if os.path.exists(OUTPUT_JSON):
-        with open(OUTPUT_JSON, "r", encoding="utf-8") as f:
-            data = json.load(f)
+        try:
+            with open(OUTPUT_JSON, "r", encoding="utf-8") as f:
+                content = f.read()
+            if not content.strip():
+                log.warning(f"{OUTPUT_JSON} est vide, nouvelle structure créée")
+                data = {}
+            else:
+                data = json.loads(content)
+        except json.JSONDecodeError as e:
+            log.warning(f"Impossible de parser {OUTPUT_JSON} : {e}. Contenu ignoré.")
+            data = {}
+        except Exception as e:
+            log.warning(f"Erreur de lecture {OUTPUT_JSON} : {e}. Contenu ignoré.")
+            data = {}
+
         for n in data.get("nodes", []):
-            nodes[n["url"]] = n
+            url = canonical_url(n["url"])
+            if url in nodes:
+                continue
+            n["url"] = url
+            if "added_at" not in n:
+                n["added_at"] = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+            if "added_date" not in n:
+                n["added_date"] = n["added_at"][:10]
+            if "added_time" not in n:
+                n["added_time"] = n["added_at"][11:16]
+            if "added_day" not in n:
+                n["added_day"] = datetime.utcnow().strftime("%A")
+            nodes[url] = n
         for e in data.get("edges", []):
-            edges.append((e[0], e[1]))
+            src = canonical_url(e[0])
+            dst = canonical_url(e[1])
+            if src and dst and (src, dst) not in edges_set:
+                edges.append((src, dst))
+                edges_set.add((src, dst))
         visited = set(nodes.keys())
         log.info(f"JSON chargé : {len(nodes)} nodes")
 
     if os.path.exists(FRONTIER_JSON):
-        with open(FRONTIER_JSON, "r", encoding="utf-8") as f:
-            frontier = json.load(f)
+        try:
+            with open(FRONTIER_JSON, "r", encoding="utf-8") as f:
+                content = f.read()
+            if not content.strip():
+                log.warning(f"{FRONTIER_JSON} est vide, nouvelle frontier créée")
+                frontier = []
+            else:
+                frontier = json.loads(content)
+        except json.JSONDecodeError as e:
+            log.warning(f"Impossible de parser {FRONTIER_JSON} : {e}. Contenu ignoré.")
+            frontier = []
+        except Exception as e:
+            log.warning(f"Erreur de lecture {FRONTIER_JSON} : {e}. Contenu ignoré.")
+            frontier = []
         log.info(f"Frontier chargée : {len(frontier)} URLs")
 
 # ============================================================
@@ -432,11 +485,78 @@ def stop_all():
 # HELPERS
 # ============================================================
 
+def root_host(host):
+    if not host:
+        return ""
+    host = host.lower().strip('.')
+    if host == "ct.ws":
+        return "webmap.ct.ws"
+    if host.startswith("www."):
+        host = host[4:]
+
+    aliases = {
+        "twitter.com": "x.com",
+        "x.com": "x.com",
+        "fb.com": "facebook.com",
+        "facebook.com": "facebook.com",
+        "m.facebook.com": "facebook.com",
+    }
+    if host in aliases:
+        return aliases[host]
+
+    parts = host.split('.')
+    if len(parts) <= 2:
+        return host
+
+    suffixes = {
+        "co.uk", "org.uk", "gov.uk", "ac.uk", "sch.uk",
+        "net.au", "com.au", "org.au", "gov.au", "edu.au",
+        "co.nz", "gov.nz", "ac.nz", "co.jp", "ne.jp",
+        "or.jp", "go.jp", "ac.jp", "co.za", "gov.za"
+    }
+
+    for suffix in suffixes:
+        if host.endswith('.' + suffix):
+            parts = host[:-len(suffix) - 1].split('.')
+            return '.'.join(parts[-1:] + suffix.split('.')) if parts else suffix
+
+    return '.'.join(parts[-2:])
+
+
+def canonical_url(url):
+    if not url or not isinstance(url, str):
+        return url
+    if "://" not in url:
+        url = "https://" + url
+    parsed = urlparse(url)
+    scheme = (parsed.scheme or "https").lower()
+    host = root_host(parsed.hostname or parsed.path)
+    if not host:
+        return url
+    normalized = f"{scheme}://{host}"
+    return normalized
+
+
+def add_edge(src, dst):
+    src = canonical_url(src)
+    dst = canonical_url(dst)
+    if not src or not dst:
+        return False
+    with edges_lock:
+        if (src, dst) in edges_set:
+            return False
+        edges.append((src, dst))
+        edges_set.add((src, dst))
+    return True
+
+
 def safe_get(url):
+    url = canonical_url(url)
     try:
         return requests.get(url, timeout=REQUEST_TIMEOUT, headers=HEADERS)
     except:
         return None
+
 
 def extract_links(url, html):
     soup = BeautifulSoup(html, "html.parser")
@@ -447,8 +567,10 @@ def extract_links(url, html):
             links.add(full)
     return list(links)
 
+
 def check_favicon(url):
     try:
+        url = canonical_url(url)
         ico = url.rstrip("/") + "/favicon.ico"
         r = requests.get(ico, timeout=REQUEST_TIMEOUT, headers=HEADERS)
         return ico if r.status_code == 200 else "default"
@@ -463,8 +585,9 @@ def get_free_coordinates():
     while True:
         x = random.randint(0, GRID_SIZE)
         y = random.randint(0, GRID_SIZE)
-        if all(n["x"] != x or n["y"] != y for n in nodes.values()):
-            return x, y
+        with nodes_lock:
+            if all(n["x"] != x or n["y"] != y for n in nodes.values()):
+                return x, y
 
 # ============================================================
 # ADD NODE
@@ -473,10 +596,12 @@ def get_free_coordinates():
 def add_node(url):
     global new_nodes_count, stop_flag
 
-    if stop_flag:
+    url = canonical_url(url)
+    if stop_flag or not url:
         return False
-    if url in nodes:
-        return False
+    with nodes_lock:
+        if url in nodes:
+            return False
 
     with counter_lock:
         if new_nodes_count >= NEW_NODES_PER_RUN:
@@ -486,8 +611,19 @@ def add_node(url):
     status = check_status(url)
     favicon = check_favicon(url)
     x, y = get_free_coordinates()
+    now = datetime.now(timezone.utc)
 
-    node = {"url": url, "favicon": favicon, "status": status, "x": x, "y": y}
+    node = {
+        "url": url,
+        "favicon": favicon,
+        "status": status,
+        "x": x,
+        "y": y,
+        "added_at": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "added_date": now.strftime("%Y-%m-%d"),
+        "added_time": now.strftime("%H:%M"),
+        "added_day": now.strftime("%A")
+    }
 
     with nodes_lock:
         nodes[url] = node
@@ -509,19 +645,24 @@ def ensure_central_node():
     """Ajoute https://webmap.ct.ws au centre si absent."""
     if CENTRAL_URL not in nodes:
         log.info("Ajout du node central WebMap.ct.ws")
+        now = datetime.now(timezone.utc)
 
         nodes[CENTRAL_URL] = {
             "url": CENTRAL_URL,
             "favicon": CENTRAL_FAVICON,
             "status": 1,
             "x": CENTRAL_X,
-            "y": CENTRAL_Y
+            "y": CENTRAL_Y,
+            "added_at": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "added_date": now.strftime("%Y-%m-%d"),
+            "added_time": now.strftime("%H:%M"),
+            "added_day": now.strftime("%A")
         }
 
     # Connecter TOUS les nodes au central
     for url in nodes:
         if url != CENTRAL_URL:
-            edges.append((CENTRAL_URL, url))
+            add_edge(CENTRAL_URL, url)
 
 # ============================================================
 # CRAWL
@@ -529,6 +670,10 @@ def ensure_central_node():
 
 def crawl_site(url):
     if stop_flag:
+        return
+
+    url = canonical_url(url)
+    if not url:
         return
 
     with visited_lock:
@@ -546,11 +691,14 @@ def crawl_site(url):
         if stop_flag:
             break
 
+        link = canonical_url(link)
+        if not link:
+            continue
+
         created = add_node(link)
 
-        with edges_lock:
-            edges.append((url, link))
-            edges.append((CENTRAL_URL, link))  # connexion au node central
+        add_edge(url, link)
+        add_edge(CENTRAL_URL, link)  # connexion au node central
 
         if created:
             task_queue.put(link)
@@ -588,16 +736,16 @@ def main():
 
     # Seeds
     for s in SEED_SITES:
-        task_queue.put(s)
+        task_queue.put(canonical_url(s))
 
     # Frontier
     with frontier_lock:
-        for url in frontier[:200]:
-            task_queue.put(url)
+        for url in frontier[:1000]:
+            task_queue.put(canonical_url(url))
 
     # Ancien nodes
-    for url in list(nodes.keys())[:50]:
-        task_queue.put(url)
+    for url in list(nodes.keys())[:200]:
+        task_queue.put(canonical_url(url))
 
     # Threads
     for _ in range(THREADS):
