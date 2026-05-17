@@ -39,7 +39,7 @@ from datetime import datetime
 # CONFIG
 # =========================================================
 
-OUTPUT_FILE = "webmachine_v2.json"
+OUTPUT_FILE = "webmachine.json"
 PREFIX_FILE = "asn_prefixes.txt"
 
 MAX_NEW_PER_RUN = 1000
