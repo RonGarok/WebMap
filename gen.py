@@ -12,7 +12,7 @@ from urllib.parse import urljoin, urlparse
 from bs4 import BeautifulSoup
 
 GRID_SIZE = 10000
-NEW_NODES_PER_RUN = 500
+NEW_NODES_PER_RUN = 1000
 THREADS = 8
 REQUEST_TIMEOUT = 8
 
