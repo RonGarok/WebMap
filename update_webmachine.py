@@ -15,10 +15,15 @@ Features:
 - RDP probing
 - SMTP probing
 - SSH probing
+- HTTP probing
+- FTP probing
 - OS fingerprinting
 - ASN validation
 - Honeypot filtering
 - CDN filtering
+- Router filtering
+- Private IP filtering
+- Reserved IP filtering
 - JSON export
 =========================================================
 """
@@ -26,11 +31,9 @@ Features:
 import ipaddress
 import json
 import os
-import queue
 import random
 import socket
 import ssl
-import struct
 import subprocess
 import time
 from datetime import datetime
@@ -56,12 +59,39 @@ COMMON_PORTS = [
     8080, 8443
 ]
 
-PRIVATE_NETWORKS = [
+# =========================================================
+# NETWORK FILTERS
+# =========================================================
+
+BLOCKED_NETWORKS = [
+
+    # Private
     ipaddress.ip_network("10.0.0.0/8"),
     ipaddress.ip_network("172.16.0.0/12"),
     ipaddress.ip_network("192.168.0.0/16"),
+
+    # Loopback
     ipaddress.ip_network("127.0.0.0/8"),
-    ipaddress.ip_network("169.254.0.0/16")
+
+    # Link local
+    ipaddress.ip_network("169.254.0.0/16"),
+
+    # Carrier NAT
+    ipaddress.ip_network("100.64.0.0/10"),
+
+    # Multicast
+    ipaddress.ip_network("224.0.0.0/4"),
+
+    # Reserved
+    ipaddress.ip_network("240.0.0.0/4"),
+
+    # TEST-NET
+    ipaddress.ip_network("192.0.2.0/24"),
+    ipaddress.ip_network("198.51.100.0/24"),
+    ipaddress.ip_network("203.0.113.0/24"),
+
+    # Benchmark
+    ipaddress.ip_network("198.18.0.0/15"),
 ]
 
 KNOWN_CDN_KEYWORDS = [
@@ -90,27 +120,40 @@ KNOWN_ROUTER_KEYWORDS = [
 # =========================================================
 
 def log(msg):
+
     now = datetime.utcnow().strftime("%H:%M:%S")
+
     print(f"[{now}] {msg}")
 
 
 def now_ts():
+
     return int(time.time())
 
 
 def is_private_ip(ip):
+
     try:
+
         addr = ipaddress.ip_address(ip)
-        return any(addr in net for net in PRIVATE_NETWORKS)
+
+        return any(addr in net for net in BLOCKED_NETWORKS)
+
     except Exception:
+
         return True
 
 
 def safe_recv(sock, size=1024):
+
     try:
+
         sock.settimeout(READ_TIMEOUT)
+
         return sock.recv(size)
+
     except Exception:
+
         return b""
 
 
@@ -119,14 +162,19 @@ def safe_recv(sock, size=1024):
 # =========================================================
 
 def load_prefixes():
+
     prefixes = {}
 
     if not os.path.exists(PREFIX_FILE):
+
         log("Prefix file missing.")
+
         return prefixes
 
     with open(PREFIX_FILE, "r", encoding="utf-8") as f:
+
         for line in f:
+
             line = line.strip()
 
             if not line:
@@ -138,13 +186,17 @@ def load_prefixes():
             asn, prefix = line.split("|", 1)
 
             try:
+
                 ipaddress.ip_network(prefix)
+
             except Exception:
+
                 continue
 
             prefixes.setdefault(asn, []).append(prefix)
 
     log(f"Loaded {len(prefixes)} ASN entries.")
+
     return prefixes
 
 
@@ -153,18 +205,33 @@ def load_prefixes():
 # =========================================================
 
 def sample_ip_from_prefix(prefix):
+
     """
     Generate a random IP inside a CIDR.
     """
 
-    network = ipaddress.ip_network(prefix, strict=False)
+    try:
 
-    if network.num_addresses <= 4:
+        network = ipaddress.ip_network(prefix, strict=False)
+
+        if network.num_addresses <= 4:
+            return None
+
+        rand = random.randint(
+            1,
+            network.num_addresses - 2
+        )
+
+        ip = str(network.network_address + rand)
+
+        if is_private_ip(ip):
+            return None
+
+        return ip
+
+    except Exception:
+
         return None
-
-    rand = random.randint(1, network.num_addresses - 2)
-
-    return str(network.network_address + rand)
 
 
 # =========================================================
@@ -174,7 +241,12 @@ def sample_ip_from_prefix(prefix):
 def tcp_connect(ip, port):
 
     try:
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+        sock = socket.socket(
+            socket.AF_INET,
+            socket.SOCK_STREAM
+        )
+
         sock.settimeout(CONNECT_TIMEOUT)
 
         result = sock.connect_ex((ip, port))
@@ -183,9 +255,11 @@ def tcp_connect(ip, port):
             return sock
 
         sock.close()
+
         return None
 
     except Exception:
+
         return None
 
 
@@ -201,7 +275,10 @@ def probe_ssh(ip):
         return None
 
     try:
-        banner = safe_recv(sock, 512).decode(errors="ignore").strip()
+
+        banner = safe_recv(sock, 512) \
+            .decode(errors="ignore") \
+            .strip()
 
         return {
             "service": "ssh",
@@ -209,6 +286,7 @@ def probe_ssh(ip):
         }
 
     finally:
+
         sock.close()
 
 
@@ -220,7 +298,10 @@ def probe_smtp(ip):
         return None
 
     try:
-        banner = safe_recv(sock, 512).decode(errors="ignore").strip()
+
+        banner = safe_recv(sock, 512) \
+            .decode(errors="ignore") \
+            .strip()
 
         return {
             "service": "smtp",
@@ -228,6 +309,49 @@ def probe_smtp(ip):
         }
 
     finally:
+
+        sock.close()
+
+
+def probe_ftp(ip):
+
+    sock = tcp_connect(ip, 21)
+
+    if not sock:
+        return None
+
+    try:
+
+        banner = safe_recv(sock, 512) \
+            .decode(errors="ignore") \
+            .strip()
+
+        return {
+            "service": "ftp",
+            "banner": banner
+        }
+
+    finally:
+
+        sock.close()
+
+
+def probe_rdp(ip):
+
+    sock = tcp_connect(ip, 3389)
+
+    if not sock:
+        return None
+
+    try:
+
+        return {
+            "service": "rdp",
+            "status": "open"
+        }
+
+    finally:
+
         sock.close()
 
 
@@ -239,6 +363,7 @@ def probe_http(ip, port=80):
         return None
 
     try:
+
         req = (
             f"HEAD / HTTP/1.1\r\n"
             f"Host: {ip}\r\n"
@@ -247,7 +372,8 @@ def probe_http(ip, port=80):
 
         sock.send(req.encode())
 
-        data = safe_recv(sock, 2048).decode(errors="ignore")
+        data = safe_recv(sock, 4096) \
+            .decode(errors="ignore")
 
         return {
             "service": "http",
@@ -255,12 +381,14 @@ def probe_http(ip, port=80):
         }
 
     finally:
+
         sock.close()
 
 
 def probe_tls(ip, port=443):
 
     try:
+
         ctx = ssl.create_default_context()
 
         sock = socket.create_connection(
@@ -268,7 +396,10 @@ def probe_tls(ip, port=443):
             timeout=CONNECT_TIMEOUT
         )
 
-        tls = ctx.wrap_socket(sock, server_hostname=ip)
+        tls = ctx.wrap_socket(
+            sock,
+            server_hostname=ip
+        )
 
         cert = tls.getpeercert()
 
@@ -283,6 +414,7 @@ def probe_tls(ip, port=443):
         }
 
     except Exception:
+
         return None
 
 
@@ -293,8 +425,7 @@ def probe_tls(ip, port=443):
 def estimate_ttl(ip):
 
     """
-    Very lightweight TTL estimation using ping.
-    Linux/macOS compatible.
+    Lightweight TTL estimation.
     """
 
     try:
@@ -310,11 +441,15 @@ def estimate_ttl(ip):
         if "ttl=" not in output:
             return None
 
-        ttl = int(output.split("ttl=")[1].split()[0])
+        ttl = int(
+            output.split("ttl=")[1]
+            .split()[0]
+        )
 
         return ttl
 
     except Exception:
+
         return None
 
 
@@ -331,7 +466,9 @@ def scan_ports(ip):
         sock = tcp_connect(ip, port)
 
         if sock:
+
             open_ports.append(port)
+
             sock.close()
 
     return open_ports
@@ -344,9 +481,13 @@ def scan_ports(ip):
 def reverse_dns(ip):
 
     try:
+
         host, _, _ = socket.gethostbyaddr(ip)
+
         return host.lower()
+
     except Exception:
+
         return ""
 
 
@@ -361,9 +502,7 @@ def detect_os(ttl, probes):
         "linux": 0
     }
 
-    # -----------------------------
     # TTL heuristic
-    # -----------------------------
 
     if ttl:
 
@@ -373,15 +512,16 @@ def detect_os(ttl, probes):
         elif ttl <= 128:
             scores["windows"] += 1
 
-    # -----------------------------
     # SSH banners
-    # -----------------------------
 
     ssh = probes.get("ssh")
 
     if ssh:
 
-        banner = ssh.get("banner", "").lower()
+        banner = ssh.get(
+            "banner",
+            ""
+        ).lower()
 
         if "ubuntu" in banner:
             scores["linux"] += 3
@@ -392,15 +532,16 @@ def detect_os(ttl, probes):
         if "openssh" in banner:
             scores["linux"] += 1
 
-    # -----------------------------
     # HTTP headers
-    # -----------------------------
 
     http = probes.get("http")
 
     if http:
 
-        body = http.get("response", "").lower()
+        body = http.get(
+            "response",
+            ""
+        ).lower()
 
         if "iis" in body:
             scores["windows"] += 4
@@ -411,14 +552,16 @@ def detect_os(ttl, probes):
         if "nginx" in body:
             scores["linux"] += 2
 
-    # -----------------------------
-    # Conservative output
-    # -----------------------------
-
-    if scores["linux"] >= 3 and scores["linux"] > scores["windows"]:
+    if (
+        scores["linux"] >= 3
+        and scores["linux"] > scores["windows"]
+    ):
         return "linux"
 
-    if scores["windows"] >= 3 and scores["windows"] > scores["linux"]:
+    if (
+        scores["windows"] >= 3
+        and scores["windows"] > scores["linux"]
+    ):
         return "windows"
 
     return "unknown"
@@ -428,51 +571,54 @@ def detect_os(ttl, probes):
 # MACHINE TYPE DETECTION
 # =========================================================
 
-def detect_machine_type(ports, hostname, probes):
+def detect_machine_type(
+    ports,
+    hostname,
+    probes
+):
 
     hostname = hostname.lower()
 
-    # -----------------------------
     # CDN
-    # -----------------------------
 
-    if any(x in hostname for x in KNOWN_CDN_KEYWORDS):
+    if any(
+        x in hostname
+        for x in KNOWN_CDN_KEYWORDS
+    ):
         return "cdn"
 
-    # -----------------------------
     # Router
-    # -----------------------------
 
-    if any(x in hostname for x in KNOWN_ROUTER_KEYWORDS):
+    if any(
+        x in hostname
+        for x in KNOWN_ROUTER_KEYWORDS
+    ):
         return "router"
 
-    # -----------------------------
     # Mail
-    # -----------------------------
 
     if 25 in ports or 587 in ports:
         return "mail_server"
 
-    # -----------------------------
     # DNS
-    # -----------------------------
 
     if 53 in ports:
         return "dns_server"
 
-    # -----------------------------
-    # Web
-    # -----------------------------
+    # RDP
 
-    if 80 in ports or 443 in ports:
-        return "web_server"
+    if 3389 in ports:
+        return "windows_rdp"
 
-    # -----------------------------
     # Proxy
-    # -----------------------------
 
     if 8080 in ports:
         return "proxy"
+
+    # Web
+
+    if 80 in ports or 443 in ports:
+        return "web_server"
 
     return "unknown"
 
@@ -484,8 +630,7 @@ def detect_machine_type(ports, hostname, probes):
 def looks_like_honeypot(ports):
 
     """
-    Very naive honeypot filter:
-    too many uncommon ports open.
+    Very naive honeypot filter.
     """
 
     if len(ports) >= 10:
@@ -523,6 +668,9 @@ def build_machine(ip, asn):
 
     probes = {}
 
+    if 21 in ports:
+        probes["ftp"] = probe_ftp(ip)
+
     if 22 in ports:
         probes["ssh"] = probe_ssh(ip)
 
@@ -535,9 +683,15 @@ def build_machine(ip, asn):
     if 443 in ports:
         probes["tls"] = probe_tls(ip, 443)
 
+    if 3389 in ports:
+        probes["rdp"] = probe_rdp(ip)
+
     ttl = estimate_ttl(ip)
 
-    os_guess = detect_os(ttl, probes)
+    os_guess = detect_os(
+        ttl,
+        probes
+    )
 
     machine_type = detect_machine_type(
         ports,
@@ -553,7 +707,10 @@ def build_machine(ip, asn):
         "hostname": hostname,
         "country": "unknown",
         "ports": ports,
-        "services_detected": list(probes.keys()),
+        "services_detected": [
+            k for k, v in probes.items()
+            if v
+        ],
         "os": os_guess,
         "type_machine": machine_type,
         "last_seen": now_ts(),
@@ -581,14 +738,28 @@ def load_database():
             "queue": []
         }
 
-    with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
+    with open(
+        OUTPUT_FILE,
+        "r",
+        encoding="utf-8"
+    ) as f:
+
         return json.load(f)
 
 
 def save_database(db):
 
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(db, f, indent=4)
+    with open(
+        OUTPUT_FILE,
+        "w",
+        encoding="utf-8"
+    ) as f:
+
+        json.dump(
+            db,
+            f,
+            indent=4
+        )
 
 
 # =========================================================
@@ -598,8 +769,7 @@ def save_database(db):
 def propagate_from_machine(machine):
 
     """
-    Smart propagation:
-    only propagate from valid machines.
+    Smart propagation from nearby IPs.
     """
 
     ip = machine["ip"]
@@ -614,13 +784,19 @@ def propagate_from_machine(machine):
 
         for _ in range(3):
 
-            generated.append(
-                f"{base}.{random.randint(1,254)}"
+            candidate = (
+                f"{base}."
+                f"{random.randint(1,254)}"
             )
+
+            if not is_private_ip(candidate):
+
+                generated.append(candidate)
 
         return generated
 
     except Exception:
+
         return []
 
 
@@ -657,9 +833,12 @@ def run():
 
                 for _ in range(2):
 
-                    ip = sample_ip_from_prefix(prefix)
+                    ip = sample_ip_from_prefix(
+                        prefix
+                    )
 
                     if ip:
+
                         q.append({
                             "ip": ip,
                             "asn": asn
@@ -690,7 +869,10 @@ def run():
 
         try:
 
-            machine = build_machine(ip, asn)
+            machine = build_machine(
+                ip,
+                asn
+            )
 
             if not machine:
                 continue
@@ -705,13 +887,14 @@ def run():
                 f"{machine['os']}"
             )
 
-            # ---------------------------------------------
             # Propagation
-            # ---------------------------------------------
 
             for new_ip in propagate_from_machine(machine):
 
-                if new_ip not in existing:
+                if (
+                    new_ip not in existing
+                    and not is_private_ip(new_ip)
+                ):
 
                     new_queue.append({
                         "ip": new_ip,
@@ -719,9 +902,11 @@ def run():
                     })
 
         except KeyboardInterrupt:
+
             break
 
         except Exception as e:
+
             log(f"Error: {e}")
 
     # -----------------------------------------------------
@@ -731,6 +916,7 @@ def run():
     merged = list(existing.values())
 
     for m in new_nodes.values():
+
         merged.append(m)
 
     db["machines"] = merged
@@ -743,13 +929,17 @@ def run():
     edges = []
 
     for m in merged:
-        edges.append([m["asn"], m["ip"]])
+
+        edges.append([
+            m["asn"],
+            m["ip"]
+        ])
 
     db["edges"] = edges
 
     save_database(db)
 
-    log(f"Done.")
+    log("Done.")
     log(f"New machines: {count}")
     log(f"Queue: {len(new_queue)}")
 
@@ -759,4 +949,5 @@ def run():
 # =========================================================
 
 if __name__ == "__main__":
+
     run()
