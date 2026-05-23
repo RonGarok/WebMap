@@ -17956,6 +17956,148 @@
             "last_seen": 1779576702,
             "x": 3330,
             "y": 3371
+        },
+        {
+            "id": "5.196.119.237",
+            "ip": "5.196.119.237",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "metrics.gitlab.elipce.com",
+            "country": "unknown",
+            "ports": [
+                80
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1779580522,
+            "x": 1384,
+            "y": -4636
+        },
+        {
+            "id": "5.196.119.130",
+            "ip": "5.196.119.130",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "admin-api.cluster022.hosting.ovh.net",
+            "country": "unknown",
+            "ports": [
+                21,
+                22,
+                25,
+                53,
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1779580527,
+            "x": -4084,
+            "y": 2024
+        },
+        {
+            "id": "5.196.119.249",
+            "ip": "5.196.119.249",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ip249.ip-5-196-119.eu",
+            "country": "unknown",
+            "ports": [
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1779580570,
+            "x": 3927,
+            "y": 1069
+        },
+        {
+            "id": "5.196.119.185",
+            "ip": "5.196.119.185",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "smtp-mo3.caurys.net",
+            "country": "unknown",
+            "ports": [
+                25,
+                80
+            ],
+            "services_detected": [
+                "smtp",
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1779580606,
+            "x": -3454,
+            "y": 4396
+        },
+        {
+            "id": "5.196.119.228",
+            "ip": "5.196.119.228",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ns2.geniproj.com",
+            "country": "unknown",
+            "ports": [
+                53
+            ],
+            "services_detected": [],
+            "os": "unknown",
+            "type_machine": "dns_server",
+            "last_seen": 1779580610,
+            "x": -3686,
+            "y": 1707
+        },
+        {
+            "id": "5.196.119.168",
+            "ip": "5.196.119.168",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ip168.ip-5-196-119.eu",
+            "country": "unknown",
+            "ports": [
+                22
+            ],
+            "services_detected": [
+                "ssh"
+            ],
+            "os": "unknown",
+            "type_machine": "unknown",
+            "last_seen": 1779580629,
+            "x": -4539,
+            "y": 2164
+        },
+        {
+            "id": "5.196.119.30",
+            "ip": "5.196.119.30",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "vxoraneliq.com",
+            "country": "unknown",
+            "ports": [
+                25,
+                53,
+                80
+            ],
+            "services_detected": [
+                "smtp",
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1779580685,
+            "x": -4161,
+            "y": -1751
         }
     ],
     "edges": [
@@ -21266,59 +21408,103 @@
         [
             "AS16276",
             "5.196.119.213"
+        ],
+        [
+            "AS16276",
+            "5.196.119.237"
+        ],
+        [
+            "AS16276",
+            "5.196.119.130"
+        ],
+        [
+            "AS16276",
+            "5.196.119.249"
+        ],
+        [
+            "AS16276",
+            "5.196.119.185"
+        ],
+        [
+            "AS16276",
+            "5.196.119.228"
+        ],
+        [
+            "AS16276",
+            "5.196.119.168"
+        ],
+        [
+            "AS16276",
+            "5.196.119.30"
         ]
     ],
     "queue": [
         {
-            "ip": "5.196.119.164",
+            "ip": "5.196.119.28",
             "asn": "AS16276"
         },
         {
-            "ip": "5.196.119.249",
+            "ip": "5.196.119.137",
             "asn": "AS16276"
         },
         {
-            "ip": "5.196.119.185",
+            "ip": "5.196.119.117",
             "asn": "AS16276"
         },
         {
-            "ip": "5.196.119.81",
+            "ip": "5.196.119.116",
             "asn": "AS16276"
         },
         {
-            "ip": "5.196.119.30",
+            "ip": "5.196.119.105",
             "asn": "AS16276"
         },
         {
-            "ip": "5.196.119.196",
+            "ip": "5.196.119.132",
             "asn": "AS16276"
         },
         {
-            "ip": "5.196.119.237",
+            "ip": "5.196.119.231",
             "asn": "AS16276"
         },
         {
-            "ip": "5.196.119.210",
+            "ip": "5.196.119.35",
             "asn": "AS16276"
         },
         {
-            "ip": "5.196.119.214",
+            "ip": "5.196.119.117",
             "asn": "AS16276"
         },
         {
-            "ip": "5.196.119.228",
+            "ip": "5.196.119.77",
             "asn": "AS16276"
         },
         {
-            "ip": "5.196.119.130",
+            "ip": "5.196.119.36",
             "asn": "AS16276"
         },
         {
-            "ip": "5.196.119.71",
+            "ip": "5.196.119.167",
             "asn": "AS16276"
         },
         {
-            "ip": "5.196.119.168",
+            "ip": "5.196.119.240",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.119.187",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.119.163",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.119.198",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.119.191",
             "asn": "AS16276"
         }
     ]
