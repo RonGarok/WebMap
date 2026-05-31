@@ -23411,6 +23411,89 @@
             "last_seen": 1780256311,
             "x": 554,
             "y": 322
+        },
+        {
+            "id": "5.135.3.109",
+            "ip": "5.135.3.109",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "mailserver.abd.it",
+            "country": "unknown",
+            "ports": [
+                22,
+                25
+            ],
+            "services_detected": [
+                "ssh",
+                "smtp"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1780261032,
+            "x": 2757,
+            "y": 2270
+        },
+        {
+            "id": "5.39.73.204",
+            "ip": "5.39.73.204",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ns3028085.ip-5-39-73.eu",
+            "country": "unknown",
+            "ports": [
+                22
+            ],
+            "services_detected": [
+                "ssh"
+            ],
+            "os": "linux",
+            "type_machine": "unknown",
+            "last_seen": 1780261051,
+            "x": -3873,
+            "y": -4486
+        },
+        {
+            "id": "13.55.148.205",
+            "ip": "13.55.148.205",
+            "asn": "AS16509",
+            "provider": "AS16509",
+            "hostname": "mail.locusassetservices.com.au",
+            "country": "unknown",
+            "ports": [
+                25,
+                143,
+                465,
+                587,
+                993
+            ],
+            "services_detected": [
+                "smtp"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1780261086,
+            "x": -4243,
+            "y": 4711
+        },
+        {
+            "id": "13.55.148.21",
+            "ip": "13.55.148.21",
+            "asn": "AS16509",
+            "provider": "AS16509",
+            "hostname": "ec2-13-55-148-21.ap-southeast-2.compute.amazonaws.com",
+            "country": "unknown",
+            "ports": [
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1780261105,
+            "x": 3281,
+            "y": -1773
         }
     ],
     "edges": [
@@ -27781,43 +27864,71 @@
         [
             "AS16509",
             "13.55.148.117"
+        ],
+        [
+            "AS16276",
+            "5.135.3.109"
+        ],
+        [
+            "AS16276",
+            "5.39.73.204"
+        ],
+        [
+            "AS16509",
+            "13.55.148.205"
+        ],
+        [
+            "AS16509",
+            "13.55.148.21"
         ]
     ],
     "queue": [
         {
-            "ip": "5.135.3.10",
+            "ip": "5.135.3.211",
             "asn": "AS16276"
         },
         {
-            "ip": "5.135.3.109",
+            "ip": "5.135.3.125",
             "asn": "AS16276"
         },
         {
-            "ip": "5.135.3.145",
+            "ip": "5.135.3.196",
             "asn": "AS16276"
         },
         {
-            "ip": "5.39.73.69",
+            "ip": "5.39.73.230",
             "asn": "AS16276"
         },
         {
-            "ip": "5.39.73.123",
+            "ip": "5.39.73.231",
             "asn": "AS16276"
         },
         {
-            "ip": "5.39.73.204",
+            "ip": "5.39.73.113",
             "asn": "AS16276"
         },
         {
-            "ip": "13.55.148.9",
+            "ip": "13.55.148.203",
             "asn": "AS16509"
         },
         {
-            "ip": "13.55.148.21",
+            "ip": "13.55.148.80",
             "asn": "AS16509"
         },
         {
-            "ip": "13.55.148.205",
+            "ip": "13.55.148.153",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "13.55.148.34",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "13.55.148.55",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "13.55.148.163",
             "asn": "AS16509"
         }
     ]
