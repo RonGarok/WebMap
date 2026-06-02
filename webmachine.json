@@ -26684,6 +26684,110 @@
             "last_seen": 1780420964,
             "x": 892,
             "y": 1816
+        },
+        {
+            "id": "5.135.3.67",
+            "ip": "5.135.3.67",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "software.defined.radio",
+            "country": "unknown",
+            "ports": [
+                22,
+                80,
+                443,
+                8080
+            ],
+            "services_detected": [
+                "ssh",
+                "http"
+            ],
+            "os": "linux",
+            "type_machine": "proxy",
+            "last_seen": 1780433063,
+            "x": 3363,
+            "y": 2159
+        },
+        {
+            "id": "5.39.73.46",
+            "ip": "5.39.73.46",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ns3091729.ip-5-39-73.eu",
+            "country": "unknown",
+            "ports": [
+                21,
+                80,
+                443
+            ],
+            "services_detected": [
+                "ftp",
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1780433081,
+            "x": -975,
+            "y": 2365
+        },
+        {
+            "id": "5.135.3.241",
+            "ip": "5.135.3.241",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "058703f1-mta.mtacompart.com.br",
+            "country": "unknown",
+            "ports": [
+                25
+            ],
+            "services_detected": [
+                "smtp"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1780433089,
+            "x": 4107,
+            "y": -1285
+        },
+        {
+            "id": "5.39.73.79",
+            "ip": "5.39.73.79",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "cristos.iocloud.fr",
+            "country": "unknown",
+            "ports": [
+                25,
+                143,
+                587
+            ],
+            "services_detected": [
+                "smtp"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1780433105,
+            "x": -1593,
+            "y": -1178
+        },
+        {
+            "id": "5.135.3.244",
+            "ip": "5.135.3.244",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "058703f4-mta.mtacompart.com.br",
+            "country": "unknown",
+            "ports": [
+                25
+            ],
+            "services_detected": [
+                "smtp"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1780433153,
+            "x": 2260,
+            "y": 4633
         }
     ],
     "edges": [
@@ -31682,39 +31786,63 @@
         [
             "AS16276",
             "5.135.3.169"
+        ],
+        [
+            "AS16276",
+            "5.135.3.67"
+        ],
+        [
+            "AS16276",
+            "5.39.73.46"
+        ],
+        [
+            "AS16276",
+            "5.135.3.241"
+        ],
+        [
+            "AS16276",
+            "5.39.73.79"
+        ],
+        [
+            "AS16276",
+            "5.135.3.244"
         ]
     ],
     "queue": [
+        {
+            "ip": "5.39.73.176",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.73.157",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.3.236",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.3.182",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.73.100",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.73.217",
+            "asn": "AS16276"
+        },
         {
             "ip": "5.135.3.244",
             "asn": "AS16276"
         },
         {
-            "ip": "5.135.3.241",
+            "ip": "5.135.3.191",
             "asn": "AS16276"
         },
         {
-            "ip": "5.135.3.67",
-            "asn": "AS16276"
-        },
-        {
-            "ip": "5.135.3.39",
-            "asn": "AS16276"
-        },
-        {
-            "ip": "5.39.73.46",
-            "asn": "AS16276"
-        },
-        {
-            "ip": "5.39.73.79",
-            "asn": "AS16276"
-        },
-        {
-            "ip": "5.135.3.94",
-            "asn": "AS16276"
-        },
-        {
-            "ip": "5.135.3.174",
+            "ip": "5.135.3.143",
             "asn": "AS16276"
         }
     ]
