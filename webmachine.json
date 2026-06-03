@@ -26863,6 +26863,26 @@
             "last_seen": 1780451086,
             "x": -4068,
             "y": 752
+        },
+        {
+            "id": "5.135.3.82",
+            "ip": "5.135.3.82",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "vs4.herewecom.cognix-systems.net",
+            "country": "unknown",
+            "ports": [
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1780469490,
+            "x": 1008,
+            "y": -1074
         }
     ],
     "edges": [
@@ -31897,15 +31917,19 @@
         [
             "AS16276",
             "5.135.3.247"
+        ],
+        [
+            "AS16276",
+            "5.135.3.82"
         ]
     ],
     "queue": [
         {
-            "ip": "5.135.3.155",
+            "ip": "5.135.3.253",
             "asn": "AS16276"
         },
         {
-            "ip": "5.135.3.82",
+            "ip": "5.135.3.28",
             "asn": "AS16276"
         }
     ]
