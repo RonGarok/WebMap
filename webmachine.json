@@ -27222,6 +27222,28 @@
             "last_seen": 1780611883,
             "x": -293,
             "y": -2688
+        },
+        {
+            "id": "5.39.10.76",
+            "ip": "5.39.10.76",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ruler-ilywhile.genoatower.com",
+            "country": "unknown",
+            "ports": [
+                25,
+                53,
+                80
+            ],
+            "services_detected": [
+                "smtp",
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1780636782,
+            "x": -714,
+            "y": 1205
         }
     ],
     "edges": [
@@ -32328,7 +32350,24 @@
         [
             "AS16276",
             "5.135.140.231"
+        ],
+        [
+            "AS16276",
+            "5.39.10.76"
         ]
     ],
-    "queue": []
+    "queue": [
+        {
+            "ip": "5.39.10.143",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.10.88",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.10.5",
+            "asn": "AS16276"
+        }
+    ]
 }
