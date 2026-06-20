@@ -46759,6 +46759,45 @@
             "last_seen": 1781909653,
             "x": 1633,
             "y": 2743
+        },
+        {
+            "id": "8.34.215.231",
+            "ip": "8.34.215.231",
+            "asn": "AS15169",
+            "provider": "AS15169",
+            "hostname": "231.215.34.8.bc.googleusercontent.com",
+            "country": "unknown",
+            "ports": [
+                443
+            ],
+            "services_detected": [],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1781932336,
+            "x": -3769,
+            "y": 403
+        },
+        {
+            "id": "5.135.51.180",
+            "ip": "5.135.51.180",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "enews-bf1.plantswithamessage.com",
+            "country": "unknown",
+            "ports": [
+                25,
+                53,
+                80
+            ],
+            "services_detected": [
+                "smtp",
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1781932469,
+            "x": 1930,
+            "y": 3651
         }
     ],
     "edges": [
@@ -55905,7 +55944,40 @@
         [
             "AS16276",
             "5.39.217.251"
+        ],
+        [
+            "AS15169",
+            "8.34.215.231"
+        ],
+        [
+            "AS16276",
+            "5.135.51.180"
         ]
     ],
-    "queue": []
+    "queue": [
+        {
+            "ip": "8.34.215.81",
+            "asn": "AS15169"
+        },
+        {
+            "ip": "8.34.215.12",
+            "asn": "AS15169"
+        },
+        {
+            "ip": "8.34.215.96",
+            "asn": "AS15169"
+        },
+        {
+            "ip": "5.135.51.54",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.51.249",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.51.191",
+            "asn": "AS16276"
+        }
+    ]
 }
