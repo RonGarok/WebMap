@@ -49034,6 +49034,67 @@
             "last_seen": 1782317875,
             "x": -3211,
             "y": 1156
+        },
+        {
+            "id": "5.196.64.214",
+            "ip": "5.196.64.214",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ns335408.ip-5-196-64.eu",
+            "country": "unknown",
+            "ports": [
+                25
+            ],
+            "services_detected": [
+                "smtp"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1782334277,
+            "x": -1261,
+            "y": 2752
+        },
+        {
+            "id": "13.55.20.24",
+            "ip": "13.55.20.24",
+            "asn": "AS16509",
+            "provider": "AS16509",
+            "hostname": "ec2-13-55-20-24.ap-southeast-2.compute.amazonaws.com",
+            "country": "unknown",
+            "ports": [
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1782334296,
+            "x": -2888,
+            "y": 3537
+        },
+        {
+            "id": "5.39.85.48",
+            "ip": "5.39.85.48",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "mail.customcontrolz.com",
+            "country": "unknown",
+            "ports": [
+                22,
+                80,
+                443
+            ],
+            "services_detected": [
+                "ssh",
+                "http"
+            ],
+            "os": "linux",
+            "type_machine": "web_server",
+            "last_seen": 1782334338,
+            "x": 65,
+            "y": 3702
         }
     ],
     "edges": [
@@ -58632,7 +58693,56 @@
         [
             "AS16276",
             "5.39.101.35"
+        ],
+        [
+            "AS16276",
+            "5.196.64.214"
+        ],
+        [
+            "AS16509",
+            "13.55.20.24"
+        ],
+        [
+            "AS16276",
+            "5.39.85.48"
         ]
     ],
-    "queue": []
+    "queue": [
+        {
+            "ip": "5.196.64.157",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.64.131",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.64.16",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "13.55.20.213",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "13.55.20.143",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "13.55.20.45",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "5.39.85.124",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.85.220",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.85.183",
+            "asn": "AS16276"
+        }
+    ]
 }
