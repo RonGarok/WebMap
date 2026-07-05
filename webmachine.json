@@ -62636,6 +62636,49 @@
             "last_seen": 1783205848,
             "x": -3111,
             "y": 4457
+        },
+        {
+            "id": "8.34.210.161",
+            "ip": "8.34.210.161",
+            "asn": "AS15169",
+            "provider": "AS15169",
+            "hostname": "161.210.34.8.bc.googleusercontent.com",
+            "country": "unknown",
+            "ports": [
+                22
+            ],
+            "services_detected": [
+                "ssh"
+            ],
+            "os": "unknown",
+            "type_machine": "unknown",
+            "last_seen": 1783227299,
+            "x": -3784,
+            "y": -3537
+        },
+        {
+            "id": "3.9.141.251",
+            "ip": "3.9.141.251",
+            "asn": "AS16509",
+            "provider": "AS16509",
+            "hostname": "ec2-3-9-141-251.eu-west-2.compute.amazonaws.com",
+            "country": "unknown",
+            "ports": [
+                21,
+                80,
+                443,
+                3389
+            ],
+            "services_detected": [
+                "ftp",
+                "http",
+                "rdp"
+            ],
+            "os": "unknown",
+            "type_machine": "windows_rdp",
+            "last_seen": 1783227335,
+            "x": -2986,
+            "y": -3120
         }
     ],
     "edges": [
@@ -74894,7 +74937,40 @@
         [
             "AS16276",
             "5.196.33.236"
+        ],
+        [
+            "AS15169",
+            "8.34.210.161"
+        ],
+        [
+            "AS16509",
+            "3.9.141.251"
         ]
     ],
-    "queue": []
+    "queue": [
+        {
+            "ip": "8.34.210.61",
+            "asn": "AS15169"
+        },
+        {
+            "ip": "8.34.210.223",
+            "asn": "AS15169"
+        },
+        {
+            "ip": "8.34.210.5",
+            "asn": "AS15169"
+        },
+        {
+            "ip": "3.9.141.243",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "3.9.141.165",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "3.9.141.245",
+            "asn": "AS16509"
+        }
+    ]
 }
