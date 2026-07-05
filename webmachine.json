@@ -62853,6 +62853,46 @@
             "last_seen": 1783280392,
             "x": -1450,
             "y": 93
+        },
+        {
+            "id": "13.54.61.24",
+            "ip": "13.54.61.24",
+            "asn": "AS16509",
+            "provider": "AS16509",
+            "hostname": "ec2-13-54-61-24.ap-southeast-2.compute.amazonaws.com",
+            "country": "unknown",
+            "ports": [
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1783285001,
+            "x": -2672,
+            "y": -3091
+        },
+        {
+            "id": "13.54.61.158",
+            "ip": "13.54.61.158",
+            "asn": "AS16509",
+            "provider": "AS16509",
+            "hostname": "ec2-13-54-61-158.ap-southeast-2.compute.amazonaws.com",
+            "country": "unknown",
+            "ports": [
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1783285039,
+            "x": -641,
+            "y": -4999
         }
     ],
     "edges": [
@@ -75155,19 +75195,39 @@
         [
             "AS16509",
             "13.54.61.189"
+        ],
+        [
+            "AS16509",
+            "13.54.61.24"
+        ],
+        [
+            "AS16509",
+            "13.54.61.158"
         ]
     ],
     "queue": [
+        {
+            "ip": "13.54.61.177",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "13.54.61.93",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "13.54.61.84",
+            "asn": "AS16509"
+        },
         {
             "ip": "13.54.61.69",
             "asn": "AS16509"
         },
         {
-            "ip": "13.54.61.24",
+            "ip": "13.54.61.173",
             "asn": "AS16509"
         },
         {
-            "ip": "13.54.61.158",
+            "ip": "13.54.61.141",
             "asn": "AS16509"
         }
     ]
