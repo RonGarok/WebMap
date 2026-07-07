@@ -63119,6 +63119,47 @@
             "last_seen": 1783373381,
             "x": -148,
             "y": -1164
+        },
+        {
+            "id": "13.68.147.142",
+            "ip": "13.68.147.142",
+            "asn": "AS8075",
+            "provider": "AS8075",
+            "hostname": "",
+            "country": "unknown",
+            "ports": [
+                22
+            ],
+            "services_detected": [
+                "ssh"
+            ],
+            "os": "linux",
+            "type_machine": "unknown",
+            "last_seen": 1783392816,
+            "x": 886,
+            "y": -383
+        },
+        {
+            "id": "5.135.107.44",
+            "ip": "5.135.107.44",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "srv01.sigmap.breizh.guru",
+            "country": "unknown",
+            "ports": [
+                25,
+                80,
+                443
+            ],
+            "services_detected": [
+                "smtp",
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1783392955,
+            "x": -4182,
+            "y": 122
         }
     ],
     "edges": [
@@ -75481,7 +75522,28 @@
         [
             "AS16276",
             "5.196.24.94"
+        ],
+        [
+            "AS8075",
+            "13.68.147.142"
+        ],
+        [
+            "AS16276",
+            "5.135.107.44"
         ]
     ],
-    "queue": []
+    "queue": [
+        {
+            "ip": "13.68.147.130",
+            "asn": "AS8075"
+        },
+        {
+            "ip": "13.68.147.163",
+            "asn": "AS8075"
+        },
+        {
+            "ip": "13.68.147.55",
+            "asn": "AS8075"
+        }
+    ]
 }
