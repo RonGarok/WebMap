@@ -65552,6 +65552,23 @@
             "last_seen": 1783585543,
             "x": 2970,
             "y": -781
+        },
+        {
+            "id": "3.79.81.28",
+            "ip": "3.79.81.28",
+            "asn": "AS16509",
+            "provider": "AS16509",
+            "hostname": "ec2-3-79-81-28.eu-central-1.compute.amazonaws.com",
+            "country": "unknown",
+            "ports": [
+                443
+            ],
+            "services_detected": [],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1783608975,
+            "x": -4936,
+            "y": 3220
         }
     ],
     "edges": [
@@ -78378,7 +78395,24 @@
         [
             "AS16509",
             "3.5.151.5"
+        ],
+        [
+            "AS16509",
+            "3.79.81.28"
         ]
     ],
-    "queue": []
+    "queue": [
+        {
+            "ip": "3.79.81.138",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "3.79.81.138",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "3.79.81.128",
+            "asn": "AS16509"
+        }
+    ]
 }
