@@ -70705,6 +70705,66 @@
             "last_seen": 1783775774,
             "x": -4387,
             "y": -2636
+        },
+        {
+            "id": "3.67.149.177",
+            "ip": "3.67.149.177",
+            "asn": "AS16509",
+            "provider": "AS16509",
+            "hostname": "ec2-3-67-149-177.eu-central-1.compute.amazonaws.com",
+            "country": "unknown",
+            "ports": [
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1783781412,
+            "x": -3411,
+            "y": -2078
+        },
+        {
+            "id": "3.67.149.56",
+            "ip": "3.67.149.56",
+            "asn": "AS16509",
+            "provider": "AS16509",
+            "hostname": "ec2-3-67-149-56.eu-central-1.compute.amazonaws.com",
+            "country": "unknown",
+            "ports": [
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1783781450,
+            "x": 3398,
+            "y": -3836
+        },
+        {
+            "id": "3.67.149.155",
+            "ip": "3.67.149.155",
+            "asn": "AS16509",
+            "provider": "AS16509",
+            "hostname": "ec2-3-67-149-155.eu-central-1.compute.amazonaws.com",
+            "country": "unknown",
+            "ports": [
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1783781468,
+            "x": 3484,
+            "y": -3878
         }
     ],
     "edges": [
@@ -84567,43 +84627,55 @@
         [
             "AS16509",
             "3.67.149.243"
+        ],
+        [
+            "AS16509",
+            "3.67.149.177"
+        ],
+        [
+            "AS16509",
+            "3.67.149.56"
+        ],
+        [
+            "AS16509",
+            "3.67.149.155"
         ]
     ],
     "queue": [
         {
-            "ip": "3.67.149.177",
+            "ip": "3.67.149.224",
             "asn": "AS16509"
         },
         {
-            "ip": "3.67.149.57",
+            "ip": "3.67.149.165",
             "asn": "AS16509"
         },
         {
-            "ip": "3.67.149.50",
+            "ip": "3.67.149.109",
             "asn": "AS16509"
         },
         {
-            "ip": "3.67.149.13",
+            "ip": "3.67.149.220",
             "asn": "AS16509"
         },
         {
-            "ip": "3.67.149.248",
+            "ip": "3.67.149.151",
             "asn": "AS16509"
         },
         {
-            "ip": "3.67.149.208",
+            "ip": "3.67.149.9",
             "asn": "AS16509"
         },
         {
-            "ip": "3.67.149.31",
+            "ip": "3.67.149.185",
             "asn": "AS16509"
         },
         {
-            "ip": "3.67.149.155",
+            "ip": "3.67.149.218",
             "asn": "AS16509"
         },
         {
-            "ip": "3.67.149.56",
+            "ip": "3.67.149.192",
             "asn": "AS16509"
         }
     ]
