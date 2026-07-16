@@ -73648,6 +73648,42 @@
             "last_seen": 1784222024,
             "x": -3895,
             "y": 126
+        },
+        {
+            "id": "13.55.14.209",
+            "ip": "13.55.14.209",
+            "asn": "AS16509",
+            "provider": "AS16509",
+            "hostname": "ec2-13-55-14-209.ap-southeast-2.compute.amazonaws.com",
+            "country": "unknown",
+            "ports": [
+                443
+            ],
+            "services_detected": [],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1784235495,
+            "x": 875,
+            "y": 2750
+        },
+        {
+            "id": "5.39.1.70",
+            "ip": "5.39.1.70",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ip70.ip-5-39-1.eu",
+            "country": "unknown",
+            "ports": [
+                3389
+            ],
+            "services_detected": [
+                "rdp"
+            ],
+            "os": "unknown",
+            "type_machine": "windows_rdp",
+            "last_seen": 1784235610,
+            "x": 4333,
+            "y": -1294
         }
     ],
     "edges": [
@@ -88078,7 +88114,40 @@
         [
             "AS16276",
             "5.196.127.22"
+        ],
+        [
+            "AS16509",
+            "13.55.14.209"
+        ],
+        [
+            "AS16276",
+            "5.39.1.70"
         ]
     ],
-    "queue": []
+    "queue": [
+        {
+            "ip": "13.55.14.140",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "13.55.14.28",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "13.55.14.134",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "5.39.1.49",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.1.138",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.1.148",
+            "asn": "AS16276"
+        }
+    ]
 }
