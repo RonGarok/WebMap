@@ -78295,6 +78295,90 @@
             "last_seen": 1784809342,
             "x": -1149,
             "y": 1819
+        },
+        {
+            "id": "20.2.218.52",
+            "ip": "20.2.218.52",
+            "asn": "AS8075",
+            "provider": "AS8075",
+            "hostname": "",
+            "country": "unknown",
+            "ports": [
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1784827193,
+            "x": -2648,
+            "y": -1002
+        },
+        {
+            "id": "5.39.37.167",
+            "ip": "5.39.37.167",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ip167.ip-5-39-37.eu",
+            "country": "unknown",
+            "ports": [
+                22,
+                80,
+                443
+            ],
+            "services_detected": [
+                "ssh",
+                "http"
+            ],
+            "os": "linux",
+            "type_machine": "web_server",
+            "last_seen": 1784827250,
+            "x": 255,
+            "y": 1757
+        },
+        {
+            "id": "5.196.88.7",
+            "ip": "5.196.88.7",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ns334933.ip-5-196-88.eu",
+            "country": "unknown",
+            "ports": [
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1784827273,
+            "x": 1764,
+            "y": -1196
+        },
+        {
+            "id": "5.39.106.223",
+            "ip": "5.39.106.223",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "moracchini-institut-admin.pcscloud.net",
+            "country": "unknown",
+            "ports": [
+                21,
+                80,
+                443
+            ],
+            "services_detected": [
+                "ftp",
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1784827504,
+            "x": 4559,
+            "y": 3586
         }
     ],
     "edges": [
@@ -93621,7 +93705,72 @@
         [
             "AS16276",
             "5.196.236.7"
+        ],
+        [
+            "AS8075",
+            "20.2.218.52"
+        ],
+        [
+            "AS16276",
+            "5.39.37.167"
+        ],
+        [
+            "AS16276",
+            "5.196.88.7"
+        ],
+        [
+            "AS16276",
+            "5.39.106.223"
         ]
     ],
-    "queue": []
+    "queue": [
+        {
+            "ip": "20.2.218.212",
+            "asn": "AS8075"
+        },
+        {
+            "ip": "20.2.218.80",
+            "asn": "AS8075"
+        },
+        {
+            "ip": "20.2.218.218",
+            "asn": "AS8075"
+        },
+        {
+            "ip": "5.39.37.114",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.37.204",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.37.52",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.88.224",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.88.243",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.88.62",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.106.250",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.106.240",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.106.56",
+            "asn": "AS16276"
+        }
+    ]
 }
