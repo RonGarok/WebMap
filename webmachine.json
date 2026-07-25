@@ -81972,6 +81972,70 @@
             "last_seen": 1785002159,
             "x": 811,
             "y": -3617
+        },
+        {
+            "id": "5.196.88.99",
+            "ip": "5.196.88.99",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "kim3.mediamatis.com",
+            "country": "unknown",
+            "ports": [
+                25,
+                80,
+                443
+            ],
+            "services_detected": [
+                "smtp",
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1785006337,
+            "x": 964,
+            "y": -3287
+        },
+        {
+            "id": "5.196.88.153",
+            "ip": "5.196.88.153",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ns373254.ip-5-196-88.eu",
+            "country": "unknown",
+            "ports": [
+                22
+            ],
+            "services_detected": [
+                "ssh"
+            ],
+            "os": "linux",
+            "type_machine": "unknown",
+            "last_seen": 1785006341,
+            "x": 460,
+            "y": -767
+        },
+        {
+            "id": "5.196.88.184",
+            "ip": "5.196.88.184",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ritualsupernatural.mirwan.com",
+            "country": "unknown",
+            "ports": [
+                22,
+                53,
+                80,
+                443
+            ],
+            "services_detected": [
+                "ssh",
+                "http"
+            ],
+            "os": "linux",
+            "type_machine": "dns_server",
+            "last_seen": 1785006346,
+            "x": 284,
+            "y": -1646
         }
     ],
     "edges": [
@@ -98014,27 +98078,43 @@
         [
             "AS16276",
             "5.196.88.45"
+        ],
+        [
+            "AS16276",
+            "5.196.88.99"
+        ],
+        [
+            "AS16276",
+            "5.196.88.153"
+        ],
+        [
+            "AS16276",
+            "5.196.88.184"
         ]
     ],
     "queue": [
         {
-            "ip": "5.196.88.99",
+            "ip": "5.196.88.36",
             "asn": "AS16276"
         },
         {
-            "ip": "5.196.88.184",
+            "ip": "5.196.88.125",
             "asn": "AS16276"
         },
         {
-            "ip": "5.196.88.71",
+            "ip": "5.196.88.237",
             "asn": "AS16276"
         },
         {
-            "ip": "5.196.88.153",
+            "ip": "5.196.88.64",
             "asn": "AS16276"
         },
         {
-            "ip": "5.196.88.1",
+            "ip": "5.196.88.160",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.88.50",
             "asn": "AS16276"
         }
     ]
