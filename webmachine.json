@@ -82149,6 +82149,91 @@
             "last_seen": 1785036042,
             "x": -4034,
             "y": -4659
+        },
+        {
+            "id": "5.39.205.94",
+            "ip": "5.39.205.94",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "",
+            "country": "unknown",
+            "ports": [
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1785056998,
+            "x": -3144,
+            "y": -265
+        },
+        {
+            "id": "5.135.197.187",
+            "ip": "5.135.197.187",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ip187.ip-5-135-197.eu",
+            "country": "unknown",
+            "ports": [
+                22,
+                80,
+                443
+            ],
+            "services_detected": [
+                "ssh",
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1785057170,
+            "x": -2465,
+            "y": 2509
+        },
+        {
+            "id": "5.39.116.177",
+            "ip": "5.39.116.177",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "devsite.sitedns.pt",
+            "country": "unknown",
+            "ports": [
+                21,
+                53,
+                80,
+                443,
+                993,
+                995,
+                8443
+            ],
+            "services_detected": [
+                "ftp",
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "dns_server",
+            "last_seen": 1785057240,
+            "x": -4394,
+            "y": -4524
+        },
+        {
+            "id": "5.196.24.72",
+            "ip": "5.196.24.72",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "akto.parthena.com",
+            "country": "unknown",
+            "ports": [
+                443
+            ],
+            "services_detected": [],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1785057259,
+            "x": -4790,
+            "y": 4599
         }
     ],
     "edges": [
@@ -98223,7 +98308,72 @@
         [
             "AS16276",
             "5.196.88.23"
+        ],
+        [
+            "AS16276",
+            "5.39.205.94"
+        ],
+        [
+            "AS16276",
+            "5.135.197.187"
+        ],
+        [
+            "AS16276",
+            "5.39.116.177"
+        ],
+        [
+            "AS16276",
+            "5.196.24.72"
         ]
     ],
-    "queue": []
+    "queue": [
+        {
+            "ip": "5.39.205.109",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.205.100",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.205.114",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.197.63",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.197.192",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.197.53",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.116.146",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.116.189",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.116.62",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.24.25",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.24.46",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.24.33",
+            "asn": "AS16276"
+        }
+    ]
 }
