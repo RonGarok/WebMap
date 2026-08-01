@@ -87708,6 +87708,72 @@
             "last_seen": 1785596704,
             "x": -4106,
             "y": -3031
+        },
+        {
+            "id": "1.0.0.208",
+            "ip": "1.0.0.208",
+            "asn": "AS13335",
+            "provider": "AS13335",
+            "hostname": "",
+            "country": "unknown",
+            "ports": [
+                80,
+                443,
+                8080,
+                8443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "proxy",
+            "last_seen": 1785607094,
+            "x": 1633,
+            "y": -1333
+        },
+        {
+            "id": "20.2.141.68",
+            "ip": "20.2.141.68",
+            "asn": "AS8075",
+            "provider": "AS8075",
+            "hostname": "",
+            "country": "unknown",
+            "ports": [
+                3389
+            ],
+            "services_detected": [
+                "rdp"
+            ],
+            "os": "unknown",
+            "type_machine": "windows_rdp",
+            "last_seen": 1785607113,
+            "x": -2312,
+            "y": 2573
+        },
+        {
+            "id": "5.196.204.243",
+            "ip": "5.196.204.243",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "tprtvpz196.pmpzugw.herounits.com",
+            "country": "unknown",
+            "ports": [
+                22,
+                25,
+                53,
+                80,
+                443
+            ],
+            "services_detected": [
+                "ssh",
+                "smtp",
+                "http"
+            ],
+            "os": "linux",
+            "type_machine": "router",
+            "last_seen": 1785607405,
+            "x": 3245,
+            "y": 3993
         }
     ],
     "edges": [
@@ -104918,7 +104984,44 @@
         [
             "AS16509",
             "13.54.8.125"
+        ],
+        [
+            "AS13335",
+            "1.0.0.208"
+        ],
+        [
+            "AS8075",
+            "20.2.141.68"
+        ],
+        [
+            "AS16276",
+            "5.196.204.243"
         ]
     ],
-    "queue": []
+    "queue": [
+        {
+            "ip": "20.2.141.80",
+            "asn": "AS8075"
+        },
+        {
+            "ip": "20.2.141.181",
+            "asn": "AS8075"
+        },
+        {
+            "ip": "20.2.141.12",
+            "asn": "AS8075"
+        },
+        {
+            "ip": "5.196.204.175",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.204.112",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.204.64",
+            "asn": "AS16276"
+        }
+    ]
 }
