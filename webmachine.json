@@ -92855,6 +92855,45 @@
             "last_seen": 1786107364,
             "x": 3077,
             "y": 663
+        },
+        {
+            "id": "5.135.42.70",
+            "ip": "5.135.42.70",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ip70.ip-5-135-42.eu",
+            "country": "unknown",
+            "ports": [
+                443
+            ],
+            "services_detected": [],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1786118343,
+            "x": -3790,
+            "y": 600
+        },
+        {
+            "id": "5.196.133.138",
+            "ip": "5.196.133.138",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "meals.exitdelaware.com",
+            "country": "unknown",
+            "ports": [
+                25,
+                53,
+                80
+            ],
+            "services_detected": [
+                "smtp",
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1786118398,
+            "x": -4329,
+            "y": 2763
         }
     ],
     "edges": [
@@ -111085,7 +111124,40 @@
         [
             "AS16276",
             "5.135.246.9"
+        ],
+        [
+            "AS16276",
+            "5.135.42.70"
+        ],
+        [
+            "AS16276",
+            "5.196.133.138"
         ]
     ],
-    "queue": []
+    "queue": [
+        {
+            "ip": "5.135.42.171",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.42.199",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.42.229",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.133.118",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.133.128",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.133.6",
+            "asn": "AS16276"
+        }
+    ]
 }
