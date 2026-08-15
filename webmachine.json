@@ -104412,6 +104412,90 @@
             "last_seen": 1786771290,
             "x": 3884,
             "y": -1541
+        },
+        {
+            "id": "1.1.1.206",
+            "ip": "1.1.1.206",
+            "asn": "AS13335",
+            "provider": "AS13335",
+            "hostname": "",
+            "country": "unknown",
+            "ports": [
+                80,
+                443,
+                8080,
+                8443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "proxy",
+            "last_seen": 1786778869,
+            "x": 2123,
+            "y": 2195
+        },
+        {
+            "id": "5.135.2.123",
+            "ip": "5.135.2.123",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ip123.ip-5-135-2.eu",
+            "country": "unknown",
+            "ports": [
+                21,
+                22,
+                80,
+                443
+            ],
+            "services_detected": [
+                "ftp",
+                "ssh",
+                "http"
+            ],
+            "os": "linux",
+            "type_machine": "web_server",
+            "last_seen": 1786779118,
+            "x": 1172,
+            "y": -4571
+        },
+        {
+            "id": "5.135.123.228",
+            "ip": "5.135.123.228",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "mail1.playanywherehub.com",
+            "country": "unknown",
+            "ports": [
+                25
+            ],
+            "services_detected": [
+                "smtp"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1786779122,
+            "x": -692,
+            "y": 2496
+        },
+        {
+            "id": "13.55.228.26",
+            "ip": "13.55.228.26",
+            "asn": "AS16509",
+            "provider": "AS16509",
+            "hostname": "ec2-13-55-228-26.ap-southeast-2.compute.amazonaws.com",
+            "country": "unknown",
+            "ports": [
+                22
+            ],
+            "services_detected": [
+                "ssh"
+            ],
+            "os": "unknown",
+            "type_machine": "unknown",
+            "last_seen": 1786779278,
+            "x": -2074,
+            "y": 1340
         }
     ],
     "edges": [
@@ -124902,7 +124986,60 @@
         [
             "AS16509",
             "13.54.47.81"
+        ],
+        [
+            "AS13335",
+            "1.1.1.206"
+        ],
+        [
+            "AS16276",
+            "5.135.2.123"
+        ],
+        [
+            "AS16276",
+            "5.135.123.228"
+        ],
+        [
+            "AS16509",
+            "13.55.228.26"
         ]
     ],
-    "queue": []
+    "queue": [
+        {
+            "ip": "5.135.2.216",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.2.244",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.2.114",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.123.115",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.123.187",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.123.232",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "13.55.228.92",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "13.55.228.245",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "13.55.228.128",
+            "asn": "AS16509"
+        }
+    ]
 }
