@@ -112462,6 +112462,79 @@
             "last_seen": 1787146929,
             "x": 2961,
             "y": 2374
+        },
+        {
+            "id": "5.196.88.111",
+            "ip": "5.196.88.111",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ns2.cableazul.net",
+            "country": "unknown",
+            "ports": [
+                22,
+                53,
+                80,
+                443
+            ],
+            "services_detected": [
+                "ssh",
+                "http"
+            ],
+            "os": "linux",
+            "type_machine": "dns_server",
+            "last_seen": 1787149749,
+            "x": -1632,
+            "y": -4605
+        },
+        {
+            "id": "5.196.88.188",
+            "ip": "5.196.88.188",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ns335228.ip-5-196-88.eu",
+            "country": "unknown",
+            "ports": [
+                21,
+                22,
+                80,
+                443
+            ],
+            "services_detected": [
+                "ftp",
+                "ssh",
+                "http"
+            ],
+            "os": "linux",
+            "type_machine": "web_server",
+            "last_seen": 1787149766,
+            "x": -3833,
+            "y": -3115
+        },
+        {
+            "id": "5.196.88.15",
+            "ip": "5.196.88.15",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ns334941.ip-5-196-88.eu",
+            "country": "unknown",
+            "ports": [
+                21,
+                22,
+                25,
+                80,
+                443
+            ],
+            "services_detected": [
+                "ftp",
+                "ssh",
+                "smtp",
+                "http"
+            ],
+            "os": "linux",
+            "type_machine": "mail_server",
+            "last_seen": 1787149809,
+            "x": 1987,
+            "y": -538
         }
     ],
     "edges": [
@@ -134528,28 +134601,36 @@
         [
             "AS16509",
             "13.55.232.98"
+        ],
+        [
+            "AS16276",
+            "5.196.88.111"
+        ],
+        [
+            "AS16276",
+            "5.196.88.188"
+        ],
+        [
+            "AS16276",
+            "5.196.88.15"
         ]
     ],
     "queue": [
-        {
-            "ip": "5.196.88.111",
-            "asn": "AS16276"
-        },
         {
             "ip": "5.196.88.188",
             "asn": "AS16276"
         },
         {
-            "ip": "5.196.88.15",
+            "ip": "5.196.88.22",
             "asn": "AS16276"
         },
         {
-            "ip": "13.55.232.205",
-            "asn": "AS16509"
+            "ip": "5.196.88.218",
+            "asn": "AS16276"
         },
         {
-            "ip": "13.55.232.71",
-            "asn": "AS16509"
+            "ip": "5.196.88.110",
+            "asn": "AS16276"
         }
     ]
 }
