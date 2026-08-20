@@ -113044,6 +113044,93 @@
             "last_seen": 1787207986,
             "x": -1028,
             "y": 1171
+        },
+        {
+            "id": "5.39.2.119",
+            "ip": "5.39.2.119",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ip119.ip-5-39-2.eu",
+            "country": "unknown",
+            "ports": [
+                22,
+                80,
+                443
+            ],
+            "services_detected": [
+                "ssh",
+                "http"
+            ],
+            "os": "linux",
+            "type_machine": "web_server",
+            "last_seen": 1787211499,
+            "x": 341,
+            "y": 420
+        },
+        {
+            "id": "5.39.2.193",
+            "ip": "5.39.2.193",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "testbpm.its.com.ar",
+            "country": "unknown",
+            "ports": [
+                22,
+                80,
+                443,
+                8080
+            ],
+            "services_detected": [
+                "ssh",
+                "http"
+            ],
+            "os": "linux",
+            "type_machine": "proxy",
+            "last_seen": 1787211522,
+            "x": 3863,
+            "y": 4505
+        },
+        {
+            "id": "5.39.2.236",
+            "ip": "5.39.2.236",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ip236.ip-5-39-2.eu",
+            "country": "unknown",
+            "ports": [
+                21,
+                22,
+                53,
+                80,
+                443
+            ],
+            "services_detected": [
+                "ftp",
+                "ssh",
+                "http"
+            ],
+            "os": "linux",
+            "type_machine": "dns_server",
+            "last_seen": 1787211544,
+            "x": -1464,
+            "y": -3411
+        },
+        {
+            "id": "5.39.2.205",
+            "ip": "5.39.2.205",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "mederosmoviten.ip4business.es",
+            "country": "unknown",
+            "ports": [
+                443
+            ],
+            "services_detected": [],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1787211567,
+            "x": 1862,
+            "y": -2328
         }
     ],
     "edges": [
@@ -135222,19 +135309,43 @@
         [
             "AS16276",
             "5.39.2.173"
+        ],
+        [
+            "AS16276",
+            "5.39.2.119"
+        ],
+        [
+            "AS16276",
+            "5.39.2.193"
+        ],
+        [
+            "AS16276",
+            "5.39.2.236"
+        ],
+        [
+            "AS16276",
+            "5.39.2.205"
         ]
     ],
     "queue": [
         {
-            "ip": "5.39.2.31",
+            "ip": "5.39.2.122",
             "asn": "AS16276"
         },
         {
-            "ip": "5.39.2.94",
+            "ip": "5.39.2.95",
             "asn": "AS16276"
         },
         {
-            "ip": "5.39.2.236",
+            "ip": "5.39.2.68",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.2.13",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.2.77",
             "asn": "AS16276"
         },
         {
@@ -135242,23 +135353,23 @@
             "asn": "AS16276"
         },
         {
-            "ip": "5.39.2.66",
+            "ip": "5.39.2.150",
             "asn": "AS16276"
         },
         {
-            "ip": "5.39.2.218",
+            "ip": "5.39.2.158",
             "asn": "AS16276"
         },
         {
-            "ip": "5.39.2.193",
+            "ip": "5.39.2.251",
             "asn": "AS16276"
         },
         {
-            "ip": "5.39.2.21",
+            "ip": "5.39.2.110",
             "asn": "AS16276"
         },
         {
-            "ip": "5.39.2.119",
+            "ip": "5.39.2.43",
             "asn": "AS16276"
         }
     ]
