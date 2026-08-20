@@ -113214,6 +113214,96 @@
             "last_seen": 1787214943,
             "x": 2425,
             "y": 2289
+        },
+        {
+            "id": "5.39.2.171",
+            "ip": "5.39.2.171",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "support.brightontop.com",
+            "country": "unknown",
+            "ports": [
+                25,
+                53,
+                80
+            ],
+            "services_detected": [
+                "smtp",
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1787218223,
+            "x": 513,
+            "y": -324
+        },
+        {
+            "id": "5.39.2.96",
+            "ip": "5.39.2.96",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ip96.ip-5-39-2.eu",
+            "country": "unknown",
+            "ports": [
+                53,
+                80,
+                110,
+                143,
+                443,
+                993,
+                995,
+                8443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "dns_server",
+            "last_seen": 1787218232,
+            "x": 952,
+            "y": -3908
+        },
+        {
+            "id": "5.39.2.55",
+            "ip": "5.39.2.55",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ip55.ip-5-39-2.eu",
+            "country": "unknown",
+            "ports": [
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1787218236,
+            "x": -1205,
+            "y": 1532
+        },
+        {
+            "id": "5.39.2.130",
+            "ip": "5.39.2.130",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ltm-srv-perso-1097.lotomate.com",
+            "country": "unknown",
+            "ports": [
+                22,
+                80,
+                443
+            ],
+            "services_detected": [
+                "ssh",
+                "http"
+            ],
+            "os": "linux",
+            "type_machine": "web_server",
+            "last_seen": 1787218299,
+            "x": -2170,
+            "y": -1766
         }
     ],
     "edges": [
@@ -135424,55 +135514,59 @@
         [
             "AS16276",
             "5.39.2.251"
+        ],
+        [
+            "AS16276",
+            "5.39.2.171"
+        ],
+        [
+            "AS16276",
+            "5.39.2.96"
+        ],
+        [
+            "AS16276",
+            "5.39.2.55"
+        ],
+        [
+            "AS16276",
+            "5.39.2.130"
         ]
     ],
     "queue": [
         {
-            "ip": "5.39.2.81",
+            "ip": "5.39.2.183",
             "asn": "AS16276"
         },
         {
-            "ip": "5.39.2.55",
+            "ip": "5.39.2.140",
             "asn": "AS16276"
         },
         {
-            "ip": "5.39.2.176",
+            "ip": "5.39.2.53",
             "asn": "AS16276"
         },
         {
-            "ip": "5.39.2.220",
+            "ip": "5.39.2.61",
             "asn": "AS16276"
         },
         {
-            "ip": "5.39.2.225",
+            "ip": "5.39.2.11",
             "asn": "AS16276"
         },
         {
-            "ip": "5.39.2.96",
+            "ip": "5.39.2.215",
             "asn": "AS16276"
         },
         {
-            "ip": "5.39.2.92",
+            "ip": "5.39.2.4",
             "asn": "AS16276"
         },
         {
-            "ip": "5.39.2.94",
+            "ip": "5.39.2.68",
             "asn": "AS16276"
         },
         {
-            "ip": "5.39.2.171",
-            "asn": "AS16276"
-        },
-        {
-            "ip": "5.39.2.130",
-            "asn": "AS16276"
-        },
-        {
-            "ip": "5.39.2.146",
-            "asn": "AS16276"
-        },
-        {
-            "ip": "5.39.2.244",
+            "ip": "5.39.2.126",
             "asn": "AS16276"
         }
     ]
