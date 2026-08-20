@@ -112977,6 +112977,73 @@
             "last_seen": 1787203599,
             "x": 3003,
             "y": -133
+        },
+        {
+            "id": "5.39.2.235",
+            "ip": "5.39.2.235",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ip235.ip-5-39-2.eu",
+            "country": "unknown",
+            "ports": [
+                21,
+                22,
+                53,
+                80,
+                443
+            ],
+            "services_detected": [
+                "ftp",
+                "ssh",
+                "http"
+            ],
+            "os": "linux",
+            "type_machine": "dns_server",
+            "last_seen": 1787207951,
+            "x": -1974,
+            "y": 2721
+        },
+        {
+            "id": "5.39.2.141",
+            "ip": "5.39.2.141",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ltm-srv-prod-web-1116.lotomate.com",
+            "country": "unknown",
+            "ports": [
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1787207969,
+            "x": -978,
+            "y": -1636
+        },
+        {
+            "id": "5.39.2.173",
+            "ip": "5.39.2.173",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "docs.bzyfeetkennels.com",
+            "country": "unknown",
+            "ports": [
+                25,
+                53,
+                80
+            ],
+            "services_detected": [
+                "smtp",
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1787207986,
+            "x": -1028,
+            "y": 1171
         }
     ],
     "edges": [
@@ -135143,19 +135210,55 @@
         [
             "AS16276",
             "5.39.2.149"
+        ],
+        [
+            "AS16276",
+            "5.39.2.235"
+        ],
+        [
+            "AS16276",
+            "5.39.2.141"
+        ],
+        [
+            "AS16276",
+            "5.39.2.173"
         ]
     ],
     "queue": [
         {
-            "ip": "5.39.2.235",
+            "ip": "5.39.2.31",
             "asn": "AS16276"
         },
         {
-            "ip": "5.39.2.173",
+            "ip": "5.39.2.94",
             "asn": "AS16276"
         },
         {
-            "ip": "5.39.2.141",
+            "ip": "5.39.2.236",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.2.205",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.2.66",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.2.218",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.2.193",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.2.21",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.2.119",
             "asn": "AS16276"
         }
     ]
