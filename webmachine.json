@@ -118928,6 +118928,70 @@
             "last_seen": 1787547316,
             "x": 4748,
             "y": 2545
+        },
+        {
+            "id": "5.135.96.31",
+            "ip": "5.135.96.31",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "crypt-msinfo.cglabscorp.com",
+            "country": "unknown",
+            "ports": [
+                25,
+                53,
+                80
+            ],
+            "services_detected": [
+                "smtp",
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1787554395,
+            "x": 3477,
+            "y": 1592
+        },
+        {
+            "id": "5.196.97.21",
+            "ip": "5.196.97.21",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "post9.sender.cvmkz.info",
+            "country": "unknown",
+            "ports": [
+                25,
+                80,
+                443
+            ],
+            "services_detected": [
+                "smtp",
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1787554471,
+            "x": 2117,
+            "y": -557
+        },
+        {
+            "id": "5.135.51.108",
+            "ip": "5.135.51.108",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ip108.ip-5-135-51.eu",
+            "country": "unknown",
+            "ports": [
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1787554513,
+            "x": 4912,
+            "y": 1128
         }
     ],
     "edges": [
@@ -142274,7 +142338,56 @@
         [
             "AS16276",
             "5.196.117.9"
+        ],
+        [
+            "AS16276",
+            "5.135.96.31"
+        ],
+        [
+            "AS16276",
+            "5.196.97.21"
+        ],
+        [
+            "AS16276",
+            "5.135.51.108"
         ]
     ],
-    "queue": []
+    "queue": [
+        {
+            "ip": "5.135.96.228",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.96.57",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.96.137",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.97.15",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.97.64",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.97.5",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.51.165",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.51.248",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.51.121",
+            "asn": "AS16276"
+        }
+    ]
 }
