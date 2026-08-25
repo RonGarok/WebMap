@@ -120066,6 +120066,52 @@
             "last_seen": 1787610147,
             "x": 4535,
             "y": -1336
+        },
+        {
+            "id": "13.54.56.172",
+            "ip": "13.54.56.172",
+            "asn": "AS16509",
+            "provider": "AS16509",
+            "hostname": "ec2-13-54-56-172.ap-southeast-2.compute.amazonaws.com",
+            "country": "unknown",
+            "ports": [
+                22,
+                53,
+                80,
+                443,
+                8443
+            ],
+            "services_detected": [
+                "ssh",
+                "http"
+            ],
+            "os": "linux",
+            "type_machine": "dns_server",
+            "last_seen": 1787619844,
+            "x": -4007,
+            "y": 1094
+        },
+        {
+            "id": "5.39.15.246",
+            "ip": "5.39.15.246",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "lawcures.com",
+            "country": "unknown",
+            "ports": [
+                25,
+                53,
+                80
+            ],
+            "services_detected": [
+                "smtp",
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1787619880,
+            "x": 4972,
+            "y": -1146
         }
     ],
     "edges": [
@@ -143636,7 +143682,40 @@
         [
             "AS16509",
             "13.55.74.195"
+        ],
+        [
+            "AS16509",
+            "13.54.56.172"
+        ],
+        [
+            "AS16276",
+            "5.39.15.246"
         ]
     ],
-    "queue": []
+    "queue": [
+        {
+            "ip": "13.54.56.43",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "13.54.56.216",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "13.54.56.186",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "5.39.15.187",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.15.21",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.15.12",
+            "asn": "AS16276"
+        }
+    ]
 }
