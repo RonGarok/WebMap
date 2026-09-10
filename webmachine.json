@@ -132399,6 +132399,44 @@
             "last_seen": 1789018715,
             "x": -1135,
             "y": -4316
+        },
+        {
+            "id": "5.196.150.90",
+            "ip": "5.196.150.90",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "05c4965a-idc.th.thpw.com.br",
+            "country": "unknown",
+            "ports": [
+                25
+            ],
+            "services_detected": [
+                "smtp"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1789036391,
+            "x": -2202,
+            "y": -1917
+        },
+        {
+            "id": "5.196.150.247",
+            "ip": "5.196.150.247",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "05c496f7-idc.tw.dinapw.com.br",
+            "country": "unknown",
+            "ports": [
+                25
+            ],
+            "services_detected": [
+                "smtp"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1789036408,
+            "x": 1653,
+            "y": 2485
         }
     ],
     "edges": [
@@ -158457,24 +158495,15 @@
         [
             "AS16276",
             "5.196.150.219"
+        ],
+        [
+            "AS16276",
+            "5.196.150.90"
+        ],
+        [
+            "AS16276",
+            "5.196.150.247"
         ]
     ],
-    "queue": [
-        {
-            "ip": "5.196.150.154",
-            "asn": "AS16276"
-        },
-        {
-            "ip": "5.196.150.219",
-            "asn": "AS16276"
-        },
-        {
-            "ip": "5.196.150.247",
-            "asn": "AS16276"
-        },
-        {
-            "ip": "5.196.150.90",
-            "asn": "AS16276"
-        }
-    ]
+    "queue": []
 }
