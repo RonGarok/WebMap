@@ -134520,6 +134520,49 @@
             "last_seen": 1789564109,
             "x": 82,
             "y": 2266
+        },
+        {
+            "id": "5.39.79.24",
+            "ip": "5.39.79.24",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ns327950.ip-5-39-79.eu",
+            "country": "unknown",
+            "ports": [
+                22,
+                80,
+                443
+            ],
+            "services_detected": [
+                "ssh",
+                "http"
+            ],
+            "os": "linux",
+            "type_machine": "web_server",
+            "last_seen": 1789592205,
+            "x": 3004,
+            "y": -2644
+        },
+        {
+            "id": "5.196.53.99",
+            "ip": "5.196.53.99",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "out-99.ma25-a.qkcbranch.us.com",
+            "country": "unknown",
+            "ports": [
+                25,
+                80
+            ],
+            "services_detected": [
+                "smtp",
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1789592453,
+            "x": 533,
+            "y": -185
         }
     ],
     "edges": [
@@ -161002,7 +161045,40 @@
         [
             "AS16509",
             "3.15.188.180"
+        ],
+        [
+            "AS16276",
+            "5.39.79.24"
+        ],
+        [
+            "AS16276",
+            "5.196.53.99"
         ]
     ],
-    "queue": []
+    "queue": [
+        {
+            "ip": "5.39.79.184",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.79.122",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.79.151",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.53.96",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.53.176",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.53.204",
+            "asn": "AS16276"
+        }
+    ]
 }
