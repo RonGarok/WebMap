@@ -134409,6 +134409,81 @@
             "last_seen": 1789512627,
             "x": -998,
             "y": -276
+        },
+        {
+            "id": "3.15.188.199",
+            "ip": "3.15.188.199",
+            "asn": "AS16509",
+            "provider": "AS16509",
+            "hostname": "ec2-3-15-188-199.us-east-2.compute.amazonaws.com",
+            "country": "unknown",
+            "ports": [
+                22
+            ],
+            "services_detected": [
+                "ssh"
+            ],
+            "os": "linux",
+            "type_machine": "unknown",
+            "last_seen": 1789542686,
+            "x": 358,
+            "y": -4436
+        },
+        {
+            "id": "8.34.215.120",
+            "ip": "8.34.215.120",
+            "asn": "AS15169",
+            "provider": "AS15169",
+            "hostname": "120.215.34.8.bc.googleusercontent.com",
+            "country": "unknown",
+            "ports": [
+                22
+            ],
+            "services_detected": [
+                "ssh"
+            ],
+            "os": "unknown",
+            "type_machine": "unknown",
+            "last_seen": 1789542771,
+            "x": -2703,
+            "y": 2199
+        },
+        {
+            "id": "5.135.229.115",
+            "ip": "5.135.229.115",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "prod-rbx-fw-01.frizbooth.net",
+            "country": "unknown",
+            "ports": [
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1789542858,
+            "x": -2780,
+            "y": 1609
+        },
+        {
+            "id": "13.91.107.206",
+            "ip": "13.91.107.206",
+            "asn": "AS8075",
+            "provider": "AS8075",
+            "hostname": "",
+            "country": "unknown",
+            "ports": [
+                443
+            ],
+            "services_detected": [],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1789543070,
+            "x": -2968,
+            "y": -566
         }
     ],
     "edges": [
@@ -160867,7 +160942,72 @@
         [
             "AS8075",
             "20.1.214.164"
+        ],
+        [
+            "AS16509",
+            "3.15.188.199"
+        ],
+        [
+            "AS15169",
+            "8.34.215.120"
+        ],
+        [
+            "AS16276",
+            "5.135.229.115"
+        ],
+        [
+            "AS8075",
+            "13.91.107.206"
         ]
     ],
-    "queue": []
+    "queue": [
+        {
+            "ip": "3.15.188.180",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "3.15.188.93",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "3.15.188.141",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "8.34.215.44",
+            "asn": "AS15169"
+        },
+        {
+            "ip": "8.34.215.127",
+            "asn": "AS15169"
+        },
+        {
+            "ip": "8.34.215.15",
+            "asn": "AS15169"
+        },
+        {
+            "ip": "5.135.229.243",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.229.229",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.229.254",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "13.91.107.5",
+            "asn": "AS8075"
+        },
+        {
+            "ip": "13.91.107.26",
+            "asn": "AS8075"
+        },
+        {
+            "ip": "13.91.107.243",
+            "asn": "AS8075"
+        }
+    ]
 }
