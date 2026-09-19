@@ -135058,6 +135058,25 @@
             "last_seen": 1789772389,
             "x": -1391,
             "y": -3938
+        },
+        {
+            "id": "13.54.80.232",
+            "ip": "13.54.80.232",
+            "asn": "AS16509",
+            "provider": "AS16509",
+            "hostname": "ec2-13-54-80-232.ap-southeast-2.compute.amazonaws.com",
+            "country": "unknown",
+            "ports": [
+                25
+            ],
+            "services_detected": [
+                "smtp"
+            ],
+            "os": "unknown",
+            "type_machine": "mail_server",
+            "last_seen": 1789801284,
+            "x": 2197,
+            "y": 4131
         }
     ],
     "edges": [
@@ -161644,7 +161663,24 @@
         [
             "AS16276",
             "5.135.206.3"
+        ],
+        [
+            "AS16509",
+            "13.54.80.232"
         ]
     ],
-    "queue": []
+    "queue": [
+        {
+            "ip": "13.54.80.195",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "13.54.80.166",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "13.54.80.65",
+            "asn": "AS16509"
+        }
+    ]
 }
