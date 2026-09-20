@@ -135251,6 +135251,106 @@
             "last_seen": 1789894965,
             "x": 2672,
             "y": -2617
+        },
+        {
+            "id": "8.34.214.74",
+            "ip": "8.34.214.74",
+            "asn": "AS15169",
+            "provider": "AS15169",
+            "hostname": "74.214.34.8.bc.googleusercontent.com",
+            "country": "unknown",
+            "ports": [
+                22
+            ],
+            "services_detected": [
+                "ssh"
+            ],
+            "os": "linux",
+            "type_machine": "unknown",
+            "last_seen": 1789924894,
+            "x": 4793,
+            "y": 1252
+        },
+        {
+            "id": "13.93.10.152",
+            "ip": "13.93.10.152",
+            "asn": "AS8075",
+            "provider": "AS8075",
+            "hostname": "",
+            "country": "unknown",
+            "ports": [
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1789924913,
+            "x": 3124,
+            "y": 2629
+        },
+        {
+            "id": "5.196.154.203",
+            "ip": "5.196.154.203",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ip203.ip-5-196-154.eu",
+            "country": "unknown",
+            "ports": [
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1789924932,
+            "x": 4010,
+            "y": -3150
+        },
+        {
+            "id": "5.135.198.155",
+            "ip": "5.135.198.155",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "",
+            "country": "unknown",
+            "ports": [
+                22,
+                80
+            ],
+            "services_detected": [
+                "ssh",
+                "http"
+            ],
+            "os": "linux",
+            "type_machine": "web_server",
+            "last_seen": 1789924955,
+            "x": 2408,
+            "y": -2981
+        },
+        {
+            "id": "5.39.27.239",
+            "ip": "5.39.27.239",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ip239.ip-5-39-27.eu",
+            "country": "unknown",
+            "ports": [
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1789925055,
+            "x": 1302,
+            "y": 4276
         }
     ],
     "edges": [
@@ -161877,7 +161977,88 @@
         [
             "AS16509",
             "3.79.118.252"
+        ],
+        [
+            "AS15169",
+            "8.34.214.74"
+        ],
+        [
+            "AS8075",
+            "13.93.10.152"
+        ],
+        [
+            "AS16276",
+            "5.196.154.203"
+        ],
+        [
+            "AS16276",
+            "5.135.198.155"
+        ],
+        [
+            "AS16276",
+            "5.39.27.239"
         ]
     ],
-    "queue": []
+    "queue": [
+        {
+            "ip": "8.34.214.81",
+            "asn": "AS15169"
+        },
+        {
+            "ip": "8.34.214.126",
+            "asn": "AS15169"
+        },
+        {
+            "ip": "8.34.214.125",
+            "asn": "AS15169"
+        },
+        {
+            "ip": "13.93.10.5",
+            "asn": "AS8075"
+        },
+        {
+            "ip": "13.93.10.210",
+            "asn": "AS8075"
+        },
+        {
+            "ip": "13.93.10.165",
+            "asn": "AS8075"
+        },
+        {
+            "ip": "5.196.154.135",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.154.218",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.154.143",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.198.96",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.198.120",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.198.25",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.27.127",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.27.195",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.39.27.126",
+            "asn": "AS16276"
+        }
+    ]
 }
