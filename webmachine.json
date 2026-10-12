@@ -139616,6 +139616,45 @@
             "last_seen": 1791763998,
             "x": -384,
             "y": -572
+        },
+        {
+            "id": "5.196.160.138",
+            "ip": "5.196.160.138",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ip138.ip-5-196-160.eu",
+            "country": "unknown",
+            "ports": [
+                22,
+                80,
+                443
+            ],
+            "services_detected": [
+                "ssh",
+                "http"
+            ],
+            "os": "linux",
+            "type_machine": "web_server",
+            "last_seen": 1791822582,
+            "x": -445,
+            "y": -1222
+        },
+        {
+            "id": "13.54.57.58",
+            "ip": "13.54.57.58",
+            "asn": "AS16509",
+            "provider": "AS16509",
+            "hostname": "ec2-13-54-57-58.ap-southeast-2.compute.amazonaws.com",
+            "country": "unknown",
+            "ports": [
+                443
+            ],
+            "services_detected": [],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1791822660,
+            "x": 3170,
+            "y": -2099
         }
     ],
     "edges": [
@@ -167114,7 +167153,40 @@
         [
             "AS16276",
             "5.39.91.82"
+        ],
+        [
+            "AS16276",
+            "5.196.160.138"
+        ],
+        [
+            "AS16509",
+            "13.54.57.58"
         ]
     ],
-    "queue": []
+    "queue": [
+        {
+            "ip": "5.196.160.65",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.160.153",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.160.66",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "13.54.57.179",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "13.54.57.3",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "13.54.57.90",
+            "asn": "AS16509"
+        }
+    ]
 }
