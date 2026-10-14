@@ -139859,6 +139859,46 @@
             "last_seen": 1791995318,
             "x": -3790,
             "y": 4468
+        },
+        {
+            "id": "3.65.234.23",
+            "ip": "3.65.234.23",
+            "asn": "AS16509",
+            "provider": "AS16509",
+            "hostname": "ec2-3-65-234-23.eu-central-1.compute.amazonaws.com",
+            "country": "unknown",
+            "ports": [
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1792009548,
+            "x": 3126,
+            "y": -4403
+        },
+        {
+            "id": "3.65.234.215",
+            "ip": "3.65.234.215",
+            "asn": "AS16509",
+            "provider": "AS16509",
+            "hostname": "ec2-3-65-234-215.eu-central-1.compute.amazonaws.com",
+            "country": "unknown",
+            "ports": [
+                80,
+                443
+            ],
+            "services_detected": [
+                "http"
+            ],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1792009584,
+            "x": -1855,
+            "y": 3301
         }
     ],
     "edges": [
@@ -167405,19 +167445,39 @@
         [
             "AS16509",
             "3.65.234.246"
+        ],
+        [
+            "AS16509",
+            "3.65.234.23"
+        ],
+        [
+            "AS16509",
+            "3.65.234.215"
         ]
     ],
     "queue": [
         {
-            "ip": "3.65.234.25",
+            "ip": "3.65.234.71",
             "asn": "AS16509"
         },
         {
-            "ip": "3.65.234.215",
+            "ip": "3.65.234.84",
             "asn": "AS16509"
         },
         {
-            "ip": "3.65.234.23",
+            "ip": "3.65.234.172",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "3.65.234.117",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "3.65.234.2",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "3.65.234.7",
             "asn": "AS16509"
         }
     ]
