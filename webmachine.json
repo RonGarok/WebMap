@@ -140715,6 +140715,83 @@
             "last_seen": 1792370839,
             "x": -1162,
             "y": -1285
+        },
+        {
+            "id": "13.54.76.127",
+            "ip": "13.54.76.127",
+            "asn": "AS16509",
+            "provider": "AS16509",
+            "hostname": "ec2-13-54-76-127.ap-southeast-2.compute.amazonaws.com",
+            "country": "unknown",
+            "ports": [
+                443
+            ],
+            "services_detected": [],
+            "os": "unknown",
+            "type_machine": "web_server",
+            "last_seen": 1792411423,
+            "x": 734,
+            "y": -1862
+        },
+        {
+            "id": "5.135.70.154",
+            "ip": "5.135.70.154",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "mail.ivanbora.com",
+            "country": "unknown",
+            "ports": [
+                22,
+                25,
+                80,
+                443
+            ],
+            "services_detected": [
+                "ssh",
+                "smtp",
+                "http"
+            ],
+            "os": "linux",
+            "type_machine": "mail_server",
+            "last_seen": 1792411557,
+            "x": 1457,
+            "y": 2208
+        },
+        {
+            "id": "5.196.67.182",
+            "ip": "5.196.67.182",
+            "asn": "AS16276",
+            "provider": "AS16276",
+            "hostname": "ns399716.ip-5-196-67.eu",
+            "country": "unknown",
+            "ports": [
+                22
+            ],
+            "services_detected": [
+                "ssh"
+            ],
+            "os": "linux",
+            "type_machine": "unknown",
+            "last_seen": 1792411715,
+            "x": -4244,
+            "y": 3631
+        },
+        {
+            "id": "3.4.26.247",
+            "ip": "3.4.26.247",
+            "asn": "AS16509",
+            "provider": "AS16509",
+            "hostname": "ns-759.awsdns-us-gov-30.us",
+            "country": "unknown",
+            "ports": [
+                53
+            ],
+            "services_detected": [],
+            "os": "unknown",
+            "type_machine": "dns_server",
+            "last_seen": 1792411792,
+            "x": 1802,
+            "y": -4250
         }
     ],
     "edges": [
@@ -168429,7 +168506,72 @@
         [
             "AS16276",
             "5.39.71.216"
+        ],
+        [
+            "AS16509",
+            "13.54.76.127"
+        ],
+        [
+            "AS16276",
+            "5.135.70.154"
+        ],
+        [
+            "AS16276",
+            "5.196.67.182"
+        ],
+        [
+            "AS16509",
+            "3.4.26.247"
         ]
     ],
-    "queue": []
+    "queue": [
+        {
+            "ip": "13.54.76.97",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "13.54.76.35",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "13.54.76.107",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "5.135.70.196",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.70.249",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.135.70.11",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.67.22",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.67.33",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "5.196.67.51",
+            "asn": "AS16276"
+        },
+        {
+            "ip": "3.4.26.202",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "3.4.26.42",
+            "asn": "AS16509"
+        },
+        {
+            "ip": "3.4.26.38",
+            "asn": "AS16509"
+        }
+    ]
 }
